@@ -12,7 +12,7 @@ public class Installation {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long installation_id;
+    private Long dvHubId;
     private String name;
     private String description;
     private String latitude;
