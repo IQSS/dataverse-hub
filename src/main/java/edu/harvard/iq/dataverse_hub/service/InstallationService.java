@@ -2,9 +2,11 @@ package edu.harvard.iq.dataverse_hub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.repository.InstallationRepo;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InstallationService {
@@ -24,15 +26,15 @@ public class InstallationService {
         installationRepo.delete(installation);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         installationRepo.deleteById(id);
     }
 
-    public Optional<Installation> findById(Long id) {
+    public Optional<Installation> findById(String id) {
         return installationRepo.findById(id);
     }   
 
-    public Iterable<Installation> findAll() {
+    public List<Installation> findAll() {
         return installationRepo.findAll();
     }
 

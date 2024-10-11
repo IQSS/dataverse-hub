@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 
 
-public interface InstallationRepo extends JpaRepository<Installation, Long> {
+public interface InstallationRepo extends JpaRepository<Installation, String> {
     
     @Query("SELECT i FROM Installation i WHERE i.name = ?1")
     Installation findByName(String name);

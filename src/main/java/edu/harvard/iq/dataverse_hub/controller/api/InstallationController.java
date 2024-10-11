@@ -1,20 +1,34 @@
 package edu.harvard.iq.dataverse_hub.controller.api;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
 
-@RestController("/api/installation")
+import java.util.List;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@RestController
+@RequestMapping("/api/installation")
 public class InstallationController {
 
     @Autowired
     private InstallationService installationService;
 
-    @GetMapping("/")
-    String getInstallationsAPIController(){
-        return "Hello, World!";
+    @GetMapping
+    public List<Installation> getInstallationsAPIController(){
+        return installationService.findAll();
+    }
+
+    @PutMapping
+    public Installation createInstallation(@RequestBody Installation installation){
+        return installationService.save(installation);
     }
 
 }

@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS installation;
 DROP TABLE IF EXISTS access_token;
 
+CREATE SEQUENCE mysequence;
 CREATE TABLE IF NOT EXISTS installation (
     dv_hub_id varchar NOT NULL PRIMARY KEY,
     name varchar,
@@ -10,9 +11,9 @@ CREATE TABLE IF NOT EXISTS installation (
     hostname varchar,
     country varchar,
     continent varchar,
-    launchYear integer,
-    gdccMmember bool,
-    doiAuthority varchar,
+    launch_year integer,
+    gdcc_member bool,
+    doi_authority varchar,
     contact_email varchar
 );
 
