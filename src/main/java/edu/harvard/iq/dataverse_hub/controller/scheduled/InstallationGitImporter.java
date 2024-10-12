@@ -25,7 +25,7 @@ public class InstallationGitImporter {
     @Autowired
     private InstallationService installationService;
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 3600000)
     public void importInstallations() {
         System.out.println("Importing installations...");
         
