@@ -10,35 +10,26 @@ public class Installation {
     @Id
     @Schema(description = "Unique identifier for the Dataverse installation")
     private String dvHubId;
-
     @Schema(description = "Name of the Dataverse installation")
     private String name;
-
     @Schema(description = "Description of the Dataverse installation")
     private String description;
-
     @Schema(description = "Latitude of the Dataverse installation")
     private String latitude;
     @Schema(description = "Longitude of the Dataverse installation")
     private String longitude;
     @Schema(description = "Host adress of the Dataverse installation")
     private String hostname;
-
     @Schema(description = "Country of the Dataverse installation")
     private String country;
-
     @Schema(description = "Continent of the Dataverse installation")
     private String continent;
-
     @Schema(description = "Year of launch of the Dataverse installation")
     private Integer launchYear;
-
     @Schema(description = "Whether the Dataverse installation is a member of the Global Dataverse Community Consortium")
     private Boolean gdccMember;
-
     @Schema(description = "DOI authority of the Dataverse installation")
     private String doiAuthority;
-
     @Schema(description = "Contact email of the admin of the Dataverse installation")
     private String contactEmail;
 

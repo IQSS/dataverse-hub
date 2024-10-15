@@ -14,8 +14,8 @@ public class InstallationService {
     @Autowired
     private InstallationRepo installationRepo;
 
-    public Installation findByName(String name) {
-        return installationRepo.findByName(name);
+    public Installation findByDVHubId(String name) {
+        return installationRepo.findByDVHubId(name);
     }
 
     public Installation save(Installation installation) {

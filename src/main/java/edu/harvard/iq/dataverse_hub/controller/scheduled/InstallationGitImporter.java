@@ -15,7 +15,6 @@ import edu.harvard.iq.dataverse_hub.service.InstallationService;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Component
 public class InstallationGitImporter {
@@ -39,9 +38,8 @@ public class InstallationGitImporter {
 
             List<Installation> dtos = InstallationGitImporter.transform(installations);
             for (Installation installation : dtos) {
-                Installation existingInstallation = installationService.findByName(installation.getName());
+                Installation existingInstallation = installationService.findByDVHubId(installation.getDvHubId());
                 if (existingInstallation == null) {
-                    installation.setDvHubId(new Date().toString() + installation.getName());
                     installationService.save(installation);
                 }
             }
@@ -53,7 +51,7 @@ public class InstallationGitImporter {
 
     private static Installation transform(InstallationWrapper installationWrapper) {
         Installation installation = new Installation();
-        installation.setDvHubId("");
+        installation.setDvHubId("DVN_" + installationWrapper.name.toUpperCase().replace(" ", "_") + "_" + installationWrapper.launchYear);
         installation.setName(installationWrapper.name);
         installation.setDescription(installationWrapper.description);
         installation.setLatitude(installationWrapper.latitude);
