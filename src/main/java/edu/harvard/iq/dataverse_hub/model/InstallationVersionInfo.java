@@ -4,14 +4,16 @@ import java.util.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class InstallationVersionInfo {
     
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "installation_version_info_seq")    
     @SequenceGenerator(name = "installation_version_info_seq", sequenceName = "installation_version_info_seq", allocationSize = 1)
-    private Integer transactionId;
+    private Integer record_id;
 
     private String dvHubId;
     private String status;
@@ -19,12 +21,12 @@ public class InstallationVersionInfo {
     private String build;
     private Date captureDate;
 
-    public Integer getTransactionId() {
-        return this.transactionId;
+    public Integer getRecordId() {
+        return this.record_id;
     }
 
-    public void setTransactionId(Integer transactionId) {
-        this.transactionId = transactionId;
+    public void setRecordId(Integer record_id) {
+        this.record_id = record_id;
     }
 
     public String getDvHubId() {

@@ -2,9 +2,14 @@ package edu.harvard.iq.dataverse_hub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import edu.harvard.iq.dataverse_hub.model.Installation;
-import edu.harvard.iq.dataverse_hub.repository.InstallationRepo;
 
+import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCheck;
+import edu.harvard.iq.dataverse_hub.model.Installation;
+import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
+import edu.harvard.iq.dataverse_hub.repository.InstallationRepo;
+import edu.harvard.iq.dataverse_hub.repository.InstallationVersionInfoRepo;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,28 +19,41 @@ public class InstallationService {
     @Autowired
     private InstallationRepo installationRepo;
 
+    @Autowired
+    private InstallationVersionInfoRepo installationVersionInfoRepo;
+
     public Installation findByDVHubId(String name) {
         return installationRepo.findByDVHubId(name);
     }
+
+    public Optional<Installation> findById(String id) {
+        return installationRepo.findById(id);
+    } 
 
     public Installation save(Installation installation) {
         return installationRepo.save(installation);
     }
 
-    public void delete(Installation installation) {
-        installationRepo.delete(installation);
-    }
-
-    public void deleteById(String id) {
-        installationRepo.deleteById(id);
-    }
-
-    public Optional<Installation> findById(String id) {
-        return installationRepo.findById(id);
-    }   
-
     public List<Installation> findAll() {
         return installationRepo.findAll();
+    }
+
+    public InstallationVersionInfo logInstallationVersion(
+                    VersionDVInstallationCheck.VersionInfo info, 
+                    Installation installation){
+
+        InstallationVersionInfo vi = new InstallationVersionInfo();
+        vi.setDvHubId(installation.getDvHubId());
+        vi.setCaptureDate(new Date());
+        if(info == null){
+            vi.setStatus("unreachable");
+        } else {
+            vi.setStatus(info.status);
+            vi.setVersion(info.data.version);
+            vi.setBuild(info.data.build);
+        }
+        
+        return installationVersionInfoRepo.save(vi);
     }
 
 }

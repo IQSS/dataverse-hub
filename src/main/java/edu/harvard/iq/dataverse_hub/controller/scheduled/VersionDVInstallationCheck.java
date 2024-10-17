@@ -26,39 +26,39 @@ public class VersionDVInstallationCheck {
         RestTemplate restTemplate = new RestTemplate();
 
         for (Installation installation : dvInstallationsList) {
-            System.out.println(installation.getHostname());
-
+            
+            VersionInfo jsonImport = null;
             try {
                 String url = "https://" + installation.getHostname() + "/api/info/version";
-                VersionInfo jsonImport = restTemplate.getForObject(url, VersionInfo.class); 
-                System.out.println(jsonImport.data.version);
+                jsonImport = restTemplate.getForObject(url, VersionInfo.class); 
+                
             } catch (Exception e) {
-                //e.printStackTrace();
                 System.out.println("Error: " + installation.getHostname() + " is not responding.");
             }
+            installationService.logInstallationVersion(jsonImport, installation);
         }
         System.out.println("Checking for new Dataverse installations");
     
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private static class VersionInfo {
+    public static class VersionInfo {
         @JsonProperty("status")
-        private String status;
+        public String status;
         
         @JsonProperty("data")
-        private VersionData data;
+        public VersionData data;
 
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private static class VersionData {
+    public static class VersionData {
 
         @JsonProperty("version")
-        private String version;
+        public String version;
 
         @JsonProperty("build")
-        private String build;
+        public String build;
     }
 
 
