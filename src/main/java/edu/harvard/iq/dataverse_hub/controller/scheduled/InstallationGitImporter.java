@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
+import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -23,12 +24,27 @@ public class InstallationGitImporter {
 
     @Autowired
     private InstallationService installationService;
+    
+    @Autowired
+    private ScheduledJobService scheduledJobService;
 
-    @Scheduled(fixedRate = 3600000)
-    public void importInstallations() {
-        System.out.println("Importing installations...");
-        
-        
+    private String jobName = this.getClass().getSimpleName();
+
+    @Scheduled(fixedRate = 60000)
+    public void runTask() {
+        System.out.println("Checking task status: " + jobName);
+        if(scheduledJobService.isDue(jobName)){
+            System.out.println("Running task: " + jobName);
+            importInstallations();
+        }
+    }
+
+    /**
+     * This method is called by the scheduled task to import installations from the file located at the specified GitHub repository.
+     */
+    private void importInstallations() {
+
+
         RestTemplate restTemplate = new RestTemplate();
         String jsonImport = restTemplate.getForObject(INSTALLATIONS_URL, String.class); 
 
@@ -41,9 +57,16 @@ public class InstallationGitImporter {
                 Installation existingInstallation = installationService.findByDVHubId(installation.getDvHubId());
                 if (existingInstallation == null) {
                     installationService.save(installation);
+                } else {
+                    //TODO UPDATE INSTALLATION
                 }
+
             }
+
+            scheduledJobService.saveTransactionLog(jobName, 1);
+
         } catch (Exception e) {
+            scheduledJobService.saveTransactionLog(jobName, -1);
             e.printStackTrace();
         }
 
