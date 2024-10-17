@@ -38,15 +38,26 @@ public class InstallationService {
         return installationRepo.findAll();
     }
 
+    public List<InstallationVersionInfo> getInstallationInfo(){
+        return installationVersionInfoRepo.getLatestStatusAll();
+    }
+
     public InstallationVersionInfo logInstallationVersion(
                     VersionDVInstallationCheck.VersionInfo info, 
                     Installation installation){
+        return logInstallationVersion(info, installation, null);
+    }
+
+    public InstallationVersionInfo logInstallationVersion(
+                    VersionDVInstallationCheck.VersionInfo info, 
+                    Installation installation, 
+                    String code){
 
         InstallationVersionInfo vi = new InstallationVersionInfo();
         vi.setDvHubId(installation.getDvHubId());
         vi.setCaptureDate(new Date());
         if(info == null){
-            vi.setStatus("unreachable");
+            vi.setStatus(code);
         } else {
             vi.setStatus(info.status);
             vi.setVersion(info.data.version);

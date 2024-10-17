@@ -4,13 +4,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class ScheduledJob {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
+        generator = "scheduled_job_seq")
+    @SequenceGenerator(
+        name = "scheduled_job_seq", 
+        sequenceName = "scheduled_job_seq", 
+        allocationSize = 1)
     private Integer jobId;
+
     private String description;
     private String jobName;
     private Integer frequency;

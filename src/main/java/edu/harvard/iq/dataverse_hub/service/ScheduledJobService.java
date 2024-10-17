@@ -20,6 +20,8 @@ public class ScheduledJobService {
     @Autowired
     private ScheduledJobTransactionLogRepo scheduledJobTransactionLogRepo;
 
+    private final static int DEFAULT_FREQUENCY = 3600000;
+
     public ScheduledJob save(ScheduledJob scheduledJob) {
         return scheduledJobRepo.save(scheduledJob);
     }
@@ -41,7 +43,7 @@ public class ScheduledJobService {
             jobConfig = new ScheduledJob();
             jobConfig.setJobName(jobName);
             jobConfig.setDescription(jobName);
-            jobConfig.setFrequency(60000);
+            jobConfig.setFrequency(DEFAULT_FREQUENCY);
             scheduledJobRepo.save(jobConfig);
         }
         ScheduledJobTransactionLog lastTransaction =

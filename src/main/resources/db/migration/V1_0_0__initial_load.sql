@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS installation_version_info;
 
 CREATE SEQUENCE scheduled_job_transaction_log_seq;
 CREATE SEQUENCE installation_version_info_seq;
+CREATE SEQUENCE scheduled_job_seq;
 
 CREATE TABLE IF NOT EXISTS installation (
     dv_hub_id varchar NOT NULL PRIMARY KEY,

@@ -12,7 +12,10 @@ public class InstallationVersionInfo {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "installation_version_info_seq")    
-    @SequenceGenerator(name = "installation_version_info_seq", sequenceName = "installation_version_info_seq", allocationSize = 1)
+    @SequenceGenerator(
+        name = "installation_version_info_seq", 
+        sequenceName = "installation_version_info_seq", 
+        allocationSize = 1)
     private Integer record_id;
 
     private String dvHubId;
