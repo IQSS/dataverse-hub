@@ -18,7 +18,7 @@ public class Installation {
     private String latitude;
     @Schema(description = "Longitude of the Dataverse installation")
     private String longitude;
-    @Schema(description = "Host adress of the Dataverse installation")
+    @Schema(description = "Host address of the Dataverse installation")
     private String hostname;
     @Schema(description = "Country of the Dataverse installation")
     private String country;
