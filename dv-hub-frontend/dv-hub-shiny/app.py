@@ -33,23 +33,25 @@ with ui.layout_columns(fill=True):
         ui.card_header("Interactive Map")
         @render_widget  
         def map():
-            m = Map(center=(50.6252978589571, 0.34580993652344), zoom=2)
+            m = Map(center=(50.6252978589571, 0), zoom=2)
             for idx, row in installations_data_frame.iterrows():
                 status = status_data_frame.loc[status_data_frame['dvHubId'] == row['dvHubId'], 'status'].values[0]
                 if status == 'OK':
                     marker_color = 'lightgreen'
                     icon_name = 'check'
                     icon_color = 'lightgreen'
-                elif status == 'UNREACHABLE':
-                    marker_color = 'lightred'
-                    icon_name = 'power-off'
-                    icon_color = 'white'
-                elif status == 'UNRECOGNIZABLE':
-                    marker_color = 'orange'
-                    icon_name = 'warning'
-                    icon_color = 'yellow'
+                # elif status == 'UNREACHABLE':
+                #     marker_color = 'lightred'
+                #     icon_name = 'power-off'
+                #     icon_color = 'white'
+                # elif status == 'UNRECOGNIZABLE':
+                #     marker_color = 'orange'
+                #     icon_name = 'warning'
+                #     icon_color = 'yellow'
                 else:
-                    color = 'blue'  # Default color if status is unknown
+                    marker_color = 'lightred'
+                    icon_name = 'warning'
+                    icon_color = 'white'
                 marker = Marker(location=(row['latitude'], row['longitude']), icon=AwesomeIcon(name=icon_name, marker_color=marker_color, icon_color=icon_color))                
                 m.add_layer(marker)
             return m
