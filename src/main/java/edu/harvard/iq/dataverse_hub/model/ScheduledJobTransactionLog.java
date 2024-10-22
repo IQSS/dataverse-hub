@@ -12,8 +12,11 @@ import jakarta.persistence.SequenceGenerator;
 public class ScheduledJobTransactionLog {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "scheduled_job_transaction_log_seq")    
-    @SequenceGenerator(name = "scheduled_job_transaction_log_seq", sequenceName = "scheduled_job_transaction_log_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
+        generator = "scheduled_job_transaction_log_seq")    
+    @SequenceGenerator(name = "scheduled_job_transaction_log_seq", 
+        sequenceName = "scheduled_job_transaction_log_seq", 
+        allocationSize = 1)
     private Long transactionId;
     private Integer jobId;
     private Date executionTime;

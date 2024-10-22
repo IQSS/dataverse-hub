@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.UnknownContentTypeException;
+import org.springframework.web.client.HttpServerErrorException.ServiceUnavailable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,8 +52,9 @@ public class VersionDVInstallationCheck {
                 } catch (UnknownContentTypeException ucte) {
                     installationService.logInstallationVersion(null, installation, "UNRECOGNIZABLE");                    
                 } catch (Exception e) {
+                    System.out.print(installation.getName() + ":");
                     System.out.println(e.getClass().getSimpleName());
-                    installationService.logInstallationVersion(null, installation, "UNREACHABLE");                    
+                    installationService.logInstallationVersion(null, installation, e.getClass().getSimpleName());                    
                 }                
             }
             System.out.println("Checking for new Dataverse installations");
