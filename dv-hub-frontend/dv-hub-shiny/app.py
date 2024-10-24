@@ -1,5 +1,6 @@
 import requests
 import polars
+
 from shiny.express import input, ui, render
 from shinywidgets import render_widget  
 from ipyleaflet import Map, Marker, AwesomeIcon
