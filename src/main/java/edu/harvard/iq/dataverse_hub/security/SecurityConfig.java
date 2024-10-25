@@ -16,7 +16,8 @@ public class SecurityConfig {
         .authorizeHttpRequests((requests) -> requests
             .requestMatchers("/api/**").permitAll() // Public endpoints
             .requestMatchers("/openapi/**").permitAll() // Public endpoints
-            .requestMatchers("/admin/**").hasRole("DVHUB_ADMIN") // Protected endpoints
+            .requestMatchers("/swagger-ui/**").permitAll() // Public endpoints
+            .requestMatchers("/admin/**").hasRole("DVH_ADMIN") // Protected endpoints
             .anyRequest().authenticated() // All other endpoints
         ).build();
         
