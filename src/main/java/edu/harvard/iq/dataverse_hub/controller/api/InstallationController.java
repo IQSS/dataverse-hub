@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,6 +31,7 @@ public class InstallationController {
 
     @PutMapping
     @Secured("DVH_ADMIN")
+    @SecurityRequirement(name = "api_key")
     public Installation createInstallation(@RequestBody Installation installation){
         return installationService.save(installation);
     }
