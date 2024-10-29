@@ -2,6 +2,7 @@ package edu.harvard.iq.dataverse_hub.controller.api;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ public class InstallationController {
         return installationService.findAll();
     }
 
+    @SecurityRequirement(name = "api_key")
     @PutMapping
     public Installation createInstallation(@RequestBody Installation installation){
         return installationService.save(installation);
