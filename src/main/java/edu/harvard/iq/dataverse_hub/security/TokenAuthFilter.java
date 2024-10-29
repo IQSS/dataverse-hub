@@ -1,6 +1,7 @@
 package edu.harvard.iq.dataverse_hub.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,35 +17,24 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-//@Component
+@Component
 public class TokenAuthFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserService userService;
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, 
-                                    HttpServletResponse response, 
-                                    FilterChain filterChain) throws ServletException, IOException {
+	
+    @Override
+	protected void doFilterInternal(@SuppressWarnings("null") HttpServletRequest request, 
+                                    @SuppressWarnings("null") HttpServletResponse response, 
+                                    @SuppressWarnings("null") FilterChain filterChain) throws ServletException, IOException {
 		
-        User user = null;
-        String authHeader = request.getHeader("API_KEY");
-
-        if(authHeader != null) {
-            user = userService.validateToken(authHeader);
-        }
-
-        if(user == null) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        } else {
-            Authentication authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-            filterChain.doFilter(request, response);
-        }
-
-        
+        User user = userService.validateRequest(request);
+        Authentication authenticationToken = new AnonymousAuthenticationToken(user.getUsername(), user, user.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        filterChain.doFilter(request, response);
 	}
+
 
     
 }

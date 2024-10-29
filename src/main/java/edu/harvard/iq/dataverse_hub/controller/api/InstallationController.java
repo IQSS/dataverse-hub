@@ -29,9 +29,8 @@ public class InstallationController {
         return installationService.findAll();
     }
 
-    @PutMapping
-    @Secured("DVH_ADMIN")
     @SecurityRequirement(name = "api_key")
+    @PutMapping
     public Installation createInstallation(@RequestBody Installation installation){
         return installationService.save(installation);
     }

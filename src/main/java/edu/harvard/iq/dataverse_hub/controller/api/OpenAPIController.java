@@ -20,6 +20,4 @@ import io.swagger.v3.oas.annotations.security.SecuritySchemes;
         scheme = "api_key" )
 
 })
-public class OpenAPIController {
-
-}
+public class OpenAPIController {}
