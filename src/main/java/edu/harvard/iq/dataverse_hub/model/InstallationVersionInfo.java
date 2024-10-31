@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -17,8 +19,9 @@ public class InstallationVersionInfo {
         sequenceName = "installation_version_info_seq", 
         allocationSize = 1)
     private Integer record_id;
-
-    private String dvHubId;
+    @ManyToOne
+    @JoinColumn(name = "dv_hub_id")
+    private Installation installation;
     private String status;
     private String version;
     private String build;
@@ -30,14 +33,6 @@ public class InstallationVersionInfo {
 
     public void setRecordId(Integer record_id) {
         this.record_id = record_id;
-    }
-
-    public String getDvHubId() {
-        return this.dvHubId;
-    }
-
-    public void setDvHubId(String dvHubId) {
-        this.dvHubId = dvHubId;
     }
 
     public String getStatus() {
@@ -71,5 +66,36 @@ public class InstallationVersionInfo {
     public void setCaptureDate(Date captureDate) {
         this.captureDate = captureDate;
     }
+
+
+    public Integer getRecord_id() {
+        return this.record_id;
+    }
+
+    public void setRecord_id(Integer record_id) {
+        this.record_id = record_id;
+    }
+
+    public Installation getInstallation() {
+        return this.installation;
+    }
+
+    public void setInstallation(Installation installation) {
+        this.installation = installation;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " record_id='" + getRecord_id() + "'" +
+            ", installation='" + getInstallation() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", version='" + getVersion() + "'" +
+            ", build='" + getBuild() + "'" +
+            ", captureDate='" + getCaptureDate() + "'" +
+            "}";
+    }
+
+
 
 }

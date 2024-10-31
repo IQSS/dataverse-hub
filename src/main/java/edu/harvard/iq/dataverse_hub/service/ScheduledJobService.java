@@ -64,17 +64,17 @@ public class ScheduledJobService {
         return false;
     }
 
-    public ScheduledJobTransactionLog saveTransactionLog(Integer jobId, Integer status) {
+    public ScheduledJobTransactionLog saveTransactionLog(ScheduledJob job, Integer status) {
         ScheduledJobTransactionLog transactionLog = new ScheduledJobTransactionLog();
         transactionLog.setExecutionTime(new Date());
         transactionLog.setStatus(status);
-        transactionLog.setJobId(jobId);
+        transactionLog.setJob(job);
         return scheduledJobTransactionLogRepo.save(transactionLog);
     }
 
     public ScheduledJobTransactionLog saveTransactionLog(String jobName, Integer status) {
         ScheduledJob jobConfig = scheduledJobRepo.findByName(jobName);
-        return saveTransactionLog(jobConfig.getJobId(),  status);
+        return saveTransactionLog(jobConfig,  status);
     }
 
 }

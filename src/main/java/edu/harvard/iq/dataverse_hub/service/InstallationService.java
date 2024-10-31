@@ -53,8 +53,8 @@ public class InstallationService {
                     Installation installation, 
                     String code){
 
-        InstallationVersionInfo vi = new InstallationVersionInfo();
-        vi.setDvHubId(installation.getDvHubId());
+        InstallationVersionInfo vi = new InstallationVersionInfo();    
+        vi.setInstallation(installation);
         vi.setCaptureDate(new Date());
         if(info == null){
             vi.setStatus(code);

@@ -6,15 +6,15 @@ import edu.harvard.iq.dataverse_hub.model.ScheduledJobTransactionLog;
 
 public interface ScheduledJobTransactionLogRepo extends JpaRepository<ScheduledJobTransactionLog, Integer> {
     
-    @Query("SELECT j FROM ScheduledJobTransactionLog j WHERE j.jobId = ?1")
+    @Query("SELECT j FROM ScheduledJobTransactionLog j WHERE j.job.jobId = ?1")
     ScheduledJobTransactionLog findByJobId(Integer jobId);
 
     @Query("""
-            SELECT j FROM ScheduledJobTransactionLog j WHERE j.jobId = ?1
+            SELECT j FROM ScheduledJobTransactionLog j WHERE j.job.jobId = ?1
             AND j.status = 1
             AND j.executionTime = (
                 SELECT MAX(j.executionTime) FROM ScheduledJobTransactionLog j
-                WHERE j.jobId = ?1
+                WHERE j.job.jobId = ?1
                 AND j.status = 1
             )
             """)
