@@ -5,32 +5,56 @@ import jakarta.persistence.Id;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
+@Schema(description = "Dataverse installation")
 public class Installation {
 
     @Id
-    @Schema(description = "Unique identifier for the Dataverse installation")
+    @Schema(description = "Unique identifier for the Dataverse installation", 
+            example = "DVH_HARVARD_DATAVERSE_2008")
     private String dvHubId;
-    @Schema(description = "Name of the Dataverse installation")
+
+    @Schema(description = "Name of the Dataverse installation",
+            example = "Harvard Dataverse")
     private String name;
-    @Schema(description = "Description of the Dataverse installation")
+    
+    @Schema(description = "Description of the Dataverse installation",
+            example = "Share, archive, and get credit for your data. Find and cite data across all research fields")
     private String description;
-    @Schema(description = "Latitude of the Dataverse installation")
+
+    @Schema(description = "Latitude of the Dataverse installation",
+            example = "42.375646")
     private String latitude;
-    @Schema(description = "Longitude of the Dataverse installation")
+
+    @Schema(description = "Longitude of the Dataverse installation",
+            example = "-71.113212")
     private String longitude;
-    @Schema(description = "Host address of the Dataverse installation")
+
+    @Schema(description = "Host address of the Dataverse installation",
+            example = "dataverse.harvard.edu")
     private String hostname;
-    @Schema(description = "Country of the Dataverse installation")
+
+    @Schema(description = "Country of the Dataverse installation",
+            example = "United States")
     private String country;
-    @Schema(description = "Continent of the Dataverse installation")
+
+    @Schema(description = "Continent of the Dataverse installation",
+            example = "North America")
     private String continent;
-    @Schema(description = "Year of launch of the Dataverse installation")
+
+    @Schema(description = "Year of launch of the Dataverse installation",
+            example = "2008")
     private Integer launchYear;
-    @Schema(description = "Whether the Dataverse installation is a member of the Global Dataverse Community Consortium")
+
+    @Schema(description = "Whether the Dataverse installation is a member of the Global Dataverse Community Consortium",
+            example = "true")
     private Boolean gdccMember;
-    @Schema(description = "DOI authority of the Dataverse installation")
+
+    @Schema(description = "DOI authority of the Dataverse installation",
+            example = "10.7910")
     private String doiAuthority;
-    @Schema(description = "Contact email of the admin of the Dataverse installation")
+
+    @Schema(description = "Contact email of the admin of the Dataverse installation",
+            example = "support@dataverse.harvard.edu")
     private String contactEmail;
 
     public String getDvHubId() {
@@ -125,7 +149,7 @@ public class Installation {
         this.doiAuthority = doiAuthority;
     }
 
-    public String getContact_email() {
+    public String getContactEmail() {
         return this.contactEmail;
     }
 
@@ -147,7 +171,7 @@ public class Installation {
                 ", launchYear=" + launchYear +
                 ", gdccMember=" + gdccMember +
                 ", doiAuthority='" + doiAuthority + '\'' +
-                ", contact_email='" + contactEmail + '\'' +
+                ", contactEmail='" + contactEmail + '\'' +
                 '}';
     }
 }

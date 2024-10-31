@@ -1,6 +1,8 @@
 package edu.harvard.iq.dataverse_hub.model;
 
 import java.util.Date;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
+@Schema(description = "A representation of the version of a Dataverse installation")
 public class InstallationVersionInfo {
     
     @Id
@@ -18,21 +21,45 @@ public class InstallationVersionInfo {
         name = "installation_version_info_seq", 
         sequenceName = "installation_version_info_seq", 
         allocationSize = 1)
-    private Integer record_id;
+    @Schema(description = "Unique identifier for the version record", 
+            example = "1")
+    private Integer recordId;
+    
     @ManyToOne
-    @JoinColumn(name = "dv_hub_id")
+    @JoinColumn(name = "dv_hub_id")    
     private Installation installation;
+    
+    @Schema(description = "Status of the Dataverse installation",
+            example = "ServiceUnavailable")
     private String status;
+    
+    @Schema(description = "Version of the Dataverse installation",
+            example = "6.4")
     private String version;
+    
+    @Schema(description = "Build of the Dataverse installation",
+            example = "1609-906f87")
     private String build;
+    
+    @Schema(description = "Date when the version information was captured",
+            example = "2024-10-31T20:13:03.422+00:00")
     private Date captureDate;
 
+
     public Integer getRecordId() {
-        return this.record_id;
+        return this.recordId;
     }
 
-    public void setRecordId(Integer record_id) {
-        this.record_id = record_id;
+    public void setRecordId(Integer recordId) {
+        this.recordId = recordId;
+    }
+
+    public Installation getInstallation() {
+        return this.installation;
+    }
+
+    public void setInstallation(Installation installation) {
+        this.installation = installation;
     }
 
     public String getStatus() {
@@ -68,26 +95,10 @@ public class InstallationVersionInfo {
     }
 
 
-    public Integer getRecord_id() {
-        return this.record_id;
-    }
-
-    public void setRecord_id(Integer record_id) {
-        this.record_id = record_id;
-    }
-
-    public Installation getInstallation() {
-        return this.installation;
-    }
-
-    public void setInstallation(Installation installation) {
-        this.installation = installation;
-    }
-
     @Override
     public String toString() {
         return "{" +
-            " record_id='" + getRecord_id() + "'" +
+            " recordId='" + getRecordId() + "'" +
             ", installation='" + getInstallation() + "'" +
             ", status='" + getStatus() + "'" +
             ", version='" + getVersion() + "'" +
@@ -95,7 +106,6 @@ public class InstallationVersionInfo {
             ", captureDate='" + getCaptureDate() + "'" +
             "}";
     }
-
-
+    
 
 }
