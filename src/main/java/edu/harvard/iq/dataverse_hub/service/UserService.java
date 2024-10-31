@@ -1,18 +1,13 @@
 package edu.harvard.iq.dataverse_hub.service;
 
 import java.util.ArrayList;
-import java.util.Date;
-
 import org.springframework.stereotype.Service;
-
 import edu.harvard.iq.dataverse_hub.model.AccessToken;
 import edu.harvard.iq.dataverse_hub.repository.AccessTokenRepo;
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.token.DefaultToken;
 
 @Service
 public class UserService {

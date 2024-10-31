@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -18,10 +20,11 @@ public class ScheduledJobTransactionLog {
         sequenceName = "scheduled_job_transaction_log_seq", 
         allocationSize = 1)
     private Long transactionId;
-    private Integer jobId;
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private ScheduledJob job;
     private Date executionTime;
     private Integer status;
-
 
     public Long getTransactionId() {
         return this.transactionId;
@@ -29,14 +32,6 @@ public class ScheduledJobTransactionLog {
 
     public void setTransactionId(Long transactionId) {
         this.transactionId = transactionId;
-    }
-
-    public Integer getJobId() {
-        return this.jobId;
-    }
-
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
     }
 
     public Date getExecutionTime() {
@@ -56,15 +51,25 @@ public class ScheduledJobTransactionLog {
     }
 
 
+    public ScheduledJob getJob() {
+        return this.job;
+    }
+
+    public void setJob(ScheduledJob job) {
+        this.job = job;
+    }
+
+
     @Override
     public String toString() {
         return "{" +
             " transactionId='" + getTransactionId() + "'" +
-            ", jobId='" + getJobId() + "'" +
+            ", job='" + getJob() + "'" +
             ", executionTime='" + getExecutionTime() + "'" +
             ", status='" + getStatus() + "'" +
             "}";
     }
+   
 
 
 
