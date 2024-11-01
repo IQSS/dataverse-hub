@@ -34,7 +34,7 @@ public class InstallationVersionInfo {
     private String status;
     
     @Schema(description = "Version of the Dataverse installation",
-            example = "6.4")
+            example = "6.4.0")
     private String version;
     
     @Schema(description = "Build of the Dataverse installation",

@@ -23,11 +23,11 @@ public class Installation {
 
     @Schema(description = "Latitude of the Dataverse installation",
             example = "42.375646")
-    private String latitude;
+    private Double latitude;
 
     @Schema(description = "Longitude of the Dataverse installation",
             example = "-71.113212")
-    private String longitude;
+    private Double longitude;
 
     @Schema(description = "Host address of the Dataverse installation",
             example = "dataverse.harvard.edu")
@@ -50,7 +50,7 @@ public class Installation {
     private Boolean gdccMember;
 
     @Schema(description = "DOI authority of the Dataverse installation",
-            example = "10.7910")
+            example = "\\u2415")
     private String doiAuthority;
 
     @Schema(description = "Contact email of the admin of the Dataverse installation",
@@ -81,19 +81,19 @@ public class Installation {
         this.description = description;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return this.latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return this.longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
