@@ -1,6 +1,7 @@
 package edu.harvard.iq.dataverse_hub.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -21,6 +22,7 @@ public class SecurityConfig {
         return http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests((requests) -> requests
+                .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .requestMatchers("/openapi/**").permitAll()
                 .requestMatchers("/swagger-ui/**").permitAll()

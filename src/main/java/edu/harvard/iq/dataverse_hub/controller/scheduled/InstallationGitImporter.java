@@ -117,10 +117,10 @@ public class InstallationGitImporter {
         private String dataverseVersion;
 
         @JsonProperty("lat")
-        private String latitude;
+        private Double latitude;
 
         @JsonProperty("lng")
-        private String longitude;
+        private Double longitude;
 
         @JsonProperty("clientInstitutionId")
         private String clientInstitutionId;
