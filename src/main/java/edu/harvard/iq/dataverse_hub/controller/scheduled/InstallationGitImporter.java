@@ -60,16 +60,16 @@ public class InstallationGitImporter {
                 if (existingInstallation == null) {
                     installationService.save(installation);
                 } else {
-                    //TODO UPDATE INSTALLATION
+                    if(installation.equals(existingInstallation)){
+                        existingInstallation.updateWith(installation);
+                        installationService.save(existingInstallation);
+                    }
                 }
-
             }
-
             scheduledJobService.saveTransactionLog(jobName, 1);
 
         } catch (Exception e) {
             scheduledJobService.saveTransactionLog(jobName, -1);
-            e.printStackTrace();
         }
 
         return installationsDtos;
