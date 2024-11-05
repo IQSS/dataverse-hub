@@ -31,29 +31,31 @@ public class InstallationGitImporter {
     private String jobName = this.getClass().getSimpleName();
 
     @Scheduled(fixedRate = 60000)
-    public void runTask() {
+    public List<Installation> runTask() {
+
         System.out.println("Checking task status: " + jobName);
         if(scheduledJobService.isDue(jobName)){
             System.out.println("Running task: " + jobName);
-            importInstallations();
+            return importInstallations();
         }
+        return null;
     }
 
     /**
      * This method is called by the scheduled task to import installations from the file located at the specified GitHub repository.
      */
-    private void importInstallations() {
+    private List<Installation> importInstallations() {
 
 
         RestTemplate restTemplate = new RestTemplate();
         String jsonImport = restTemplate.getForObject(INSTALLATIONS_URL, String.class); 
-
+        List<Installation> installationsDtos = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
-            GitHubInstallationWrapper installations = mapper.readValue(jsonImport, GitHubInstallationWrapper.class);
+            GitHubInstallationWrapper installationsMapper = mapper.readValue(jsonImport, GitHubInstallationWrapper.class);
 
-            List<Installation> dtos = InstallationGitImporter.transform(installations);
-            for (Installation installation : dtos) {
+            installationsDtos = InstallationGitImporter.transform(installationsMapper);
+            for (Installation installation : installationsDtos) {
                 Installation existingInstallation = installationService.findByDVHubId(installation.getDvHubId());
                 if (existingInstallation == null) {
                     installationService.save(installation);
@@ -70,9 +72,13 @@ public class InstallationGitImporter {
             e.printStackTrace();
         }
 
+        return installationsDtos;
     }
 
-    private static Installation transform(InstallationWrapper installationWrapper) {
+    public static Installation transform(InstallationWrapper installationWrapper) {
+        if (installationWrapper == null) {
+            throw new IllegalArgumentException("InstallationWrapper cannot be null");
+        }
         Installation installation = new Installation();
         installation.setDvHubId("DVN_" + installationWrapper.name.toUpperCase().replace(" ", "_") + "_" + installationWrapper.launchYear);
         installation.setName(installationWrapper.name);
@@ -98,14 +104,14 @@ public class InstallationGitImporter {
         return installations;
     }
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private static class GitHubInstallationWrapper {
+    static class GitHubInstallationWrapper {
         @JsonProperty("installations")
         List<InstallationWrapper> installations;
     
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private static class InstallationWrapper {
+    public static class InstallationWrapper {
 
         @JsonProperty("name")
         private String name;
@@ -154,7 +160,70 @@ public class InstallationGitImporter {
 
         @JsonProperty("contact_email")
         private String contactEmail;
-    
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public void setDataverseVersion(String dataverseVersion) {
+            this.dataverseVersion = dataverseVersion;
+        }
+
+        public void setLatitude(Double latitude) {
+            this.latitude = latitude;
+        }
+
+        public void setLongitude(Double longitude) {
+            this.longitude = longitude;
+        }
+
+        public void setClientInstitutionId(String clientInstitutionId) {
+            this.clientInstitutionId = clientInstitutionId;
+        }
+
+        public void setContinent(String continent) {
+            this.continent = continent;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        public void setAdditionalContactInformation(String additionalContactInformation) {
+            this.additionalContactInformation = additionalContactInformation;
+        }
+
+        public void setNotes(String notes) {
+            this.notes = notes;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public void setHostname(String hostname) {
+            this.hostname = hostname;
+        }
+
+        public void setLaunchYear(Integer launchYear) {
+            this.launchYear = launchYear;
+        }
+
+        public void setGdccMember(boolean gdccMember) {
+            this.gdccMember = gdccMember;
+        }
+
+        public void setDoiAuthority(String doiAuthority) {
+            this.doiAuthority = doiAuthority;
+        }
+
+        public void setContactEmail(String contactEmail) {
+            this.contactEmail = contactEmail;
+        }
     }
 
 }
