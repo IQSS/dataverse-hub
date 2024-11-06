@@ -1,15 +1,13 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
 
+import edu.harvard.iq.dataverse_hub.service.RestUtilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
 import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
@@ -20,7 +18,7 @@ import java.util.ArrayList;
 @Component
 public class InstallationGitImporter {
 
-    private static final String INSTALLATIONS_URL = "https://raw.githubusercontent.com/IQSS/dataverse-installations/refs/heads/main/data/data.json";
+    public static final String INSTALLATIONS_URL = "https://raw.githubusercontent.com/IQSS/dataverse-installations/refs/heads/main/data/data.json";
 
     @Autowired
     private InstallationService installationService;
@@ -28,50 +26,49 @@ public class InstallationGitImporter {
     @Autowired
     private ScheduledJobService scheduledJobService;
 
-    private String jobName = this.getClass().getSimpleName();
+    @Autowired
+    private RestUtilService restUtilService;
+
+    private final String JOB_NAME = this.getClass().getSimpleName();
 
     @Scheduled(fixedRate = 60000)
     public List<Installation> runTask() {
 
-        System.out.println("Checking task status: " + jobName);
-        if(scheduledJobService.isDue(jobName)){
-            System.out.println("Running task: " + jobName);
-            return importInstallations();
+        try {
+            return startTask(null);
+        } catch (Exception e) {
+            return null;
         }
-        return null;
     }
 
     /**
-     * This method is called by the scheduled task to import installations from the file located at the specified GitHub repository.
+     * @param isDue
+     * @return
      */
-    private List<Installation> importInstallations() {
+    public List<Installation> startTask(Boolean isDue) throws JsonProcessingException {
+
+        if(isDue == null){
+            isDue = scheduledJobService.isDue(JOB_NAME);
+        }
+        return isDue ? importInstallations(INSTALLATIONS_URL) : null;
+    }
 
 
-        RestTemplate restTemplate = new RestTemplate();
-        String jsonImport = restTemplate.getForObject(INSTALLATIONS_URL, String.class); 
+    /**
+     * @param url
+     * @return
+     */
+    public List<Installation> importInstallations(String url) throws JsonProcessingException {
         List<Installation> installationsDtos = null;
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            GitHubInstallationWrapper installationsMapper = mapper.readValue(jsonImport, GitHubInstallationWrapper.class);
-
+            GitHubInstallationWrapper installationsMapper = restUtilService.retrieveRestAPIObject(url, GitHubInstallationWrapper.class);
             installationsDtos = InstallationGitImporter.transform(installationsMapper);
-            for (Installation installation : installationsDtos) {
-                Installation existingInstallation = installationService.findByDVHubId(installation.getDvHubId());
-                if (existingInstallation == null) {
-                    installationService.save(installation);
-                } else {
-                    if(installation.equals(existingInstallation)){
-                        existingInstallation.updateWith(installation);
-                        installationService.save(existingInstallation);
-                    }
-                }
-            }
-            scheduledJobService.saveTransactionLog(jobName, 1);
-
+            installationsDtos = installationService.saveAllInstallations(installationsDtos);
+            scheduledJobService.saveTransactionLog(JOB_NAME, 1);
         } catch (Exception e) {
-            scheduledJobService.saveTransactionLog(jobName, -1);
+            scheduledJobService.saveTransactionLog(JOB_NAME, -1);
+            throw e;
         }
-
         return installationsDtos;
     }
 

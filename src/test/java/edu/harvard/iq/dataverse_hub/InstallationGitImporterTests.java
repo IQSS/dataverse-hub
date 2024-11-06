@@ -1,18 +1,18 @@
 package edu.harvard.iq.dataverse_hub;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
 import edu.harvard.iq.dataverse_hub.controller.scheduled.InstallationGitImporter;
+import edu.harvard.iq.dataverse_hub.controller.scheduled.InstallationGitImporter.InstallationWrapper;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class InstallationGitImporterTests {
@@ -27,19 +27,22 @@ public class InstallationGitImporterTests {
     public void testImportInstallation() {
 
         Boolean isDue = scheduledJobService.isDue(installationGitImporter.getClass().getSimpleName());
-        assertNotEquals(isDue, null);
-        List<Installation> installations = installationGitImporter.runTask();
-        if(isDue){
-            assertNotEquals(installations, null);
-        } else {
-            assertEquals(installations, null);
-        }
+        assertNotNull(isDue);
+        
+        assertDoesNotThrow(() -> {
+            assertNotNull(installationGitImporter.startTask(true));
+        });
+
+        assertDoesNotThrow(() -> {
+            assertNull(installationGitImporter.startTask(false));
+        });
+
 
         assertThrows(IllegalArgumentException.class, () -> {
             InstallationGitImporter.transform(null);
         });
 
-        InstallationGitImporter.InstallationWrapper installationWrapper = new InstallationGitImporter.InstallationWrapper();
+        InstallationWrapper installationWrapper = new InstallationWrapper();
         installationWrapper.setName("Test Installation");
         installationWrapper.setUrl("https://example.com");
         installationWrapper.setDataverseVersion("6.0");
@@ -60,10 +63,14 @@ public class InstallationGitImporterTests {
         
         assertNotEquals(installationDTO, null);
 
-       
-       
-      
-       
+        assertThrows(JsonParseException.class, () -> {
+            installationGitImporter.importInstallations("https://example.com");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            installationGitImporter.importInstallations(null);
+        });
+
     }
 
 }

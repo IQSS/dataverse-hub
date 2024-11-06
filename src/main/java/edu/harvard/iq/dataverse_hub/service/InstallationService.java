@@ -22,49 +22,103 @@ public class InstallationService {
     @Autowired
     private InstallationVersionInfoRepo installationVersionInfoRepo;
 
+    /**
+     * Find an installation by its name
+     * @param name
+     * @return
+     */
     public Installation findByDVHubId(String name) {
         return installationRepo.findByDVHubId(name);
     }
 
+    /**
+     * Find an installation by its id
+     * @param id
+     * @return
+     */
     public Optional<Installation> findById(String id) {
         return installationRepo.findById(id);
     } 
 
+    /**
+     * Save an installation
+     * @param installation
+     * @return
+     */
     public Installation save(Installation installation) {
         return installationRepo.save(installation);
     }
 
+    /**
+     * Find all installations
+     * @return
+     */
     public List<Installation> findAll() {
         return installationRepo.findAll();
     }
 
+    /**
+     * Get the latest status of all installations
+     * @return
+     */
     public List<InstallationVersionInfo> getInstallationInfo(){
         return installationVersionInfoRepo.getLatestStatusAll();
     }
 
-    public InstallationVersionInfo logInstallationVersion(
+    /**
+     * Log the installation version information
+     * @param info
+     * @param installation
+     * @return
+     */
+    public InstallationVersionInfo getLogInstallationVersion(
                     VersionDVInstallationCheck.VersionInfo info, 
                     Installation installation){
-        return logInstallationVersion(info, installation, null);
+        return getLogInstallationVersion(info, installation, null);
     }
 
-    public InstallationVersionInfo logInstallationVersion(
-                    VersionDVInstallationCheck.VersionInfo info, 
+    /**
+     * Log the installation version information
+     * @param info
+     * @param installation
+     * @param code
+     * @return
+     */
+    public InstallationVersionInfo getLogInstallationVersion(
+                    VersionDVInstallationCheck.VersionInfo info,
                     Installation installation, 
                     String code){
 
-        InstallationVersionInfo vi = new InstallationVersionInfo();    
-        vi.setInstallation(installation);
-        vi.setCaptureDate(new Date());
+        InstallationVersionInfo installationVersionInfo = new InstallationVersionInfo();
+        installationVersionInfo.setInstallation(installation);
+        installationVersionInfo.setCaptureDate(new Date());
         if(info == null){
-            vi.setStatus(code);
+            installationVersionInfo.setStatus(code);
         } else {
-            vi.setStatus(info.status);
-            vi.setVersion(info.data.version);
-            vi.setBuild(info.data.build);
+            installationVersionInfo.setStatus(info.status);
+            installationVersionInfo.setVersion(info.data.version);
+            installationVersionInfo.setBuild(info.data.build);
         }
         
-        return installationVersionInfoRepo.save(vi);
+        return installationVersionInfo;
+    }
+
+    /**
+     * 
+     * @param installationList
+     * @return
+     */
+    public List<Installation> saveAllInstallations(List<Installation> installationList){
+        return installationRepo.saveAll(installationList);
+    }
+
+    /**
+     * 
+     * @param versionInfoList
+     * @return
+     */
+    public List<InstallationVersionInfo> saveAllVersionInfo(List<InstallationVersionInfo> versionInfoList){
+        return installationVersionInfoRepo.saveAll(versionInfoList);
     }
 
 }
