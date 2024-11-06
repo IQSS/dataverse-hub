@@ -30,6 +30,14 @@ public class ScheduledJobService {
         return scheduledJobRepo.findAll();
     }
 
+    public ScheduledJob deletScheduledJob(String jobName) {
+        ScheduledJob jobConfig = scheduledJobRepo.findByName(jobName);
+        if(jobConfig != null){
+            scheduledJobRepo.delete(jobConfig);
+        }
+        return jobConfig;
+    }
+
     /**
      * This method checks if a job is due to run based on the last time it was executed 
      * and the frequency of the job.
