@@ -17,6 +17,10 @@ public class UserService {
 
     public User validateRequest(HttpServletRequest request) {
 
+        if(request == null){
+            throw new IllegalArgumentException("Request cannot be null");
+        }
+
         String apiToken = request.getHeader("api_key");
         AccessToken token = accessTokenRepo.findByTokenId(apiToken);
         ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

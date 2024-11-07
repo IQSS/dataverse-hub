@@ -131,10 +131,6 @@ public class Installation {
         this.launchYear = launchYear;
     }
 
-    public Boolean isGdccMember() {
-        return this.gdccMember;
-    }
-
     public Boolean getGdccMember() {
         return this.gdccMember;
     }

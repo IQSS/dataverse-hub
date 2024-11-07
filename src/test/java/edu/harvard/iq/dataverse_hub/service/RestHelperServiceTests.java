@@ -1,11 +1,9 @@
-package edu.harvard.iq.dataverse_hub;
+package edu.harvard.iq.dataverse_hub.service;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.JsonMappingException;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.InstallationGitImporter;
 import edu.harvard.iq.dataverse_hub.model.Installation;
-import edu.harvard.iq.dataverse_hub.service.RestUtilService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +17,7 @@ public class RestHelperServiceTests {
 
     @Test
     public void testRetrieveRestAPIObject() {
-        //String url = "http://localhost:8080/api/installation";
+        
         String url = "https://raw.githubusercontent.com/IQSS/dataverse-installations/refs/heads/main/data/data.json";
         assertDoesNotThrow(() -> {
             InstallationGitImporter.InstallationWrapper installationList

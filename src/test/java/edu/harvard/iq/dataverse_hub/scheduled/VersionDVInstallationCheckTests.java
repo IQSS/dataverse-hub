@@ -1,4 +1,4 @@
-package edu.harvard.iq.dataverse_hub;
+package edu.harvard.iq.dataverse_hub.scheduled;
 
 import static org.junit.jupiter.api.Assertions.*;
 
