@@ -19,7 +19,7 @@ public class RestHelperServiceTests {
 
     @Test
     public void testRetrieveRestAPIObject() {
-        //String url = "http://localhost:8080/api/installation";
+        
         String url = "https://raw.githubusercontent.com/IQSS/dataverse-installations/refs/heads/main/data/data.json";
         assertDoesNotThrow(() -> {
             InstallationGitImporter.InstallationWrapper installationList
