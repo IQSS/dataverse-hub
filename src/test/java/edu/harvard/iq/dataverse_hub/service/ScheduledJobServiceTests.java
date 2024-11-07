@@ -1,4 +1,4 @@
-package edu.harvard.iq.dataverse_hub;
+package edu.harvard.iq.dataverse_hub.service;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import edu.harvard.iq.dataverse_hub.model.ScheduledJob;
-import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
 
 @SpringBootTest
 public class ScheduledJobServiceTests {

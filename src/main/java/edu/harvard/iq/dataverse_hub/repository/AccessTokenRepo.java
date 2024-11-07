@@ -6,7 +6,7 @@ import edu.harvard.iq.dataverse_hub.model.AccessToken;
 
 public interface AccessTokenRepo extends JpaRepository<AccessToken, String> {
     
-    @Query("SELECT a FROM AccessToken a WHERE a.token_id = ?1")
+    @Query("SELECT a FROM AccessToken a WHERE a.tokenId = ?1")
     AccessToken findByTokenId(String tokenId);
 
 }

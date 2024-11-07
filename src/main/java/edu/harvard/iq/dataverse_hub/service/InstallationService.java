@@ -23,15 +23,6 @@ public class InstallationService {
     private InstallationVersionInfoRepo installationVersionInfoRepo;
 
     /**
-     * Find an installation by its name
-     * @param name
-     * @return
-     */
-    public Installation findByDVHubId(String name) {
-        return installationRepo.findByDVHubId(name);
-    }
-
-    /**
      * Find an installation by its id
      * @param id
      * @return

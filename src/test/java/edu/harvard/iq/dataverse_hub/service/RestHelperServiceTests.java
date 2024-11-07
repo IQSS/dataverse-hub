@@ -1,11 +1,9 @@
-package edu.harvard.iq.dataverse_hub;
+package edu.harvard.iq.dataverse_hub.service;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.JsonMappingException;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.InstallationGitImporter;
 import edu.harvard.iq.dataverse_hub.model.Installation;
-import edu.harvard.iq.dataverse_hub.service.RestUtilService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
