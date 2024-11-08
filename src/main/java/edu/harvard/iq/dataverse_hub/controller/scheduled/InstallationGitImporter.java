@@ -2,6 +2,8 @@ package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
 
 import edu.harvard.iq.dataverse_hub.service.RestUtilService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -18,7 +20,10 @@ import java.util.ArrayList;
 @Component
 public class InstallationGitImporter {
 
+    Logger logger = LoggerFactory.getLogger(InstallationGitImporter.class);
+
     public static final String INSTALLATIONS_URL = "https://raw.githubusercontent.com/IQSS/dataverse-installations/refs/heads/main/data/data.json";
+    private final String JOB_NAME = this.getClass().getSimpleName();
 
     @Autowired
     private InstallationService installationService;
@@ -29,21 +34,22 @@ public class InstallationGitImporter {
     @Autowired
     private RestUtilService restUtilService;
 
-    private final String JOB_NAME = this.getClass().getSimpleName();
-
     @Scheduled(fixedRate = 60000)
     public List<Installation> runTask() {
-
+        logger.info("Starting {} job", JOB_NAME);
         try {
-            return startTask(null);
+            List<Installation> installations = startTask(null);
+            logger.info("Job {} successfully completed", JOB_NAME);
+            return installations;
         } catch (Exception e) {
+            logger.error("Problem running job {}", JOB_NAME, e);
             return null;
         }
     }
 
     /**
-     * @param isDue
-     * @return
+     * @param isDue will start the task depending on if is due or not.
+     * @return the list of installations added.
      */
     public List<Installation> startTask(Boolean isDue) throws JsonProcessingException {
 
@@ -55,8 +61,8 @@ public class InstallationGitImporter {
 
 
     /**
-     * @param url
-     * @return
+     * @param url the url of the json file to be used to import the installations.
+     * @return the list of installations extracted from the JSON file and saved on the database.
      */
     public List<Installation> importInstallations(String url) throws JsonProcessingException {
         List<Installation> installationsDtos = null;
@@ -72,6 +78,11 @@ public class InstallationGitImporter {
         return installationsDtos;
     }
 
+    /**
+     * Helper method to transform the installationWrapper from the source to the installation
+     * @param installationWrapper the object that contain an installation.
+     * @return the installation DAO with the properties of the wrapper.
+     */
     public static Installation transform(InstallationWrapper installationWrapper) {
         if (installationWrapper == null) {
             throw new IllegalArgumentException("InstallationWrapper cannot be null");
@@ -92,6 +103,11 @@ public class InstallationGitImporter {
         return installation;
     }
 
+    /**
+     * Return a list of installation DAOs extracted from the JSON file from GH
+     * @param gitHubInstallationWrapper the wrapper that contains the installations on GH.
+     * @return the list of equivalent DAOs for the installations.
+     */
     private static List<Installation> transform(GitHubInstallationWrapper gitHubInstallationWrapper) {
         List<Installation> installations = new ArrayList<Installation>();
         for (InstallationWrapper installationWrapper : gitHubInstallationWrapper.installations) {
@@ -100,6 +116,10 @@ public class InstallationGitImporter {
 
         return installations;
     }
+
+    /**
+     * Class that models the container of the installations.
+     */
     @JsonIgnoreProperties(ignoreUnknown = true)
     static class GitHubInstallationWrapper {
         @JsonProperty("installations")
@@ -107,6 +127,9 @@ public class InstallationGitImporter {
     
     }
 
+    /**
+     * A dataverse installation.
+     */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class InstallationWrapper {
 

@@ -3,6 +3,8 @@ package edu.harvard.iq.dataverse_hub.controller.scheduled;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,8 @@ import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
 @Component
 public class VersionDVInstallationCheck {
 
+    Logger logger = LoggerFactory.getLogger(InstallationGitImporter.class);
+
     @Autowired
     private InstallationService installationService;
 
@@ -34,13 +38,16 @@ public class VersionDVInstallationCheck {
 
     @Scheduled(fixedRate = 60000)
     public List<InstallationVersionInfo> runTask(){
-        List<InstallationVersionInfo> versionInfoList = null;
-        try { 
-            versionInfoList = startTask(null);
-        } catch (Exception e) { 
-            versionInfoList = null;
+        logger.info("Starting {} job", JOB_NAME);
+
+        try {
+            List<InstallationVersionInfo> versionInfo = startTask(null);
+            logger.info("Job {} successfully completed", JOB_NAME);
+            return versionInfo;
+        } catch (Exception e) {
+            logger.error("Problem running job {}", JOB_NAME, e);
+            return null;
         }
-        return versionInfoList;
     }
 
     /**

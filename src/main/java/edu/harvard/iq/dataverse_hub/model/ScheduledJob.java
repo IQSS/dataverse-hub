@@ -19,7 +19,6 @@ public class ScheduledJob {
         sequenceName = "scheduled_job_seq", 
         allocationSize = 1)
     private Integer jobId;
-
     private String description;
     private String jobName;
     private Integer frequency;
