@@ -54,5 +54,5 @@ CREATE TABLE IF NOT EXISTS installation_version_info (
 );
 
 INSERT INTO access_token (token_id, user_id) VALUES ('257d4485-173f-4a6d-913d-ee20c9d7bc06', 0);
-INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (1, 'Installation importer', 'InstallationGitImporter', 3600000);
-INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (2, 'Version Status check', 'VersionDVInstallationCheck', 120000);
+INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Installation importer', 'InstallationGitImporter', 86400000);
+INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Version Status check', 'VersionDVInstallationCheck', 43200000);
