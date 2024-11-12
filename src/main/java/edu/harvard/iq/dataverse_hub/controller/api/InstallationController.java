@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import edu.harvard.iq.dataverse_hub.controller.api.annotations.InstallationControllerDocs;
+import edu.harvard.iq.dataverse_hub.controller.api.payloadBeans.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
+
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -35,6 +37,12 @@ public class InstallationController {
     @InstallationControllerDocs.GetInstallationsStatus
     public List<InstallationVersionInfo> geInstallationsStatus(){
         return installationService.getInstallationInfo();
+    }
+
+    @GetMapping("country")
+    @InstallationControllerDocs.getInstallationsByCountry
+    public List<InstallationsByCountry> getInstallationsByCountry(){
+        return installationService.getInstallationsByCountry();
     }
 
 

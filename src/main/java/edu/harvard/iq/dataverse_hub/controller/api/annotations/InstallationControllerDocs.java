@@ -98,4 +98,29 @@ public @interface InstallationControllerDocs {
             description = "Returns a list of the most recent status of all registered Dataverse installations")
     public @interface GetInstallationsStatus {}
 
+    @Target({ElementType.METHOD})    
+    @Retention(RetentionPolicy.RUNTIME)
+    @Tag(name = "Installation by country list", 
+            description = "Rregistered dataverse installations by each country")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", 
+                        description = "Installation by country count success",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = Installation.class),
+                        examples = @ExampleObject(APIPayloadSamples.INSTALLATION_ARRAY))),
+        @ApiResponse(responseCode = "400", 
+                        description = "Bad Request on Installation by country count list",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = ServerMessageResponse.class),
+                        examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_400))),
+        @ApiResponse(responseCode = "500", 
+                        description = "Internal Server Error on Installation by country count",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = ServerMessageResponse.class),
+                        examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_500)))
+    })
+    @Operation(summary = "Get a count of the installations by country", 
+                description = "Returns a count of the number of registered Dataverse installations by country")
+    public @interface getInstallationsByCountry {}
+
 }
