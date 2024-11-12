@@ -3,6 +3,7 @@ package edu.harvard.iq.dataverse_hub.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.harvard.iq.dataverse_hub.controller.api.payloadBeans.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCheck;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
@@ -110,6 +111,10 @@ public class InstallationService {
      */
     public List<InstallationVersionInfo> saveAllVersionInfo(List<InstallationVersionInfo> versionInfoList){
         return installationVersionInfoRepo.saveAll(versionInfoList);
+    }
+
+    public List<InstallationsByCountry> getInstallationsByCountry(){
+        return installationRepo.getInstallationsByCountry();
     }
 
 }
