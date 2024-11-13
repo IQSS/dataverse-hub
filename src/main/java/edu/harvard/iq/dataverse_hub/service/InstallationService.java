@@ -3,12 +3,14 @@ package edu.harvard.iq.dataverse_hub.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.harvard.iq.dataverse_hub.controller.api.payloadBeans.InstallationsByCountry;
+import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCheck;
 import edu.harvard.iq.dataverse_hub.model.Installation;
+import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.repository.InstallationRepo;
 import edu.harvard.iq.dataverse_hub.repository.InstallationVersionInfoRepo;
+import edu.harvard.iq.dataverse_hub.repository.InstallationsMetricsRepo;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,9 @@ public class InstallationService {
 
     @Autowired
     private InstallationVersionInfoRepo installationVersionInfoRepo;
+
+    @Autowired
+    private InstallationsMetricsRepo installationsMetricsRepo;
 
     /**
      * Find an installation by its id
@@ -113,8 +118,36 @@ public class InstallationService {
         return installationVersionInfoRepo.saveAll(versionInfoList);
     }
 
+    /**
+     * Retrieve all the registered installations by country ignoring the status
+     * @return
+     */
     public List<InstallationsByCountry> getInstallationsByCountry(){
         return installationRepo.getInstallationsByCountry();
+    }
+
+    /**
+     * Retrieve all the installations that are healthy
+     */
+    public List<Installation> getHealtyInstallations() {
+        return installationRepo.getHealthyInstallations();
+    }
+
+    /**
+     * retrieve the most recent metrics from all installations
+     * @return
+     */
+    public List<InstallationMetrics> getInstallationMetrics() {
+        return installationsMetricsRepo.findLatest();
+    }
+
+    /**
+     * Save all the metrics
+     * @param metricsList
+     * @return
+     */
+    public List<InstallationMetrics> saveAllMetrics(List<InstallationMetrics> metricsList) {
+        return installationsMetricsRepo.saveAll(metricsList);
     }
 
 }

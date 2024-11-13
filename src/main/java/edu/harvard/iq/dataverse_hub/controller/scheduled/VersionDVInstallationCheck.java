@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.client.UnknownContentTypeException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,8 +33,11 @@ public class VersionDVInstallationCheck {
     private RestUtilService restUtilService;
 
     private final String JOB_NAME = this.getClass().getSimpleName();
+    private final String PROTOCOL = "https://";
+    private final String ENDPOINT = "/api/info/version";
 
-    @Scheduled(fixedRate = 60000)
+
+    @Scheduled(fixedRate = 21600000)
     public List<InstallationVersionInfo> runTask(){
         logger.info("Starting {} job", JOB_NAME);
 
@@ -57,6 +58,7 @@ public class VersionDVInstallationCheck {
     public List<InstallationVersionInfo> startTask(Boolean isDue) throws JsonProcessingException {
 
         if(isDue == null){
+            logger.info("Checking if job is due");
             isDue = scheduledJobService.isDue(JOB_NAME);
         }
         return isDue ? importInstallationsStatus(null) : null;
@@ -75,6 +77,7 @@ public class VersionDVInstallationCheck {
             versionInfoList = new ArrayList<InstallationVersionInfo>();
 
             for (Installation installation : dvInstallationsList) {
+                logger.info("Checking version for installation: " + installation.getHostname());
                 versionInfoList.add(getVersionInfo(installation));
             }
 
@@ -89,7 +92,7 @@ public class VersionDVInstallationCheck {
 
     public InstallationVersionInfo getVersionInfo(Installation installation){
         try {
-            String url = "https://" + installation.getHostname() + "/api/info/version";
+            String url = PROTOCOL + installation.getHostname() + ENDPOINT;
             VersionInfo jsonImport = restUtilService.retrieveRestAPIObject(url, VersionInfo.class);
             return installationService.getLogInstallationVersion(jsonImport, installation);                   
         } catch (Exception e) {

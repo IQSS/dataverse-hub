@@ -3,9 +3,6 @@ package edu.harvard.iq.dataverse_hub.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-import java.util.Objects;
-
 @Entity
 @Schema(description = "Dataverse installation")
 public class Installation {
@@ -155,55 +152,24 @@ public class Installation {
         this.contactEmail = contact_email;
     }
 
+
     @Override
     public String toString() {
-        return "Installation{" +
-                "dvHubId='" + dvHubId + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", hostname='" + hostname + '\'' +
-                ", country='" + country + '\'' +
-                ", continent='" + continent + '\'' +
-                ", launchYear=" + launchYear +
-                ", gdccMember=" + gdccMember +
-                ", doiAuthority='" + doiAuthority + '\'' +
-                ", contactEmail='" + contactEmail + '\'' +
-                '}';
+        return "{" +
+            " dvHubId='" + getDvHubId() + "'" +
+            ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
+            ", hostname='" + getHostname() + "'" +
+            ", country='" + getCountry() + "'" +
+            ", continent='" + getContinent() + "'" +
+            ", launchYear='" + getLaunchYear() + "'" +
+            ", gdccMember='" + getGdccMember() + "'" +
+            ", doiAuthority='" + getDoiAuthority() + "'" +
+            ", contactEmail='" + getContactEmail() + "'" +
+            "}";
     }
-
-    public Installation updateWith(Installation updatedInstallation) {
-        this.name = updatedInstallation.getName();
-        this.description = updatedInstallation.getDescription();
-        this.latitude = updatedInstallation.getLatitude();
-        this.longitude = updatedInstallation.getLongitude();
-        this.hostname = updatedInstallation.getHostname();
-        this.country = updatedInstallation.getCountry();
-        this.continent = updatedInstallation.getContinent();
-        this.launchYear = updatedInstallation.getLaunchYear();
-        this.gdccMember = updatedInstallation.getGdccMember();
-        this.doiAuthority = updatedInstallation.getDoiAuthority();
-        this.contactEmail = updatedInstallation.getContactEmail();
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Installation that = (Installation) o;
-        return Objects.equals(getName(), that.getName()) && 
-                Objects.equals(getDescription(), that.getDescription()) && 
-                Objects.equals(getLatitude(), that.getLatitude()) && 
-                Objects.equals(getLongitude(), that.getLongitude()) && 
-                Objects.equals(getHostname(), that.getHostname()) && 
-                Objects.equals(getCountry(), that.getCountry()) && 
-                Objects.equals(getContinent(), that.getContinent()) && 
-                Objects.equals(getLaunchYear(), that.getLaunchYear()) && 
-                Objects.equals(getGdccMember(), that.getGdccMember()) && 
-                Objects.equals(getDoiAuthority(), that.getDoiAuthority()) && 
-                Objects.equals(getContactEmail(), that.getContactEmail());
-    }
+    
 
 }

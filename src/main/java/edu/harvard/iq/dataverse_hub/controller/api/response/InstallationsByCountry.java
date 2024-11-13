@@ -1,4 +1,4 @@
-package edu.harvard.iq.dataverse_hub.controller.api.payloadBeans;
+package edu.harvard.iq.dataverse_hub.controller.api.response;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "A representation of the number of Dataverse installations by country")
 public class InstallationsByCountry {
 
-    @Schema(description = "Country of the Dataverse installation",
+    @Schema(description = "Country that has at least 1 Dataverse installation",
             example = "United States")
     private String country;
     @Schema(description = "Number of Dataverse installations in the country",
@@ -16,6 +16,9 @@ public class InstallationsByCountry {
     @Schema(description = "Date when the information was captured",
             example = "2024-10-31T20:13:03.422+00:00")
     private Date captureDate;
+
+    public InstallationsByCountry() {
+    }
 
     public InstallationsByCountry(String country, Long count) {
         this.country = country;
@@ -47,6 +50,13 @@ public class InstallationsByCountry {
         this.captureDate = captureDate;
     }
 
-
+    @Override
+    public String toString() {
+        return "{" +
+            " country='" + getCountry() + "'" +
+            ", count='" + getCount() + "'" +
+            ", captureDate='" + getCaptureDate() + "'" +
+            "}";
+    }
 
 }

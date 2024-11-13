@@ -1,6 +1,7 @@
 package edu.harvard.iq.dataverse_hub.controller.api.annotations;
 
 import edu.harvard.iq.dataverse_hub.model.Installation;
+import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 
 import java.lang.annotation.ElementType;
@@ -9,6 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import edu.harvard.iq.dataverse_hub.beans.APIPayloadSamples;
 import edu.harvard.iq.dataverse_hub.beans.ServerMessageResponse;
+import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.*;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -23,7 +25,7 @@ public @interface InstallationControllerDocs {
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
     @Tag(name = "Installation list", 
-            description = "Rregistered dataverse installations")
+            description = "Registered dataverse installations")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation list success",
@@ -101,12 +103,12 @@ public @interface InstallationControllerDocs {
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
     @Tag(name = "Installation by country list", 
-            description = "Rregistered dataverse installations by each country")
+            description = "Registered dataverse installations by each country")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation by country count success",
                         content = @Content(mediaType = "application/json",
-                        schema = @Schema(implementation = Installation.class),
+                        schema = @Schema(implementation = InstallationsByCountry[].class),
                         examples = @ExampleObject(APIPayloadSamples.INSTALLATION_ARRAY))),
         @ApiResponse(responseCode = "400", 
                         description = "Bad Request on Installation by country count list",
@@ -122,5 +124,30 @@ public @interface InstallationControllerDocs {
     @Operation(summary = "Get a count of the installations by country", 
                 description = "Returns a count of the number of registered Dataverse installations by country")
     public @interface getInstallationsByCountry {}
+
+    @Target({ElementType.METHOD})    
+    @Retention(RetentionPolicy.RUNTIME)
+    @Tag(name = "Installation Metrics", 
+            description = "Return the metrics of the registered installations.")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", 
+                        description = "Registered installations metrics success",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = InstallationMetrics[].class),
+                        examples = @ExampleObject(APIPayloadSamples.INSTALLATION_ARRAY))),
+        @ApiResponse(responseCode = "400", 
+                        description = "Bad Request on registered installations metrics list",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = ServerMessageResponse.class),
+                        examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_400))),
+        @ApiResponse(responseCode = "500", 
+                        description = "Internal Server Error on registered installations metrics",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = ServerMessageResponse.class),
+                        examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_500)))
+    })
+    @Operation(summary = "Get the basic metrics of the registered installations", 
+                description = "Returns a set of metrics for each one of the registered dataverse installations")
+    public @interface getInstallationsMetrics {}
 
 }

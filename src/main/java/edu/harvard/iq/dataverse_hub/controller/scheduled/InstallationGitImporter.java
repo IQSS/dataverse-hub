@@ -34,7 +34,7 @@ public class InstallationGitImporter {
     @Autowired
     private RestUtilService restUtilService;
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 21600000)
     public List<Installation> runTask() {
         logger.info("Starting {} job", JOB_NAME);
         try {

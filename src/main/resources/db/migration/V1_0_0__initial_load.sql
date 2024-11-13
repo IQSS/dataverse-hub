@@ -3,9 +3,11 @@ DROP TABLE IF EXISTS access_token;
 DROP TABLE IF EXISTS scheduled_job;
 DROP TABLE IF EXISTS scheduled_job_transaction_log;
 DROP TABLE IF EXISTS installation_version_info;
+DROP TABLE IF EXISTS installation_metrics;
 
 CREATE SEQUENCE scheduled_job_transaction_log_seq;
 CREATE SEQUENCE installation_version_info_seq;
+CREATE SEQUENCE installation_metrics_seq;
 CREATE SEQUENCE scheduled_job_seq;
 
 CREATE TABLE IF NOT EXISTS installation (
@@ -21,6 +23,19 @@ CREATE TABLE IF NOT EXISTS installation (
     gdcc_member bool,
     doi_authority varchar,
     contact_email varchar
+);
+
+CREATE TABLE IF NOT EXISTS installation_metrics (
+    record_id integer NOT NULL PRIMARY KEY,
+    dv_hub_id varchar,
+    record_date timestamp,
+    files bigint,
+    downloads bigint,
+    datasets integer,
+    harvested_datasets integer,
+    local_datasets integer,
+    dataverses integer,
+    CONSTRAINT fk_installation FOREIGN KEY (dv_hub_id) REFERENCES installation(dv_hub_id)
 );
 
 CREATE TABLE IF NOT EXISTS access_token (
@@ -54,5 +69,7 @@ CREATE TABLE IF NOT EXISTS installation_version_info (
 );
 
 INSERT INTO access_token (token_id, user_id) VALUES ('257d4485-173f-4a6d-913d-ee20c9d7bc06', 0);
+
 INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Installation importer', 'InstallationGitImporter', 86400000);
 INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Version Status check', 'VersionDVInstallationCheck', 43200000);
+INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Installation Metrics Import', 'InstallationMetricsImporter', 86400000);
