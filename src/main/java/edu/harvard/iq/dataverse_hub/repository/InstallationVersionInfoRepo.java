@@ -11,8 +11,8 @@ public interface InstallationVersionInfoRepo extends JpaRepository<InstallationV
             SELECT ivi FROM InstallationVersionInfo ivi
             RIGHT JOIN FETCH InstallationVersionInfo ivi_r
             ON ivi.installation.dvHubId = ivi_r.installation.dvHubId 
-            AND ivi.captureDate = (
-                SELECT MAX(ivi_sub.captureDate) 
+            AND ivi.recordDate = (
+                SELECT MAX(ivi_sub.recordDate) 
                 FROM InstallationVersionInfo ivi_sub 
                 WHERE ivi_sub.installation.dvHubId = ivi.installation.dvHubId
             )        

@@ -88,7 +88,7 @@ public class InstallationService {
 
         InstallationVersionInfo installationVersionInfo = new InstallationVersionInfo();
         installationVersionInfo.setInstallation(installation);
-        installationVersionInfo.setCaptureDate(new Date());
+        installationVersionInfo.setRecordDate(new Date());
         if(info == null){
             installationVersionInfo.setStatus(code);
         } else {

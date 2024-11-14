@@ -15,7 +15,7 @@ public class InstallationsByCountry {
     private Long count;
     @Schema(description = "Date when the information was captured",
             example = "2024-10-31T20:13:03.422+00:00")
-    private Date captureDate;
+    private Date recordDate;
 
     public InstallationsByCountry() {
     }
@@ -23,7 +23,7 @@ public class InstallationsByCountry {
     public InstallationsByCountry(String country, Long count) {
         this.country = country;
         this.count = count;
-        this.captureDate = new Date();
+        this.recordDate = new Date();
     }
 
     public String getCountry() {
@@ -42,12 +42,12 @@ public class InstallationsByCountry {
         this.count = count;
     }
 
-    public Date getCaptureDate() {
-        return this.captureDate;
+    public Date getRecordDate() {
+        return this.recordDate;
     }
 
-    public void setCaptureDate(Date captureDate) {
-        this.captureDate = captureDate;
+    public void setRecordDate(Date recordDate) {
+        this.recordDate = recordDate;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class InstallationsByCountry {
         return "{" +
             " country='" + getCountry() + "'" +
             ", count='" + getCount() + "'" +
-            ", captureDate='" + getCaptureDate() + "'" +
+            ", recordDate='" + getRecordDate() + "'" +
             "}";
     }
 

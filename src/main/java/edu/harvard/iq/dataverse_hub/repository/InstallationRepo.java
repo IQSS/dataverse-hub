@@ -29,8 +29,8 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
             RIGHT JOIN FETCH InstallationVersionInfo ivi
             ON i.dvHubId = ivi.installation.dvHubId
             WHERE ivi.status = 'OK'
-            AND ivi.captureDate = (
-                SELECT MAX(ivi_sub.captureDate) 
+            AND ivi.recordDate = (
+                SELECT MAX(ivi_sub.recordDate) 
                 FROM InstallationVersionInfo ivi_sub 
                 WHERE ivi_sub.installation.dvHubId = ivi.installation.dvHubId
             )   

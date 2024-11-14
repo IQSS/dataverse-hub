@@ -28,7 +28,7 @@ with ui.layout_columns(fill=True):
         ui.card_header("Installations data")
         @render.data_frame
         def status_data_chart():        
-            return render.DataTable(status_data_frame.drop(['recordId', 'captureDate', 'build']), width='100%', height='100%', filters=True)
+            return render.DataTable(status_data_frame.drop(['recordId', 'recordDate', 'build']), width='100%', height='100%', filters=True)
     
     with ui.card(full_screen=True):
         ui.card_header("Interactive Map")

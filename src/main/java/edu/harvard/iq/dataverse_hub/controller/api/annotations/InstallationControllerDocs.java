@@ -109,7 +109,7 @@ public @interface InstallationControllerDocs {
                         description = "Installation by country count success",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = InstallationsByCountry[].class),
-                        examples = @ExampleObject(APIPayloadSamples.INSTALLATION_ARRAY))),
+                        examples = @ExampleObject(APIPayloadSamples.INSTALLATIONS_BY_COUNTRY))),
         @ApiResponse(responseCode = "400", 
                         description = "Bad Request on Installation by country count list",
                         content = @Content(mediaType = "application/json",
