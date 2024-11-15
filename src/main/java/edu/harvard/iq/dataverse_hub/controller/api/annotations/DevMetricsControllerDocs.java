@@ -20,8 +20,7 @@ public @interface DevMetricsControllerDocs {
     
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "Dev metrics for tracked repositories", 
-            description = "Repository metrics")
+    @Tag(name = "dev-metrics", description = "Dev metrics operations")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Dev metrics success",
@@ -45,8 +44,7 @@ public @interface DevMetricsControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "Releases list", 
-            description = "Releases and details for tracked repositories")
+    @Tag(name = "dev-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Releases list success",

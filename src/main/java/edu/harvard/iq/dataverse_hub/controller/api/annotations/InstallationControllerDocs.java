@@ -24,8 +24,7 @@ public @interface InstallationControllerDocs {
     
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "Installation list", 
-            description = "Registered dataverse installations")
+    @Tag(name = "dv-metrics", description = "Dataverse metrics operations")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation list success",
@@ -50,8 +49,7 @@ public @interface InstallationControllerDocs {
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
     @SecurityRequirement(name = "api_key")
-    @Tag(name = "Create Installation", 
-            description = "Installation to add")
+    @Tag(name = "dv-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation creation success",
@@ -77,8 +75,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "Installation status", 
-        description = "Dataverse installations status")
+    @Tag(name = "dv-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installations Status list success",
@@ -102,8 +99,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "Installation by country list", 
-            description = "Registered dataverse installations by each country")
+    @Tag(name = "dv-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation by country count success",
@@ -127,8 +123,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "Installation Metrics", 
-            description = "Return the metrics of the registered installations.")
+    @Tag(name = "dv-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Registered installations metrics success",

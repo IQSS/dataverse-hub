@@ -36,12 +36,12 @@ public class DevMetricsImporter {
     private DevMetricsService devMetricsService;
 
     @Scheduled(fixedRate = 21600000)
-    public List<DevMetrics> runTask() {
+    public Boolean runTask() {
         logger.info("Starting {} job", JOB_NAME);
         try {
-            List<DevMetrics> metrics = startTask(null);
+            Boolean metricsSuccess = startTask(null);
             logger.info("Job {} successfully completed", JOB_NAME);
-            return metrics;
+            return metricsSuccess;
         } catch (Exception e) {
             logger.error("Problem running job {}", JOB_NAME, e);
             return null;
@@ -52,7 +52,7 @@ public class DevMetricsImporter {
      * @param isDue will start the task depending on if is due or not.
      * @return the list of installations added.
      */
-    public List<DevMetrics> startTask(Boolean isDue) throws JsonProcessingException {
+    public Boolean startTask(Boolean isDue) throws JsonProcessingException {
 
         if(isDue == null){
             isDue = scheduledJobService.isDue(JOB_NAME);
@@ -64,27 +64,37 @@ public class DevMetricsImporter {
      * @param url the url of the json file to be used to import of the dev metrics.
      * @return the list of metrics extracted from the JSON file and saved on the database.
      */
-    public List<DevMetrics> importDevMetrics() throws JsonProcessingException {
+    public Boolean importDevMetrics() throws JsonProcessingException {
         try {
-
-            DevMetrics devMetrics = restUtilService.retrieveRestAPIObject(DEV_METRICS_URL, DevMetrics.class);
-            devMetrics.setRecordDate(new Date());
-            devMetricsService.saveDevMetrics(devMetrics);
-
-            List<DevMetricsReleases> releasesMetrics = List.of(
-                restUtilService.retrieveRestAPIObject(RELEASES_METRICS_URL, DevMetricsReleases[].class));
-            for (DevMetricsReleases devMetricsReleases : releasesMetrics) {
-                devMetricsReleases.setRepoName(devMetrics.getRepoName());
-            }
-            devMetricsService.saveAllDevMetricsReleases(releasesMetrics);
+            importReleaseMetrics(
+                importdDevMetrics().getRepoName()
+            );
+            
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
-
+            return true;
         } catch (Exception e) {
             scheduledJobService.saveTransactionLog(JOB_NAME, -1);
-            throw e;
+            return false;
         }
-        return null;
+
     }
+
+    public DevMetrics importdDevMetrics() throws JsonProcessingException {
+        DevMetrics devMetrics = restUtilService.retrieveRestAPIObject(DEV_METRICS_URL, DevMetrics.class);
+        devMetrics.setRecordDate(new Date());
+        return  devMetricsService.saveDevMetrics(devMetrics);
+    }
+
+    public List<DevMetricsReleases> importReleaseMetrics(String repoName) throws JsonProcessingException {
+        List<DevMetricsReleases> releasesMetrics = List.of(
+            restUtilService.retrieveRestAPIObject(RELEASES_METRICS_URL, DevMetricsReleases[].class));
+        for (DevMetricsReleases devMetricsReleases : releasesMetrics) {
+            devMetricsReleases.setRepoName(repoName);
+        }
+        return devMetricsService.saveAllDevMetricsReleases(releasesMetrics);       
+    }
+
+
 
 
 
