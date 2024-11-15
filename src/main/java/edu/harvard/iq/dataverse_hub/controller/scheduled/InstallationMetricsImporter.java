@@ -75,6 +75,10 @@ public class InstallationMetricsImporter {
         try {
             if(dvInstallationsList == null){
                 dvInstallationsList = installationService.getHealtyInstallations();
+
+                /**
+                 * This case would only happen when there are no installations in the database that are responding.
+                 */
                 if(dvInstallationsList == null){
                     return null;
                 }
@@ -85,7 +89,7 @@ public class InstallationMetricsImporter {
             for(Installation installation : dvInstallationsList){
                 InstallationMetrics metrics = getInstallationMetrics(installation);
                 if(metrics != null){
-                    metricsList.add(getInstallationMetrics(installation));
+                    metricsList.add(metrics);
                 }
             }
 

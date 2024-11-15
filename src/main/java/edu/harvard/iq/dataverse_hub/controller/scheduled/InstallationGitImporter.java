@@ -13,7 +13,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
 import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -121,7 +120,7 @@ public class InstallationGitImporter {
      * Class that models the container of the installations.
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
-    static class GitHubInstallationWrapper {
+    public static class GitHubInstallationWrapper {
         @JsonProperty("installations")
         List<InstallationWrapper> installations;
     

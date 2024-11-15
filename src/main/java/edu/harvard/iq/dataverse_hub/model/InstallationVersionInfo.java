@@ -43,7 +43,7 @@ public class InstallationVersionInfo {
     
     @Schema(description = "Date when the version information was captured",
             example = "2024-10-31T20:13:03.422+00:00")
-    private Date captureDate;
+    private Date recordDate;
 
 
     public Integer getRecordId() {
@@ -86,14 +86,13 @@ public class InstallationVersionInfo {
         this.build = build;
     }
 
-    public Date getCaptureDate() {
-        return this.captureDate;
+    public Date getRecordDate() {
+        return this.recordDate;
     }
 
-    public void setCaptureDate(Date captureDate) {
-        this.captureDate = captureDate;
+    public void setRecordDate(Date recordDate) {
+        this.recordDate = recordDate;
     }
-
 
     @Override
     public String toString() {
@@ -103,7 +102,7 @@ public class InstallationVersionInfo {
             ", status='" + getStatus() + "'" +
             ", version='" + getVersion() + "'" +
             ", build='" + getBuild() + "'" +
-            ", captureDate='" + getCaptureDate() + "'" +
+            ", recordDate='" + getRecordDate() + "'" +
             "}";
     }
     

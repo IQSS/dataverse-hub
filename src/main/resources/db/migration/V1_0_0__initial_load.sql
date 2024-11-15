@@ -1,13 +1,7 @@
-DROP TABLE IF EXISTS installation;
-DROP TABLE IF EXISTS access_token;
-DROP TABLE IF EXISTS scheduled_job;
-DROP TABLE IF EXISTS scheduled_job_transaction_log;
-DROP TABLE IF EXISTS installation_version_info;
-DROP TABLE IF EXISTS installation_metrics;
-
 CREATE SEQUENCE scheduled_job_transaction_log_seq;
 CREATE SEQUENCE installation_version_info_seq;
 CREATE SEQUENCE installation_metrics_seq;
+CREATE SEQUENCE development_metrics_seq;
 CREATE SEQUENCE scheduled_job_seq;
 
 CREATE TABLE IF NOT EXISTS installation (
@@ -38,6 +32,22 @@ CREATE TABLE IF NOT EXISTS installation_metrics (
     CONSTRAINT fk_installation FOREIGN KEY (dv_hub_id) REFERENCES installation(dv_hub_id)
 );
 
+CREATE TABLE IF NOT EXISTS dev_metrics (
+    record_id integer NOT NULL PRIMARY KEY,
+    record_date timestamp,
+    open_issues integer,
+    watchers integer,
+    forks integer,
+    subscribers_count integer,
+    repo_name varchar
+);
+
+CREATE TABLE IF NOT EXISTS dev_metrics_releases (
+    tag_name varchar NOT NULL PRIMARY KEY,
+    published_at timestamp,
+    repo_name varchar
+);
+
 CREATE TABLE IF NOT EXISTS access_token (
   token_id varchar NOT NULL PRIMARY KEY,
   user_id integer
@@ -64,7 +74,7 @@ CREATE TABLE IF NOT EXISTS installation_version_info (
   status varchar,
   version varchar,
   build varchar,
-  capture_date timestamp,
+  record_date timestamp,
   CONSTRAINT fk_installation FOREIGN KEY (dv_hub_id) REFERENCES installation(dv_hub_id)
 );
 
@@ -73,3 +83,4 @@ INSERT INTO access_token (token_id, user_id) VALUES ('257d4485-173f-4a6d-913d-ee
 INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Installation importer', 'InstallationGitImporter', 86400000);
 INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Version Status check', 'VersionDVInstallationCheck', 43200000);
 INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Installation Metrics Import', 'InstallationMetricsImporter', 86400000);
+INSERT INTO scheduled_job (job_id, description, job_name, frequency) VALUES (nextval('scheduled_job_seq'), 'Dev Metrics importer', 'DevMetricsImporter', 43200000);

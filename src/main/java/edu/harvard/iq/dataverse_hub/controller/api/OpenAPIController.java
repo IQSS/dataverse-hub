@@ -5,8 +5,10 @@ import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.security.SecuritySchemes;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @OpenAPIDefinition(
     info = @Info(
@@ -14,8 +16,9 @@ import io.swagger.v3.oas.annotations.security.SecuritySchemes;
         version = "1.0", 
         description = "API for Dataverse Hub",
         license = @License (name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0"),
-        contact = @Contact(name = "Dataverse Hub", email = "support@dataverse.harvard.edu", url = "https://dataverse.org")
-    )
+        contact = @Contact(name = "Dataverse Hub", email = "support@dataverse.harvard.edu", url = "https://dataverse.org")        
+    ),
+    security = @SecurityRequirement(name = "api_key")
 )
 @SecuritySchemes({   
     @SecurityScheme(
