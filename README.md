@@ -1,4 +1,4 @@
-You can find the old design document on [DESIGN.md](./DESIG.md)
+You can find the old design document on [DESIGN.md](./DESIGN.md)
 
 <br />
 <div align="center">
