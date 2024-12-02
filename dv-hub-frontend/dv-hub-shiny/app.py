@@ -3,7 +3,8 @@ import polars
 
 from shiny.express import input, ui, render
 from shinywidgets import render_widget  
-from ipyleaflet import Map, Marker, AwesomeIcon
+from ipyleaflet import Map, Marker, AwesomeIcon, Popup
+from ipywidgets import HTML
 
 with ui.sidebar():
     ui.input_checkbox("show_ok", "Show OK", True)
@@ -45,7 +46,11 @@ with ui.layout_columns(fill=True):
                     marker_color = 'lightred'
                     icon_name = 'warning'
                     icon_color = 'white'
-                marker = Marker(location=(row['installation.latitude'], row['installation.longitude']), icon=AwesomeIcon(name=icon_name, marker_color=marker_color, icon_color=icon_color))
+                marker = Marker(
+                        location=(row['installation.latitude'], row['installation.longitude']), 
+                        icon=AwesomeIcon(name=icon_name, marker_color=marker_color, icon_color=icon_color)
+                        #,  popup=Popup( child=HTML(value=f"<b>{row['installation.name']}</b><br>{row['status']}<br>{row['installation.name']}"))
+                        )
                 m.add_layer(marker)
             return m
 
