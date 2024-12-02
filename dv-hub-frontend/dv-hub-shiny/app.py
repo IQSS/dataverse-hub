@@ -35,8 +35,8 @@ with ui.layout_columns(fill=True):
         @render_widget  
         def map():
             m = Map(center=(50.6252978589571, 0), zoom=2)
-            for row in installations_data_frame.iter_rows(named=True):
-                status = status_data_frame.filter(polars.col('dvHubId') == row['dvHubId']).select('status').to_series()[0]
+            for row in status_data_frame.iter_rows(named=True):
+                status = row['status']
                 if status == 'OK':
                     marker_color = 'lightgreen'
                     icon_name = 'check'
@@ -45,7 +45,7 @@ with ui.layout_columns(fill=True):
                     marker_color = 'lightred'
                     icon_name = 'warning'
                     icon_color = 'white'
-                marker = Marker(location=(row['latitude'], row['longitude']), icon=AwesomeIcon(name=icon_name, marker_color=marker_color, icon_color=icon_color))
+                marker = Marker(location=(row['installation.latitude'], row['installation.longitude']), icon=AwesomeIcon(name=icon_name, marker_color=marker_color, icon_color=icon_color))
                 m.add_layer(marker)
             return m
 
