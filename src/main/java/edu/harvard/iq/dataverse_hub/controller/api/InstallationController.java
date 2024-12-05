@@ -52,8 +52,21 @@ public class InstallationController {
     @InstallationControllerDocs.getInstallationsMetrics
     public List<InstallationMetrics> getInstallationsMetrics(
         @RequestParam(required = false) String country,
-        @RequestParam(required = false) Integer launchYear){
-        return installationService.getInstallationMetrics(country, launchYear);
+        @RequestParam(required = false) String continent,
+        @RequestParam(required = false) Integer launchYear,
+        @RequestParam(required = false) Boolean gdccMember,
+        @RequestParam(required = false) Integer maxFiles,
+        @RequestParam(required = false) Integer minFiles,
+        @RequestParam(required = false) Integer maxDatasets,
+        @RequestParam(required = false) Integer minDatasets,
+        @RequestParam(required = false) Integer maxDataverses,
+        @RequestParam(required = false) Integer minDataverses,
+        @RequestParam(required = false) Integer maxHarvested,
+        @RequestParam(required = false) Integer minHarvested,
+        @RequestParam(required = false) Integer minLocalDataverses,
+        @RequestParam(required = false) Integer maxLocalDataverses)
+        {
+        return installationService.getInstallationMetrics(country, continent, launchYear, gdccMember, maxFiles, minFiles, maxDatasets, minDatasets, maxDataverses, minDataverses, maxHarvested, minHarvested, minLocalDataverses, maxLocalDataverses);
     }
 
     @GetMapping("metrics/monthly")
