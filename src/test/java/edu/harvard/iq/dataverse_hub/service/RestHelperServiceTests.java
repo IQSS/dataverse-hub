@@ -29,6 +29,9 @@ public class RestHelperServiceTests {
 
             Installation[] installationList
                     = restUtilService.retrieveRestAPIObject(url, Installation[].class);
+                    assertNotEquals(installationList.length, 0);
+
+                    
         });
 
     }

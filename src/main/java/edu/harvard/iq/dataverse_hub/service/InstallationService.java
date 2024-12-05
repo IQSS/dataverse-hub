@@ -137,8 +137,8 @@ public class InstallationService {
      * retrieve the most recent metrics from all installations
      * @return
      */
-    public List<InstallationMetrics> getInstallationMetrics() {
-        return installationsMetricsRepo.findLatest();
+    public List<InstallationMetrics> getInstallationMetrics(String country, Integer launchYear) {
+        return installationsMetricsRepo.findLatest(country, launchYear);
     }
 
     /**

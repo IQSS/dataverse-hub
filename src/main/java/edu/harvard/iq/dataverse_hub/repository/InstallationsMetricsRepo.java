@@ -21,8 +21,10 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
                 SELECT MAX(im_s.recordDate) 
                 FROM InstallationMetrics im_s 
                 WHERE im_s.installation.dvHubId = im.installation.dvHubId
-            )        
+            )
+            WHERE (:country IS NULL OR im.installation.country = :country)
+            AND (:launchYear IS NULL OR im.installation.launchYear = :launchYear)
             """)
-    public List<InstallationMetrics> findLatest();
+    public List<InstallationMetrics> findLatest(String country, Integer launchYear);
 
 }

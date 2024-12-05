@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import edu.harvard.iq.dataverse_hub.controller.api.annotations.InstallationControllerDocs;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
@@ -48,8 +50,16 @@ public class InstallationController {
 
     @GetMapping("metrics")
     @InstallationControllerDocs.getInstallationsMetrics
-    public List<InstallationMetrics> getInstallationsMetrics(){
-        return installationService.getInstallationMetrics();
+    public List<InstallationMetrics> getInstallationsMetrics(
+        @RequestParam(required = false) String country,
+        @RequestParam(required = false) Integer launchYear){
+        return installationService.getInstallationMetrics(country, launchYear);
+    }
+
+    @GetMapping("metrics/monthly")
+    //@InstallationControllerDocs.getMonthlyInstallationsMetrics
+    public List<InstallationMetrics> getMonthlyInstallationsMetrics(String country){
+        return null;//installationService.getInstallationMetrics(country);
     }
 
 
