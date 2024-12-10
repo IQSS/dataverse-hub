@@ -8,10 +8,14 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 import edu.harvard.iq.dataverse_hub.beans.APIPayloadSamples;
 import edu.harvard.iq.dataverse_hub.beans.ServerMessageResponse;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.*;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -141,8 +145,33 @@ public @interface InstallationControllerDocs {
                         schema = @Schema(implementation = ServerMessageResponse.class),
                         examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_500)))
     })
-    @Operation(summary = "Get the basic metrics of the registered installations", 
+    @Operation(summary = "Get the metrics of the registered installations", 
                 description = "Returns a set of metrics for each one of the registered dataverse installations")
     public @interface getInstallationsMetrics {}
+
+    @Target({ElementType.METHOD})    
+    @Retention(RetentionPolicy.RUNTIME)
+    @Tag(name = "dv-metrics")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", 
+                        description = "Registered installations metrics by month success",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = InstallationMetrics[].class),
+                        examples = @ExampleObject(APIPayloadSamples.INSTALLATION_ARRAY))),
+        @ApiResponse(responseCode = "400", 
+                        description = "Bad Request on registered installations metrics by month list",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = ServerMessageResponse.class),
+                        examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_400))),
+        @ApiResponse(responseCode = "500", 
+                        description = "Internal Server Error on registered installations metrics by month",
+                        content = @Content(mediaType = "application/json",
+                        schema = @Schema(implementation = ServerMessageResponse.class),
+                        examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_500)))
+    })
+    @Operation(summary = "Get the metrics by month of the registered installations", 
+                description = "Returns a set of metrics for each one of the registered dataverse installations")
+    public @interface getMonthlyInstallationsMetrics {}
+        
 
 }

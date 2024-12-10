@@ -23,7 +23,9 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
                 FROM InstallationMetrics im_s 
                 WHERE im_s.installation.dvHubId = im.installation.dvHubId
             )
-            WHERE (:country IS NULL OR im.installation.country = :country)
+            WHERE (:dvHubId IS NULL OR im.installation.dvHubId = :dvHubId)
+            AND (:installationName IS NULL OR UPPER(im.installation.name) LIKE %:#{#installationName == null ? null : #installationName.toUpperCase()}%)
+            AND (:country IS NULL OR im.installation.country = :country)
             AND (:launchYear IS NULL OR im.installation.launchYear = :launchYear)
             AND (:continent IS NULL OR im.installation.continent = :continent)
             AND (:gdccMember IS NULL OR im.installation.gdccMember = :gdccMember)
@@ -38,7 +40,9 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
             AND (:minLocalDatasets IS NULL OR im.localDatasets >= :minLocalDatasets)
             AND (:maxLocalDatasets IS NULL OR im.localDatasets <= :maxLocalDatasets)
             """)
-    public List<InstallationMetrics> findLatest(String country,
+    public List<InstallationMetrics> findLatest(String dvHubId,
+                                                String installationName,
+                                                String country,
                                                 String continent,
                                                 Integer launchYear,
                                                 Boolean gdccMember,

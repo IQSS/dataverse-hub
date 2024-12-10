@@ -137,7 +137,9 @@ public class InstallationService {
      * retrieve the most recent metrics from all installations
      * @return
      */
-    public List<InstallationMetrics> getInstallationMetrics(String country,
+    public List<InstallationMetrics> getInstallationMetrics(String dvHubId,
+                                                            String installationName,
+                                                            String country,
                                                             String continent,
                                                             Integer launchYear,
                                                             Boolean gdccMember,
@@ -152,7 +154,7 @@ public class InstallationService {
                                                             Integer maxLocalDatasets,
                                                             Integer minLocalDatasets) {
 
-        return installationsMetricsRepo.findLatest(country, continent, launchYear, gdccMember, maxFiles, minFiles, maxDatasets, minDatasets, maxDataverses, minDataverses, maxHarvested, minHarvested, minLocalDatasets, maxLocalDatasets);
+        return installationsMetricsRepo.findLatest(dvHubId, installationName, country, continent, launchYear, gdccMember, maxFiles, minFiles, maxDatasets, minDatasets, maxDataverses, minDataverses, maxHarvested, minHarvested, maxLocalDatasets, minLocalDatasets);
     }
 
     /**
