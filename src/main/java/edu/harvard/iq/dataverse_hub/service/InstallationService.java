@@ -3,6 +3,8 @@ package edu.harvard.iq.dataverse_hub.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCheck;
 import edu.harvard.iq.dataverse_hub.model.Installation;
@@ -137,22 +139,16 @@ public class InstallationService {
      * retrieve the most recent metrics from all installations
      * @return
      */
-    public List<InstallationMetrics> getInstallationMetrics(String country,
-                                                            String continent,
-                                                            Integer launchYear,
-                                                            Boolean gdccMember,
-                                                            Integer maxFiles,
-                                                            Integer minFiles,
-                                                            Integer maxDatasets,
-                                                            Integer minDatasets,
-                                                            Integer maxDataverses,
-                                                            Integer minDataverses,
-                                                            Integer maxHarvested,
-                                                            Integer minHarvested,
-                                                            Integer maxLocalDatasets,
-                                                            Integer minLocalDatasets) {
+    public List<InstallationMetrics> getInstallationMetrics(InstallationFilterParams installationFilterParams){
+        return installationsMetricsRepo.findLatest(installationFilterParams);
+    }
 
-        return installationsMetricsRepo.findLatest(country, continent, launchYear, gdccMember, maxFiles, minFiles, maxDatasets, minDatasets, maxDataverses, minDataverses, maxHarvested, minHarvested, minLocalDatasets, maxLocalDatasets);
+    /**
+     * retrieve the most recent metrics from all installations
+     * @return
+     */
+    public List<InstallationMetrics> getMonthlyInstallationMetrics(InstallationFilterParamsMonthly installationFilterParams){
+        return installationsMetricsRepo.findMonthly(installationFilterParams);
     }
 
     /**

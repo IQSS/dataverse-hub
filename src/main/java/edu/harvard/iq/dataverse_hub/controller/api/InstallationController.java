@@ -1,13 +1,14 @@
 package edu.harvard.iq.dataverse_hub.controller.api;
 
 
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import edu.harvard.iq.dataverse_hub.controller.api.annotations.InstallationControllerDocs;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
@@ -50,29 +51,14 @@ public class InstallationController {
 
     @GetMapping("metrics")
     @InstallationControllerDocs.getInstallationsMetrics
-    public List<InstallationMetrics> getInstallationsMetrics(
-        @RequestParam(required = false) String country,
-        @RequestParam(required = false) String continent,
-        @RequestParam(required = false) Integer launchYear,
-        @RequestParam(required = false) Boolean gdccMember,
-        @RequestParam(required = false) Integer maxFiles,
-        @RequestParam(required = false) Integer minFiles,
-        @RequestParam(required = false) Integer maxDatasets,
-        @RequestParam(required = false) Integer minDatasets,
-        @RequestParam(required = false) Integer maxDataverses,
-        @RequestParam(required = false) Integer minDataverses,
-        @RequestParam(required = false) Integer maxHarvested,
-        @RequestParam(required = false) Integer minHarvested,
-        @RequestParam(required = false) Integer minLocalDataverses,
-        @RequestParam(required = false) Integer maxLocalDataverses)
-        {
-        return installationService.getInstallationMetrics(country, continent, launchYear, gdccMember, maxFiles, minFiles, maxDatasets, minDatasets, maxDataverses, minDataverses, maxHarvested, minHarvested, minLocalDataverses, maxLocalDataverses);
+    public List<InstallationMetrics> getInstallationsMetrics(@ParameterObject InstallationFilterParams installationFilterParams){
+        return installationService.getInstallationMetrics(installationFilterParams);
     }
 
     @GetMapping("metrics/monthly")
-    //@InstallationControllerDocs.getMonthlyInstallationsMetrics
-    public List<InstallationMetrics> getMonthlyInstallationsMetrics(String country){
-        return null;//installationService.getInstallationMetrics(country);
+    @InstallationControllerDocs.getMonthlyInstallationsMetrics
+    public List<InstallationMetrics> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
+        return installationService.getMonthlyInstallationMetrics(installationFilterParams);
     }
 
 
