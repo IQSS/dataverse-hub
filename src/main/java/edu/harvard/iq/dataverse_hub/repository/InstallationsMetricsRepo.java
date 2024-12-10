@@ -3,6 +3,8 @@ package edu.harvard.iq.dataverse_hub.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 
 import java.util.List;
@@ -23,38 +25,55 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
                 FROM InstallationMetrics im_s 
                 WHERE im_s.installation.dvHubId = im.installation.dvHubId
             )
-            WHERE (:dvHubId IS NULL OR im.installation.dvHubId = :dvHubId)
-            AND (:installationName IS NULL OR UPPER(im.installation.name) LIKE %:#{#installationName == null ? null : #installationName.toUpperCase()}%)
-            AND (:country IS NULL OR im.installation.country = :country)
-            AND (:launchYear IS NULL OR im.installation.launchYear = :launchYear)
-            AND (:continent IS NULL OR im.installation.continent = :continent)
-            AND (:gdccMember IS NULL OR im.installation.gdccMember = :gdccMember)
-            AND (:maxFiles IS NULL OR im.files <= :maxFiles)
-            AND (:minFiles IS NULL OR im.files >= :minFiles)
-            AND (:maxDatasets IS NULL OR im.datasets <= :maxDatasets)
-            AND (:minDatasets IS NULL OR im.datasets >= :minDatasets)
-            AND (:maxDataverses IS NULL OR im.dataverses <= :maxDataverses)
-            AND (:minDataverses IS NULL OR im.dataverses >= :minDataverses)
-            AND (:maxHarvested IS NULL OR im.harvestedDatasets <= :maxHarvested)
-            AND (:minHarvested IS NULL OR im.harvestedDatasets >= :minHarvested)
-            AND (:minLocalDatasets IS NULL OR im.localDatasets >= :minLocalDatasets)
-            AND (:maxLocalDatasets IS NULL OR im.localDatasets <= :maxLocalDatasets)
+            WHERE (:#{#params.dvHubId} IS NULL OR im.installation.dvHubId = :#{#params.dvHubId})
+            AND (:#{#params.installationName} IS NULL OR UPPER(im.installation.name) LIKE %:#{#params.installationName == null ? null : #params.installationName.toUpperCase()}%)
+            AND (:#{#params.country} IS NULL OR im.installation.country = :#{#params.country})
+            AND (:#{#params.launchYear} IS NULL OR im.installation.launchYear = :#{#params.launchYear})
+            AND (:#{#params.continent} IS NULL OR im.installation.continent = :#{#params.continent})
+            AND (:#{#params.gdccMember} IS NULL OR im.installation.gdccMember = :#{#params.gdccMember})
+            AND (:#{#params.maxFiles} IS NULL OR im.files <= :#{#params.maxFiles})
+            AND (:#{#params.minFiles} IS NULL OR im.files >= :#{#params.minFiles})
+            AND (:#{#params.maxDatasets} IS NULL OR im.datasets <= :#{#params.maxDatasets})
+            AND (:#{#params.minDatasets} IS NULL OR im.datasets >= :#{#params.minDatasets})
+            AND (:#{#params.maxDataverses} IS NULL OR im.dataverses <= :#{#params.maxDataverses})
+            AND (:#{#params.minDataverses} IS NULL OR im.dataverses >= :#{#params.minDataverses})
+            AND (:#{#params.maxHarvested} IS NULL OR im.harvestedDatasets <= :#{#params.maxHarvested})
+            AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
+            AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
+            AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
             """)
-    public List<InstallationMetrics> findLatest(String dvHubId,
-                                                String installationName,
-                                                String country,
-                                                String continent,
-                                                Integer launchYear,
-                                                Boolean gdccMember,
-                                                Integer maxFiles,
-                                                Integer minFiles,
-                                                Integer maxDatasets,
-                                                Integer minDatasets,
-                                                Integer maxDataverses,
-                                                Integer minDataverses,
-                                                Integer maxHarvested,
-                                                Integer minHarvested,
-                                                Integer maxLocalDatasets,
-                                                Integer minLocalDatasets);
+    public List<InstallationMetrics> findLatest(@RequestParam InstallationFilterParams params);
+
+    @Query("""
+            SELECT im FROM InstallationMetrics im
+            RIGHT JOIN FETCH InstallationMetrics im_r
+            ON im.installation.dvHubId = im.installation.dvHubId 
+            AND im.recordDate = (
+                SELECT MAX(im_s.recordDate) 
+                FROM InstallationMetrics im_s 
+                WHERE im_s.installation.dvHubId = im.installation.dvHubId
+                AND date_trunc('month', im_s.recordDate) = date_trunc('month', im.recordDate)
+            )
+            WHERE (:#{#params.dvHubId} IS NULL OR im.installation.dvHubId = :#{#params.dvHubId})
+            AND (:#{#params.installationName} IS NULL OR UPPER(im.installation.name) LIKE %:#{#params.installationName == null ? null : #params.installationName.toUpperCase()}%)
+            AND (:#{#params.country} IS NULL OR im.installation.country = :#{#params.country})
+            AND (:#{#params.launchYear} IS NULL OR im.installation.launchYear = :#{#params.launchYear})
+            AND (:#{#params.continent} IS NULL OR im.installation.continent = :#{#params.continent})
+            AND (:#{#params.gdccMember} IS NULL OR im.installation.gdccMember = :#{#params.gdccMember})
+            AND (:#{#params.maxFiles} IS NULL OR im.files <= :#{#params.maxFiles})
+            AND (:#{#params.minFiles} IS NULL OR im.files >= :#{#params.minFiles})
+            AND (:#{#params.maxDatasets} IS NULL OR im.datasets <= :#{#params.maxDatasets})
+            AND (:#{#params.minDatasets} IS NULL OR im.datasets >= :#{#params.minDatasets})
+            AND (:#{#params.maxDataverses} IS NULL OR im.dataverses <= :#{#params.maxDataverses})
+            AND (:#{#params.minDataverses} IS NULL OR im.dataverses >= :#{#params.minDataverses})
+            AND (:#{#params.maxHarvested} IS NULL OR im.harvestedDatasets <= :#{#params.maxHarvested})
+            AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
+            AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
+            AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
+            """)
+    public List<InstallationMetrics> findMonthly(@RequestParam InstallationFilterParamsMonthly params);
+
+
+
 
 }

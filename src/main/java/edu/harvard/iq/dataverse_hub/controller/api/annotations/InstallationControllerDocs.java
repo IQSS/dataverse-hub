@@ -170,7 +170,7 @@ public @interface InstallationControllerDocs {
                         examples = @ExampleObject(APIPayloadSamples.SERVER_RESPONSE_500)))
     })
     @Operation(summary = "Get the metrics by month of the registered installations", 
-                description = "Returns a set of metrics for each one of the registered dataverse installations")
+                description = "Returns a set of monthly metrics for each one of the registered dataverse installations")
     public @interface getMonthlyInstallationsMetrics {}
         
 
