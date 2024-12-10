@@ -11,6 +11,7 @@ import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,6 +36,7 @@ public class InstallationController {
     }
 
     @GetMapping("status")
+    @CrossOrigin
     @InstallationControllerDocs.GetInstallationsStatus
     public List<InstallationVersionInfo> geInstallationsStatus(){
         return installationService.getInstallationInfo();
