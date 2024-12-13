@@ -1,6 +1,8 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,20 +23,19 @@ import edu.harvard.iq.dataverse_hub.service.RestUtilService;
 import edu.harvard.iq.dataverse_hub.service.ScheduledJobService;
 
 @Component
-public class InstallationMetricsImporter {
+public class InstallationMetricsMonthlyImporter {
 
-    Logger logger = LoggerFactory.getLogger(InstallationGitImporter.class);
+    Logger logger = LoggerFactory.getLogger(InstallationMetricsMonthlyImporter.class);
+    private final String JOB_NAME = this.getClass().getSimpleName();
 
     public final String PROTOCOL = "https://";
 
-    public final String DATASETS_ENDPOINT = "/api/info/metrics/datasets";
-    public final String DATASETS_HARVESTED_ENDPOINT = "/api/info/metrics/datasets?dataLocation=remote";
-    public final String DATASETS_LOCAL_ENDPOINT = "/api/info/metrics/datasets?dataLocation=local";
-    public final String FILES_ENDPOINT = "/api/info/metrics/files";
-    public final String DOWNLOADS_ENDPOINT = "/api/info/metrics/downloads";
-    public final String DATAVERSES_ENDPOINT = "/api/info/metrics/dataverses";
-    
-    private final String JOB_NAME = this.getClass().getSimpleName();
+    String DATASETS_ENDPOINT = "/api/info/metrics/datasets/toMonth/%s";
+    String DATASETS_HARVESTED_ENDPOINT = "/api/info/metrics/datasets/toMonth/%s?dataLocation=remote";
+    String DATASETS_LOCAL_ENDPOINT = "/api/info/metrics/datasets/toMonth/%s?dataLocation=local";
+    String FILES_ENDPOINT = "/api/info/metrics/files/toMonth/%s";
+    String DOWNLOADS_ENDPOINT = "/api/info/metrics/downloads/toMonth/%s";
+    String DATAVERSES_ENDPOINT = "/api/info/metrics/dataverses/toMonth/%s";
 
     @Autowired
     private InstallationService installationService;
@@ -43,7 +45,6 @@ public class InstallationMetricsImporter {
 
     @Autowired
     private RestUtilService restUtilService;
-
 
     @Scheduled(fixedRate = 21600000)
     public List<InstallationMetrics> runTask() {
@@ -57,7 +58,7 @@ public class InstallationMetricsImporter {
             return null;
         }
     }
-    
+
     /**
      * @param isDue will start the task depending on if is due or not.
      * @return the list of installations added.
@@ -86,13 +87,29 @@ public class InstallationMetricsImporter {
                 }
             }
 
+            Calendar calendar = Calendar.getInstance();
+            int currentYear = calendar.get(Calendar.YEAR);
+            int currentMonth = calendar.get(Calendar.MONTH) + 1;
+
             metricsList = new ArrayList<InstallationMetrics>();
 
             for(Installation installation : dvInstallationsList){
-                InstallationMetrics metrics = getInstallationMetrics(installation);
-                if(metrics != null){
-                    metricsList.add(metrics);
+
+                Integer queryYear = installation.getLaunchYear();
+                Integer queryMonth = 1;
+
+                while(queryYear <= currentYear){
+                    while(queryMonth <= 12){
+                        InstallationMetrics metrics = getInstallationMetrics(installation, queryYear, queryMonth);
+                        if(metrics != null){
+                            metricsList.add(metrics);
+                        }
+                        queryMonth++;
+                    }
+                    queryMonth = 1;
+                    queryYear++;
                 }
+
             }
 
             installationService.saveAllMetrics(metricsList);
@@ -107,16 +124,27 @@ public class InstallationMetricsImporter {
         return metricsList;
     }
 
-    public InstallationMetrics getInstallationMetrics(Installation installation){
+    public InstallationMetrics getInstallationMetrics(Installation installation, Integer year, Integer month){
 
         logger.info("Checking metrics for installation: " + installation.getHostname());
+        String searchParam = year + "-" + month;
         try {
-            MetricInfo datasets = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + DATASETS_ENDPOINT, MetricInfo.class);    
-            MetricInfo harvested = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + DATASETS_HARVESTED_ENDPOINT, MetricInfo.class);    
-            MetricInfo local = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + DATASETS_LOCAL_ENDPOINT, MetricInfo.class);    
-            MetricInfo files = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + FILES_ENDPOINT, MetricInfo.class);    
-            MetricInfo downloads = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + DOWNLOADS_ENDPOINT, MetricInfo.class);    
-            MetricInfo dataverses = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + DATAVERSES_ENDPOINT, MetricInfo.class);    
+            MetricInfo datasets = 
+                restUtilService.retrieveRestAPIObject(
+                    PROTOCOL + installation.getHostname() + 
+                    String.format(DATASETS_ENDPOINT, searchParam), 
+                    MetricInfo.class);    
+            MetricInfo harvested = restUtilService.retrieveRestAPIObject(
+                    PROTOCOL + installation.getHostname() + 
+                    String.format(DATASETS_HARVESTED_ENDPOINT), 
+                    MetricInfo.class);    
+            MetricInfo local = restUtilService.retrieveRestAPIObject(
+                    PROTOCOL + installation.getHostname() +
+                            String.format(DATASETS_LOCAL_ENDPOINT),
+                            MetricInfo.class);    
+            MetricInfo files = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + String.format(FILES_ENDPOINT), MetricInfo.class);    
+            MetricInfo downloads = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + String.format(DOWNLOADS_ENDPOINT), MetricInfo.class);    
+            MetricInfo dataverses = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + String.format(DATAVERSES_ENDPOINT), MetricInfo.class);    
 
             InstallationMetrics metrics = new InstallationMetrics();
             metrics.setInstallation(installation);
@@ -136,7 +164,6 @@ public class InstallationMetricsImporter {
         }
     
     }
-
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class MetricInfo {
@@ -166,6 +193,6 @@ public class InstallationMetricsImporter {
         }
     }
 
-  
+
 
 }
