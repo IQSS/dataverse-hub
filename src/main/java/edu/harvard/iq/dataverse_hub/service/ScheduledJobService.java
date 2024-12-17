@@ -20,7 +20,7 @@ public class ScheduledJobService {
     @Autowired
     private ScheduledJobTransactionLogRepo scheduledJobTransactionLogRepo;
 
-    private final static int DEFAULT_FREQUENCY = 3600000;
+    private final static int DEFAULT_FREQUENCY = 86400000;
 
     public ScheduledJob save(ScheduledJob scheduledJob) {
         return scheduledJobRepo.save(scheduledJob);
@@ -52,7 +52,10 @@ public class ScheduledJobService {
             jobConfig.setJobName(jobName);
             jobConfig.setDescription(jobName);
             jobConfig.setFrequency(DEFAULT_FREQUENCY);
+            jobConfig.setRecurring(true);
             scheduledJobRepo.save(jobConfig);
+        } else if (!jobConfig.getRecurring()) {
+            return false;
         }
         ScheduledJobTransactionLog lastTransaction =
             scheduledJobTransactionLogRepo.findLatestTransactionByJobId(
@@ -70,6 +73,15 @@ public class ScheduledJobService {
         }
 
         return false;
+    }
+
+    public ScheduledJob disableRecurrence(String jobName) {
+        ScheduledJob jobConfig = scheduledJobRepo.findByName(jobName);
+        if(jobConfig != null){
+            jobConfig.setRecurring(false);
+            scheduledJobRepo.save(jobConfig);
+        }
+        return jobConfig;
     }
 
     public ScheduledJobTransactionLog saveTransactionLog(ScheduledJob job, Integer status) {

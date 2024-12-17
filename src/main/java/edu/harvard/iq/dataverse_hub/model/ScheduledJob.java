@@ -21,6 +21,7 @@ public class ScheduledJob {
     private String description;
     private String jobName;
     private Integer frequency;
+    private Boolean recurring;
 
     public Integer getJobId() {
         return this.jobId;
@@ -54,6 +55,14 @@ public class ScheduledJob {
         this.frequency = frequency;
     }
 
+    public Boolean getRecurring() {
+        return this.recurring;
+    }
+
+    public void setRecurring(Boolean recurring) {
+        this.recurring = recurring;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -61,6 +70,7 @@ public class ScheduledJob {
             ", description='" + getDescription() + "'" +
             ", jobName='" + getJobName() + "'" +
             ", frequency='" + getFrequency() + "'" +
+            ", recurring='" + getRecurring() + "'"+
             "}";
     }
 
