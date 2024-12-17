@@ -99,6 +99,10 @@ public class InstallationMetricsMonthlyImporter {
                 Integer queryMonth = 1;
 
                 while(queryYear <= currentYear){
+
+                    if(queryYear == currentYear && queryMonth == currentMonth){
+                        break;
+                    }
                     while(queryMonth <= 12){
                         InstallationMetrics metrics = getInstallationMetrics(installation, queryYear, queryMonth);
                         if(metrics != null){
@@ -112,8 +116,9 @@ public class InstallationMetricsMonthlyImporter {
 
             }
 
-            installationService.saveAllMetrics(metricsList);
+            installationService.saveAllMetrics(metricsList);            
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
+            scheduledJobService.disableRecurrence(DATASETS_ENDPOINT);
 
         } catch (Exception e) {
             logger.error("Problem running job {}", JOB_NAME, e);
@@ -127,28 +132,32 @@ public class InstallationMetricsMonthlyImporter {
     public InstallationMetrics getInstallationMetrics(Installation installation, Integer year, Integer month){
 
         logger.info("Checking metrics for installation: " + installation.getHostname());
-        String searchParam = year + "-" + month;
+        String searchParam = year + "-" + (month < 10 ? "0" + month : month);
         try {
-            MetricInfo datasets = 
-                restUtilService.retrieveRestAPIObject(
-                    PROTOCOL + installation.getHostname() + 
-                    String.format(DATASETS_ENDPOINT, searchParam), 
-                    MetricInfo.class);    
-            MetricInfo harvested = restUtilService.retrieveRestAPIObject(
-                    PROTOCOL + installation.getHostname() + 
-                    String.format(DATASETS_HARVESTED_ENDPOINT), 
-                    MetricInfo.class);    
-            MetricInfo local = restUtilService.retrieveRestAPIObject(
-                    PROTOCOL + installation.getHostname() +
-                            String.format(DATASETS_LOCAL_ENDPOINT),
-                            MetricInfo.class);    
-            MetricInfo files = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + String.format(FILES_ENDPOINT), MetricInfo.class);    
-            MetricInfo downloads = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + String.format(DOWNLOADS_ENDPOINT), MetricInfo.class);    
-            MetricInfo dataverses = restUtilService.retrieveRestAPIObject(PROTOCOL + installation.getHostname() + String.format(DATAVERSES_ENDPOINT), MetricInfo.class);    
+
+            MetricInfo datasets = retrieveMetrics(installation, DATASETS_ENDPOINT, searchParam);
+            
+            //If there are no datasets, we don't need to continue.
+            if(datasets.data.count == 0){
+                return null;
+            }
+
+            MetricInfo harvested = retrieveMetrics(installation, DATASETS_HARVESTED_ENDPOINT, searchParam);
+            MetricInfo local = retrieveMetrics(installation, DATASETS_LOCAL_ENDPOINT, searchParam);
+            MetricInfo files = retrieveMetrics(installation, FILES_ENDPOINT, searchParam);
+            MetricInfo downloads = retrieveMetrics(installation, DOWNLOADS_ENDPOINT, searchParam);
+            MetricInfo dataverses = retrieveMetrics(installation, DATAVERSES_ENDPOINT, searchParam);
 
             InstallationMetrics metrics = new InstallationMetrics();
             metrics.setInstallation(installation);
-            metrics.setRecordDate(new Date());
+
+            //We use a "fake" date since we are importing older monhtly. 
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month - 1);
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+            metrics.setRecordDate(calendar.getTime());
             metrics.setDatasets(datasets.data.count.intValue());
             metrics.setHarvestedDatasets(harvested.data.count.intValue());
             metrics.setLocalDatasets(local.data.count.intValue());
@@ -156,6 +165,7 @@ public class InstallationMetricsMonthlyImporter {
             metrics.setDownloads(downloads.data.count);
             metrics.setDataverses(dataverses.data.count.intValue());
 
+            System.out.println("Metrics for " + installation.getHostname() + " " + searchParam + " " + metrics.toString());
             return metrics;
 
         } catch (Exception e) {
@@ -163,6 +173,12 @@ public class InstallationMetricsMonthlyImporter {
             return null;
         }
     
+    }
+
+    private MetricInfo retrieveMetrics(Installation installation, String endpointUrl, String searchParam) throws JsonProcessingException {
+        String metricsEndpoint = PROTOCOL + installation.getHostname() + String.format(endpointUrl, searchParam);
+        MetricInfo metrics = restUtilService.retrieveRestAPIObject(metricsEndpoint,MetricInfo.class);
+        return metrics;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
