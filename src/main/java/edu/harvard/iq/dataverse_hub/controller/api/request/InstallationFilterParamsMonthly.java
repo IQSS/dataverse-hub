@@ -1,7 +1,5 @@
 package edu.harvard.iq.dataverse_hub.controller.api.request;
 
-import java.util.Date;
-import java.sql.Timestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 import io.swagger.v3.oas.annotations.Parameter;
 
