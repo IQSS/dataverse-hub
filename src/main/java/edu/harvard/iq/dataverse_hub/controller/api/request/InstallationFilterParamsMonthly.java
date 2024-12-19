@@ -1,5 +1,7 @@
 package edu.harvard.iq.dataverse_hub.controller.api.request;
 
+import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 import io.swagger.v3.oas.annotations.Parameter;
 
 public class InstallationFilterParamsMonthly {
@@ -51,6 +53,14 @@ public class InstallationFilterParamsMonthly {
 
     @Parameter(description = "Maximum number of local datasets in the installation for monthly metrics search", example = "1000")
     private Integer maxLocalDatasets;
+
+    @Parameter(description = "From date for monthly metrics search", example = "2020-01-01")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fromDate;
+
+    @Parameter(description = "To date for monthly metrics search", example = "2020-12-31")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date toDate;
 
     // Getters and Setters
 
@@ -182,6 +192,22 @@ public class InstallationFilterParamsMonthly {
         this.maxLocalDatasets = maxLocalDatasets;
     }
 
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -201,6 +227,8 @@ public class InstallationFilterParamsMonthly {
             ", minHarvested='" + getMinHarvested() + "'" +
             ", minLocalDatasets='" + getMinLocalDatasets() + "'" +
             ", maxLocalDatasets='" + getMaxLocalDatasets() + "'" +
+            ", fromDate='" + getFromDate() + "'" +
+            ", toDate='" + getToDate() + "'" +
             "}";
     }
 }

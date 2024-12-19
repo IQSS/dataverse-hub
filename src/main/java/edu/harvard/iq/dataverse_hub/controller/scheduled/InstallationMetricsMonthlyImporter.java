@@ -1,9 +1,7 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -82,7 +80,8 @@ public class InstallationMetricsMonthlyImporter {
                 /**
                  * This case would only happen when there are no installations in the database that are responding.
                  */
-                if(dvInstallationsList == null){
+                if(dvInstallationsList == null || dvInstallationsList.size() == 0){
+                    scheduledJobService.saveTransactionLog(JOB_NAME, 0);
                     return null;
                 }
             }
@@ -121,8 +120,7 @@ public class InstallationMetricsMonthlyImporter {
             scheduledJobService.disableRecurrence(DATASETS_ENDPOINT);
 
         } catch (Exception e) {
-            logger.error("Problem running job {}", JOB_NAME, e);
-            e.printStackTrace();
+            scheduledJobService.saveTransactionLog(JOB_NAME, -1);
             return null;
         }
 

@@ -58,6 +58,7 @@ public class InstallationController {
     @GetMapping("metrics/monthly")
     @InstallationControllerDocs.getMonthlyInstallationsMetrics
     public List<InstallationMetrics> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
+        System.out.println(installationFilterParams);
         return installationService.getMonthlyInstallationMetrics(installationFilterParams);
     }
 

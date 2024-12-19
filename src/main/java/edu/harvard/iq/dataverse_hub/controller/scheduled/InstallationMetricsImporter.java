@@ -81,7 +81,8 @@ public class InstallationMetricsImporter {
                 /**
                  * This case would only happen when there are no installations in the database that are responding.
                  */
-                if(dvInstallationsList == null){
+                if(dvInstallationsList == null || dvInstallationsList.size() == 0){
+                    scheduledJobService.saveTransactionLog(JOB_NAME, 0);
                     return null;
                 }
             }
@@ -99,8 +100,7 @@ public class InstallationMetricsImporter {
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
 
         } catch (Exception e) {
-            logger.error("Problem running job {}", JOB_NAME, e);
-            e.printStackTrace();
+            scheduledJobService.saveTransactionLog(JOB_NAME, -1);
             return null;
         }
 

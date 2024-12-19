@@ -70,10 +70,8 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
             AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
             AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
             AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
+            AND (:#{#params.fromDate} IS NULL OR im.recordDate >= :#{#params.fromDate})
             """)
     public List<InstallationMetrics> findMonthly(@RequestParam InstallationFilterParamsMonthly params);
-
-
-
 
 }
