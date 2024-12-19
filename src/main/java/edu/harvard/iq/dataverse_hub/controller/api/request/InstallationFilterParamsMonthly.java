@@ -1,6 +1,7 @@
 package edu.harvard.iq.dataverse_hub.controller.api.request;
 
 import java.util.Date;
+import java.sql.Timestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 import io.swagger.v3.oas.annotations.Parameter;
 
@@ -54,16 +55,15 @@ public class InstallationFilterParamsMonthly {
     @Parameter(description = "Maximum number of local datasets in the installation for monthly metrics search", example = "1000")
     private Integer maxLocalDatasets;
 
-    @Parameter(description = "From date for monthly metrics search", example = "2020-01-01")
+    @Parameter(description = "From date for monthly metrics search", example = "2020-12-31")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date fromDate;
+    private String fromDate;
 
     @Parameter(description = "To date for monthly metrics search", example = "2020-12-31")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date toDate;
+    private String toDate;
 
     // Getters and Setters
-
     public String getDvHubId() {
         return dvHubId;
     }
@@ -192,19 +192,19 @@ public class InstallationFilterParamsMonthly {
         this.maxLocalDatasets = maxLocalDatasets;
     }
 
-    public Date getFromDate() {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 
