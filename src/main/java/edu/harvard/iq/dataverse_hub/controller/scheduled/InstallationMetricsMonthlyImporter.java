@@ -1,5 +1,6 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -150,12 +151,9 @@ public class InstallationMetricsMonthlyImporter {
             metrics.setInstallation(installation);
 
             //We use a "fake" date since we are importing older monhtly. 
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.YEAR, year);
-            calendar.set(Calendar.MONTH, month - 1);
-            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            LocalDateTime localDateTime = LocalDateTime.of(year, month, 1, 0, 0);
 
-            metrics.setRecordDate(calendar.getTime());
+            metrics.setRecordDate(localDateTime);
             metrics.setDatasets(datasets.data.count.intValue());
             metrics.setHarvestedDatasets(harvested.data.count.intValue());
             metrics.setLocalDatasets(local.data.count.intValue());
@@ -163,7 +161,6 @@ public class InstallationMetricsMonthlyImporter {
             metrics.setDownloads(downloads.data.count);
             metrics.setDataverses(dataverses.data.count.intValue());
 
-            System.out.println("Metrics for " + installation.getHostname() + " " + searchParam + " " + metrics.toString());
             return metrics;
 
         } catch (Exception e) {

@@ -1,5 +1,7 @@
 package edu.harvard.iq.dataverse_hub.controller.api.request;
 
+import java.time.LocalDateTime;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import io.swagger.v3.oas.annotations.Parameter;
 
@@ -53,12 +55,10 @@ public class InstallationFilterParamsMonthly {
     @Parameter(description = "Maximum number of local datasets in the installation for monthly metrics search", example = "1000")
     private Integer maxLocalDatasets;
 
-    @Parameter(description = "From date for monthly metrics search", example = "2020-12-31")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Parameter(description = "Specified year and month to begin the search", example = "2020-12")
     private String fromDate;
 
-    @Parameter(description = "To date for monthly metrics search", example = "2020-12-31")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Parameter(description = "Specified year and month to limit the search", example = "2020-12")
     private String toDate;
 
     // Getters and Setters

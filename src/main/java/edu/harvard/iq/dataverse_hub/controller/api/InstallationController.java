@@ -15,6 +15,7 @@ import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -59,6 +60,7 @@ public class InstallationController {
     @InstallationControllerDocs.getMonthlyInstallationsMetrics
     public List<InstallationMetrics> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
         System.out.println(installationFilterParams);
+        System.out.println(LocalDateTime.now());
         return installationService.getMonthlyInstallationMetrics(installationFilterParams);
     }
 

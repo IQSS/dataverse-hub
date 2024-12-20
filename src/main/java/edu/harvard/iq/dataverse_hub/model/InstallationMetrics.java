@@ -1,6 +1,6 @@
 package edu.harvard.iq.dataverse_hub.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -36,8 +36,7 @@ public class InstallationMetrics {
     @Schema(description = "Date when the metrics were captured",
             example = "2024-10-31T20:13:03.422+00:00")
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    private Date recordDate;
+    private LocalDateTime recordDate;
 
     @Schema(description = "Number of files in the Dataverse installation",
             example = "100000")
@@ -80,11 +79,11 @@ public class InstallationMetrics {
         this.installation = installation;
     }
 
-    public Date getRecordDate() {
+    public LocalDateTime getRecordDate() {
         return this.recordDate;
     }
 
-    public void setRecordDate(Date recordDate) {
+    public void setRecordDate(LocalDateTime recordDate) {
         this.recordDate = recordDate;
     }
 

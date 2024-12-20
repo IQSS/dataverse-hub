@@ -148,6 +148,7 @@ public class InstallationService {
      * @return
      */
     public List<InstallationMetrics> getMonthlyInstallationMetrics(InstallationFilterParamsMonthly installationFilterParams){
+        
         return installationsMetricsRepo.findMonthly(installationFilterParams);
     }
 
