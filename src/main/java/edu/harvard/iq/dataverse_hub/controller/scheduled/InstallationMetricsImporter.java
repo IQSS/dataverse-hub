@@ -1,5 +1,6 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -81,7 +83,8 @@ public class InstallationMetricsImporter {
                 /**
                  * This case would only happen when there are no installations in the database that are responding.
                  */
-                if(dvInstallationsList == null){
+                if(dvInstallationsList == null || dvInstallationsList.size() == 0){
+                    scheduledJobService.saveTransactionLog(JOB_NAME, 0);
                     return null;
                 }
             }
@@ -99,8 +102,7 @@ public class InstallationMetricsImporter {
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
 
         } catch (Exception e) {
-            logger.error("Problem running job {}", JOB_NAME, e);
-            e.printStackTrace();
+            scheduledJobService.saveTransactionLog(JOB_NAME, -1);
             return null;
         }
 
@@ -120,7 +122,7 @@ public class InstallationMetricsImporter {
 
             InstallationMetrics metrics = new InstallationMetrics();
             metrics.setInstallation(installation);
-            metrics.setRecordDate(new Date());
+            metrics.setRecordDate(LocalDateTime.now());
             metrics.setDatasets(datasets.data.count.intValue());
             metrics.setHarvestedDatasets(harvested.data.count.intValue());
             metrics.setLocalDatasets(local.data.count.intValue());

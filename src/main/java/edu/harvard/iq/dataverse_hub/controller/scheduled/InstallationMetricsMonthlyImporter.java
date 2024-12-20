@@ -1,9 +1,8 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
-import java.time.Year;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -82,7 +81,8 @@ public class InstallationMetricsMonthlyImporter {
                 /**
                  * This case would only happen when there are no installations in the database that are responding.
                  */
-                if(dvInstallationsList == null){
+                if(dvInstallationsList == null || dvInstallationsList.size() == 0){
+                    scheduledJobService.saveTransactionLog(JOB_NAME, 0);
                     return null;
                 }
             }
@@ -121,8 +121,7 @@ public class InstallationMetricsMonthlyImporter {
             scheduledJobService.disableRecurrence(DATASETS_ENDPOINT);
 
         } catch (Exception e) {
-            logger.error("Problem running job {}", JOB_NAME, e);
-            e.printStackTrace();
+            scheduledJobService.saveTransactionLog(JOB_NAME, -1);
             return null;
         }
 
@@ -152,12 +151,9 @@ public class InstallationMetricsMonthlyImporter {
             metrics.setInstallation(installation);
 
             //We use a "fake" date since we are importing older monhtly. 
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.YEAR, year);
-            calendar.set(Calendar.MONTH, month - 1);
-            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            LocalDateTime localDateTime = LocalDateTime.of(year, month, 1, 0, 0);
 
-            metrics.setRecordDate(calendar.getTime());
+            metrics.setRecordDate(localDateTime);
             metrics.setDatasets(datasets.data.count.intValue());
             metrics.setHarvestedDatasets(harvested.data.count.intValue());
             metrics.setLocalDatasets(local.data.count.intValue());
@@ -165,7 +161,6 @@ public class InstallationMetricsMonthlyImporter {
             metrics.setDownloads(downloads.data.count);
             metrics.setDataverses(dataverses.data.count.intValue());
 
-            System.out.println("Metrics for " + installation.getHostname() + " " + searchParam + " " + metrics.toString());
             return metrics;
 
         } catch (Exception e) {

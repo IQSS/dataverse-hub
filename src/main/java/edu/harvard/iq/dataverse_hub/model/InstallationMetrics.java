@@ -1,10 +1,11 @@
 package edu.harvard.iq.dataverse_hub.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Schema(description = "Dataverse installation metrics")
@@ -32,7 +35,8 @@ public class InstallationMetrics {
 
     @Schema(description = "Date when the metrics were captured",
             example = "2024-10-31T20:13:03.422+00:00")
-    private Date recordDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime recordDate;
 
     @Schema(description = "Number of files in the Dataverse installation",
             example = "100000")
@@ -75,11 +79,11 @@ public class InstallationMetrics {
         this.installation = installation;
     }
 
-    public Date getRecordDate() {
+    public LocalDateTime getRecordDate() {
         return this.recordDate;
     }
 
-    public void setRecordDate(Date recordDate) {
+    public void setRecordDate(LocalDateTime recordDate) {
         this.recordDate = recordDate;
     }
 

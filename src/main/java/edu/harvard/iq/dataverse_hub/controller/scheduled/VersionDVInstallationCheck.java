@@ -74,6 +74,11 @@ public class VersionDVInstallationCheck {
                 dvInstallationsList = installationService.findAll();
             }
 
+            if(dvInstallationsList.isEmpty()){
+                scheduledJobService.saveTransactionLog(JOB_NAME, 0);
+                return versionInfoList;
+            }
+
             versionInfoList = new ArrayList<InstallationVersionInfo>();
 
             for (Installation installation : dvInstallationsList) {

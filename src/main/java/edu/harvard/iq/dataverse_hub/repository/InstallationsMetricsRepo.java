@@ -41,6 +41,7 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
             AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
             AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
             AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
+            ORDER BY im.installation.dvHubId, im.recordDate
             """)
     public List<InstallationMetrics> findLatest(@RequestParam InstallationFilterParams params);
 
@@ -69,11 +70,12 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
             AND (:#{#params.maxHarvested} IS NULL OR im.harvestedDatasets <= :#{#params.maxHarvested})
             AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
             AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
-            AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
+            AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})            
+            AND (:#{#params.fromDate} IS NULL OR CAST(im.recordDate AS DATE) >= TO_DATE(:#{#params.fromDate}, 'YYYY-MM'))
+            AND (:#{#params.toDate} IS NULL OR CAST(im.recordDate AS DATE) <= TO_DATE(:#{#params.toDate}, 'YYYY-MM'))
+            ORDER BY im.installation.dvHubId, im.recordDate
             """)
     public List<InstallationMetrics> findMonthly(@RequestParam InstallationFilterParamsMonthly params);
 
-
-
-
+   
 }
