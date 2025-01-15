@@ -1,7 +1,14 @@
 package edu.harvard.iq.dataverse_hub.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 @Entity
 @Schema(description = "Dataverse installation")
@@ -151,7 +158,6 @@ public class Installation {
     public void setContactEmail(String contact_email) {
         this.contactEmail = contact_email;
     }
-
 
     @Override
     public String toString() {

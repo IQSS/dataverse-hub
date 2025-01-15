@@ -10,9 +10,11 @@ import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCh
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
+import edu.harvard.iq.dataverse_hub.model.MetricsByInstallation;
 import edu.harvard.iq.dataverse_hub.repository.InstallationRepo;
 import edu.harvard.iq.dataverse_hub.repository.InstallationVersionInfoRepo;
 import edu.harvard.iq.dataverse_hub.repository.InstallationsMetricsRepo;
+import edu.harvard.iq.dataverse_hub.repository.MetricsByInstallationRepo;
 
 import java.util.Date;
 import java.util.List;
@@ -29,6 +31,9 @@ public class InstallationService {
 
     @Autowired
     private InstallationsMetricsRepo installationsMetricsRepo;
+
+    @Autowired
+    private MetricsByInstallationRepo metricsByInstallationRepo;
 
     /**
      * Find an installation by its id
@@ -150,6 +155,13 @@ public class InstallationService {
     public List<InstallationMetrics> getMonthlyInstallationMetrics(InstallationFilterParamsMonthly installationFilterParams){
         
         return installationsMetricsRepo.findMonthly(installationFilterParams);
+    }
+
+    /**
+     * Retrieve all the metrics by installation
+     */
+    public List<MetricsByInstallation> getMetricsByInstallation(InstallationFilterParamsMonthly installationFilterParams){
+        return metricsByInstallationRepo.findMonthly(installationFilterParams);
     }
 
     /**

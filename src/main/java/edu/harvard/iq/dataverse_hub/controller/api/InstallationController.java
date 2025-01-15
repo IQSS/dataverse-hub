@@ -13,6 +13,7 @@ import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCount
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
+import edu.harvard.iq.dataverse_hub.model.MetricsByInstallation;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
 
 import java.time.LocalDateTime;
@@ -58,10 +59,11 @@ public class InstallationController {
 
     @GetMapping("metrics/monthly")
     @InstallationControllerDocs.getMonthlyInstallationsMetrics
-    public List<InstallationMetrics> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
+    public List<MetricsByInstallation> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
         System.out.println(installationFilterParams);
         System.out.println(LocalDateTime.now());
-        return installationService.getMonthlyInstallationMetrics(installationFilterParams);
+        return installationService.getMetricsByInstallation(installationFilterParams);
+        //return installationService.getMonthlyInstallationMetrics(installationFilterParams);
     }
 
 
