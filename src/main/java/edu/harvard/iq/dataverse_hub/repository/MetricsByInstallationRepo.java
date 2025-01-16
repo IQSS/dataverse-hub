@@ -16,6 +16,12 @@ public interface MetricsByInstallationRepo extends JpaRepository<MetricsByInstal
 
     @Query("""
         SELECT mbi FROM MetricsByInstallation mbi
+        WHERE (:#{#params.dvHubId} IS NULL OR mbi.dvHubId = :#{#params.dvHubId})
+        AND (:#{#params.installationName} IS NULL OR UPPER(mbi.name) LIKE %:#{#params.installationName == null ? null : #params.installationName.toUpperCase()}%)
+        """)
+    public List<MetricsByInstallation> findMonthly(@RequestParam InstallationFilterParamsMonthly params);
+    /**
+     * 
         WHERE element(mbi.metrics).recordDate = (
             SELECT MAX(element(mbi_s.metrics).recordDate) 
             FROM MetricsByInstallation mbi_s 
@@ -27,7 +33,5 @@ public interface MetricsByInstallationRepo extends JpaRepository<MetricsByInstal
         AND mbi.country = :#{#params.country}
         AND LOWER(mbi.name) like LOWER(:#{#params.installationName})
         ORDER BY element(mbi.metrics).recordDate DESC
-        """)
-    public List<MetricsByInstallation> findMonthly(@RequestParam InstallationFilterParamsMonthly params);
-    
+     */
 }
