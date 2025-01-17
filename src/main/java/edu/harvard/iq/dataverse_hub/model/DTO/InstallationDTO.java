@@ -1,20 +1,10 @@
-package edu.harvard.iq.dataverse_hub.model;
+package edu.harvard.iq.dataverse_hub.model.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.transaction.Transactional;
-
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import edu.harvard.iq.dataverse_hub.model.Installation;
 import io.swagger.v3.oas.annotations.media.Schema;
-@Entity
-@Schema(description = "Dataverse installation")
-public class Installation {
+import jakarta.persistence.Id;
+
+public class InstallationDTO {
 
     @Id
     @Schema(description = "Unique identifier for the Dataverse installation", 
@@ -65,10 +55,20 @@ public class Installation {
             example = "support@dataverse.harvard.edu")
     private String contactEmail;
     
-    @OneToMany(mappedBy = "installation", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnore
-    private List<InstallationMetrics> metrics;
+    public InstallationDTO(Installation installation) {
+        this.dvHubId = installation.getDvHubId();
+        this.name = installation.getName();
+        this.description = installation.getDescription();
+        this.latitude = installation.getLatitude();
+        this.longitude = installation.getLongitude();
+        this.hostname = installation.getHostname();
+        this.country = installation.getCountry();
+        this.continent = installation.getContinent();
+        this.launchYear = installation.getLaunchYear();
+        this.gdccMember = installation.getGdccMember();
+        this.doiAuthority = installation.getDoiAuthority();
+        this.contactEmail = installation.getContactEmail();
+    }
 
     public String getDvHubId() {
         return this.dvHubId;
@@ -87,7 +87,7 @@ public class Installation {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -142,6 +142,10 @@ public class Installation {
         this.launchYear = launchYear;
     }
 
+    public Boolean isGdccMember() {
+        return this.gdccMember;
+    }
+
     public Boolean getGdccMember() {
         return this.gdccMember;
     }
@@ -162,35 +166,8 @@ public class Installation {
         return this.contactEmail;
     }
 
-    public void setContactEmail(String contact_email) {
-        this.contactEmail = contact_email;
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
     }
-
-    public List<InstallationMetrics> getMetrics() {
-        return this.metrics;
-    }
-
-    public void setMetrics(List<InstallationMetrics> metrics) {
-        this.metrics = metrics;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " dvHubId='" + getDvHubId() + "'" +
-            ", name='" + getName() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", latitude='" + getLatitude() + "'" +
-            ", longitude='" + getLongitude() + "'" +
-            ", hostname='" + getHostname() + "'" +
-            ", country='" + getCountry() + "'" +
-            ", continent='" + getContinent() + "'" +
-            ", launchYear='" + getLaunchYear() + "'" +
-            ", gdccMember='" + getGdccMember() + "'" +
-            ", doiAuthority='" + getDoiAuthority() + "'" +
-            ", contactEmail='" + getContactEmail() + "'" +
-            "}";
-    }
-    
 
 }

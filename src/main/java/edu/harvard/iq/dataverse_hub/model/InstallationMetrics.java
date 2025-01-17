@@ -2,10 +2,10 @@ package edu.harvard.iq.dataverse_hub.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +31,7 @@ public class InstallationMetrics {
 
     @ManyToOne
     @JoinColumn(name = "dv_hub_id")    
+    @JsonBackReference
     private Installation installation;
 
     @Schema(description = "Date when the metrics were captured",

@@ -30,6 +30,7 @@ public class InstallationService {
     @Autowired
     private InstallationsMetricsRepo installationsMetricsRepo;
 
+
     /**
      * Find an installation by its id
      * @param id
@@ -144,21 +145,21 @@ public class InstallationService {
     }
 
     /**
-     * retrieve the most recent metrics from all installations
-     * @return
-     */
-    public List<InstallationMetrics> getMonthlyInstallationMetrics(InstallationFilterParamsMonthly installationFilterParams){
-        
-        return installationsMetricsRepo.findMonthly(installationFilterParams);
-    }
-
-    /**
      * Save all the metrics
      * @param metricsList
      * @return
      */
     public List<InstallationMetrics> saveAllMetrics(List<InstallationMetrics> metricsList) {
         return installationsMetricsRepo.saveAll(metricsList);
+    }
+
+    /**
+     * Retrieve the metrics for all installations by month
+     * @param installationFilterParams
+     * @return
+     */
+    public List<Installation> installationMetricsByMonth(InstallationFilterParamsMonthly installationFilterParams){
+        return installationRepo.installationMetricsByMonth(installationFilterParams);
     }
 
 }
