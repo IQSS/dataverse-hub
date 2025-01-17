@@ -157,7 +157,7 @@ public @interface InstallationControllerDocs {
                         description = "Registered installations metrics by month success",
                         content = @Content(mediaType = "application/json",
                         schema = @Schema(implementation = InstallationMetrics[].class),
-                        examples = @ExampleObject(APIPayloadSamples.INSTALLATION_ARRAY))),
+                        examples = @ExampleObject(APIPayloadSamples.INSTALLATION_METRICS_MONTHLY))),
         @ApiResponse(responseCode = "400", 
                         description = "Bad Request on registered installations metrics by month list",
                         content = @Content(mediaType = "application/json",

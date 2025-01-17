@@ -1,24 +1,14 @@
-package edu.harvard.iq.dataverse_hub.model;
+package edu.harvard.iq.dataverse_hub.model.DTO;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import edu.harvard.iq.dataverse_hub.model.Installation;
+import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "installation")
-public class MetricsByInstallation {
+public class MetricsByInstallationDTO {
 
-    @Id
     private String dvHubId;
-
-    
 
     @Schema(description = "Name of the Dataverse installation",
             example = "Harvard Dataverse")
@@ -36,9 +26,17 @@ public class MetricsByInstallation {
             example = "2008")
     private Integer launchYear;
 
-    @OneToMany(mappedBy = "installation", fetch = FetchType.LAZY)
-    @JsonManagedReference
     private List<InstallationMetrics> metrics;
+
+    public MetricsByInstallationDTO(Installation installation) {
+        this.dvHubId = installation.getDvHubId();
+        this.name = installation.getName();
+        this.country = installation.getCountry();
+        this.continent = installation.getContinent();
+        this.launchYear = installation.getLaunchYear();
+        this.metrics = installation.getMetrics();
+    }
+
 
 
     public String getDvHubId() {

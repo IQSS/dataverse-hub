@@ -123,5 +123,43 @@ public abstract class APIPayloadSamples {
         ]
             """;
         
-
+    public static final String INSTALLATION_METRICS_MONTHLY = """
+    [
+        {
+            "dvHubId": "DVN_HARVARD_DATAVERSE_2008",
+            "name": "Harvard Dataverse",
+            "description": "Share, archive, and get credit for your data. Find and cite data across all research fields.",
+            "latitude": 42.375646,
+            "longitude": -71.113212,
+            "hostname": "dataverse.harvard.edu",
+            "country": "USA",
+            "continent": "North America",
+            "launchYear": 2008,
+            "gdccMember": true,
+            "doiAuthority": "10.791",
+            "contactEmail": "support@dataverse.harvard.edu",
+            "metrics": [
+            {
+                "recordDate": "2024-12-19T21:24:55.074",
+                "files": 2231976,
+                "downloads": 81390914,
+                "datasets": 98708,
+                "harvestedDatasets": 85667,
+                "localDatasets": 98708,
+                "dataverses": 7001
+            },
+            {
+                "recordDate": "2025-01-16T15:05:16.108276",
+                "files": 2234299,
+                "downloads": 83029336,
+                "datasets": 99492,
+                "harvestedDatasets": 85670,
+                "localDatasets": 99492,
+                "dataverses": 7059
+            }
+            ]
+        }
+    ]
+    """;
+     
 }
