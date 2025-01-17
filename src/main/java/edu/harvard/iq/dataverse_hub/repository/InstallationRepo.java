@@ -39,34 +39,34 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
     List<Installation> getHealthyInstallations();
 
     @Query("""
-            SELECT i FROM Installation i
-            JOIN FETCH i.metrics im
-            WHERE im.recordDate = (
-                SELECT MAX(im_sub.recordDate)
-                FROM InstallationMetrics im_sub
-                WHERE im_sub.installation.dvHubId = i.dvHubId
-                AND EXTRACT(YEAR FROM im_sub.recordDate) = EXTRACT(YEAR FROM im.recordDate)
-                AND EXTRACT(MONTH FROM im_sub.recordDate) = EXTRACT(MONTH FROM im.recordDate)
-            )
-            AND (:#{#params.dvHubId} IS NULL OR i.dvHubId = :#{#params.dvHubId})
-            AND (:#{#params.installationName} IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :#{#params.installationName}, '%')))
-            AND (:#{#params.country} IS NULL OR i.country = :#{#params.country})
-            AND (:#{#params.launchYear} IS NULL OR i.launchYear = :#{#params.launchYear})
-            AND (:#{#params.continent} IS NULL OR i.continent = :#{#params.continent})
-            AND (:#{#params.gdccMember} IS NULL OR i.gdccMember = :#{#params.gdccMember})
-            AND (:#{#params.maxFiles} IS NULL OR im.files <= :#{#params.maxFiles})
-            AND (:#{#params.minFiles} IS NULL OR im.files >= :#{#params.minFiles})
-            AND (:#{#params.maxDatasets} IS NULL OR im.datasets <= :#{#params.maxDatasets})
-            AND (:#{#params.minDatasets} IS NULL OR im.datasets >= :#{#params.minDatasets})
-            AND (:#{#params.maxDataverses} IS NULL OR im.dataverses <= :#{#params.maxDataverses})
-            AND (:#{#params.minDataverses} IS NULL OR im.dataverses >= :#{#params.minDataverses})
-            AND (:#{#params.maxHarvested} IS NULL OR im.harvestedDatasets <= :#{#params.maxHarvested})
-            AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
-            AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
-            AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
-            AND (:#{#params.fromDate} IS NULL OR im.recordDate >= TO_DATE(:#{#params.fromDate}, 'YYYY-MM'))
-            AND (:#{#params.toDate} IS NULL OR im.recordDate <= TO_DATE(:#{#params.toDate}, 'YYYY-MM'))
-            ORDER BY im.recordDate ASC
-            """)
+        SELECT i FROM Installation i
+        JOIN FETCH i.metrics im
+        WHERE im.recordDate = (
+            SELECT MAX(im_sub.recordDate)
+            FROM InstallationMetrics im_sub
+            WHERE im_sub.installation.dvHubId = i.dvHubId
+            AND EXTRACT(YEAR FROM im_sub.recordDate) = EXTRACT(YEAR FROM im.recordDate)
+            AND EXTRACT(MONTH FROM im_sub.recordDate) = EXTRACT(MONTH FROM im.recordDate)
+        )
+        AND (:#{#params.dvHubId} IS NULL OR i.dvHubId = :#{#params.dvHubId})
+        AND (:#{#params.installationName} IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :#{#params.installationName}, '%')))
+        AND (:#{#params.country} IS NULL OR i.country = :#{#params.country})
+        AND (:#{#params.launchYear} IS NULL OR i.launchYear = :#{#params.launchYear})
+        AND (:#{#params.continent} IS NULL OR i.continent = :#{#params.continent})
+        AND (:#{#params.gdccMember} IS NULL OR i.gdccMember = :#{#params.gdccMember})
+        AND (:#{#params.maxFiles} IS NULL OR im.files <= :#{#params.maxFiles})
+        AND (:#{#params.minFiles} IS NULL OR im.files >= :#{#params.minFiles})
+        AND (:#{#params.maxDatasets} IS NULL OR im.datasets <= :#{#params.maxDatasets})
+        AND (:#{#params.minDatasets} IS NULL OR im.datasets >= :#{#params.minDatasets})
+        AND (:#{#params.maxDataverses} IS NULL OR im.dataverses <= :#{#params.maxDataverses})
+        AND (:#{#params.minDataverses} IS NULL OR im.dataverses >= :#{#params.minDataverses})
+        AND (:#{#params.maxHarvested} IS NULL OR im.harvestedDatasets <= :#{#params.maxHarvested})
+        AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
+        AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
+        AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
+        AND (:#{#params.fromDate} IS NULL OR im.recordDate >= TO_DATE(:#{#params.fromDate}, 'YYYY-MM'))
+        AND (:#{#params.toDate} IS NULL OR im.recordDate <= TO_DATE(:#{#params.toDate}, 'YYYY-MM'))
+        ORDER BY im.recordDate ASC
+        """)
     List<Installation> installationMetricsByMonth(InstallationFilterParamsMonthly params);
 }
