@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.4</version>
+		<version>3.4.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.harvard.iq</groupId>
@@ -24,6 +24,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
         <!-- Spring Data JPA -->
 		<dependency>
@@ -84,6 +88,31 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>4.0.4</version>
+    </dependency>
+    
+    <!-- If you are using older versions of JAXB -->
+  
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+    		<classifier>jakarta</classifier>
+			<exclusions>
+				<exclusion>
+					<groupId>org.ehcache</groupId>
+					<artifactId>ehcache</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.cache</groupId>
+			<artifactId>cache-api</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 
 	</dependencies>
 	<build>

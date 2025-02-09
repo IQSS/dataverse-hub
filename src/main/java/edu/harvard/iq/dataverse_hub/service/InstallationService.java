@@ -1,6 +1,7 @@
 package edu.harvard.iq.dataverse_hub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
@@ -61,8 +62,10 @@ public class InstallationService {
      * Get the latest status of all installations
      * @return
      */
+    @Cacheable(value = "installationsStatus", key = "#root.method.name")
     public List<InstallationVersionInfo> getInstallationInfo(){
-        return installationVersionInfoRepo.getLatestStatusAll();
+        List<InstallationVersionInfo> installationsStatus = installationVersionInfoRepo.getLatestStatusAll();
+        return installationsStatus;
     }
 
     /**
