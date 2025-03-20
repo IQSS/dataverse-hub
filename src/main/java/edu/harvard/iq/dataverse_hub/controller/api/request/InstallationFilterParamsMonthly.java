@@ -1,11 +1,10 @@
 package edu.harvard.iq.dataverse_hub.controller.api.request;
 
-import java.time.LocalDateTime;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import io.swagger.v3.oas.annotations.Parameter;
 
-public class InstallationFilterParamsMonthly {
+import java.io.Serializable;
+
+public class InstallationFilterParamsMonthly implements Serializable {
 
     @Parameter(description = "Dataverse installation id for monthly metrics search", example = "dvh-0001-2018")
     private String dvHubId;
@@ -229,4 +228,63 @@ public class InstallationFilterParamsMonthly {
             ", toDate='" + getToDate() + "'" +
             "}";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        InstallationFilterParamsMonthly that = (InstallationFilterParamsMonthly) o;
+
+        if (dvHubId != null ? !dvHubId.equals(that.dvHubId) : that.dvHubId != null) return false;
+        if (installationName != null ? !installationName.equals(that.installationName) : that.installationName != null)
+            return false;
+        if (country != null ? !country.equals(that.country) : that.country != null) return false;
+        if (continent != null ? !continent.equals(that.continent) : that.continent != null) return false;
+        if (launchYear != null ? !launchYear.equals(that.launchYear) : that.launchYear != null) return false;
+        if (gdccMember != null ? !gdccMember.equals(that.gdccMember) : that.gdccMember != null) return false;
+        if (maxFiles != null ? !maxFiles.equals(that.maxFiles) : that.maxFiles != null) return false;
+        if (minFiles != null ? !minFiles.equals(that.minFiles) : that.minFiles != null) return false;
+        if (maxDatasets != null ? !maxDatasets.equals(that.maxDatasets) : that.maxDatasets != null) return false;
+        if (minDatasets != null ? !minDatasets.equals(that.minDatasets) : that.minDatasets != null) return false;
+        if (maxDataverses != null ? !maxDataverses.equals(that.maxDataverses) : that.maxDataverses != null)
+            return false;
+        if (minDataverses != null ? !minDataverses.equals(that.minDataverses) : that.minDataverses != null)
+            return false;
+        if (maxHarvested != null ? !maxHarvested.equals(that.maxHarvested) : that.maxHarvested != null) return false;
+        if (minHarvested != null ? !minHarvested.equals(that.minHarvested) : that.minHarvested != null) return false;
+        if (minLocalDatasets != null ? !minLocalDatasets.equals(that.minLocalDatasets) : that.minLocalDatasets != null)
+            return false;
+        if (maxLocalDatasets != null ? !maxLocalDatasets.equals(that.maxLocalDatasets) : that.maxLocalDatasets != null)
+            return false;
+        if (fromDate != null ? !fromDate.equals(that.fromDate) : that.fromDate != null) return false;
+        return toDate != null ? toDate.equals(that.toDate) : that.toDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = dvHubId != null ? dvHubId.hashCode() : 0;
+        result = 31 * result + (installationName != null ? installationName.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (continent != null ? continent.hashCode() : 0);
+        result = 31 * result + (launchYear != null ? launchYear.hashCode() : 0);
+        result = 31 * result + (gdccMember != null ? gdccMember.hashCode() : 0);
+        result = 31 * result + (maxFiles != null ? maxFiles.hashCode() : 0);
+        result = 31 * result + (minFiles != null ? minFiles.hashCode() : 0);
+        result = 31 * result + (maxDatasets != null ? maxDatasets.hashCode() : 0);
+        result = 31 * result + (minDatasets != null ? minDatasets.hashCode() : 0);
+        result = 31 * result + (maxDataverses != null ? maxDataverses.hashCode() : 0);
+        result = 31 * result + (minDataverses != null ? minDataverses.hashCode() : 0);
+        result = 31 * result + (maxHarvested != null ? maxHarvested.hashCode() : 0);
+        result = 31 * result + (minHarvested != null ? minHarvested.hashCode() : 0);
+        result = 31 * result + (minLocalDatasets != null ? minLocalDatasets.hashCode() : 0);
+        result = 31 * result + (maxLocalDatasets != null ? maxLocalDatasets.hashCode() : 0);
+        result = 31 * result + (fromDate != null ? fromDate.hashCode() : 0);
+        result = 31 * result + (toDate != null ? toDate.hashCode() : 0);
+        return result;
+    }
+
+    
+
+    
 }

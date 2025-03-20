@@ -1,5 +1,6 @@
 package edu.harvard.iq.dataverse_hub.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,7 +19,7 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Schema(description = "Dataverse installation metrics")
-public class InstallationMetrics {
+public class InstallationMetrics implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "installation_metrics_seq")    

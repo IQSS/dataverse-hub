@@ -161,6 +161,7 @@ public class InstallationService {
      * @param installationFilterParams
      * @return
      */
+    @Cacheable(value = "installationsMetricsMonthly", key = "#root.method.name + '_' + #installationFilterParams.hashCode()")
     public List<Installation> installationMetricsByMonth(InstallationFilterParamsMonthly installationFilterParams){
         return installationRepo.installationMetricsByMonth(installationFilterParams);
     }
