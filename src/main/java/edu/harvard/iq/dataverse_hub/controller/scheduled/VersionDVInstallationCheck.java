@@ -3,9 +3,12 @@ package edu.harvard.iq.dataverse_hub.controller.scheduled;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.cache.CacheManager;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,12 +35,15 @@ public class VersionDVInstallationCheck {
     @Autowired
     private RestUtilService restUtilService;
 
+    @Autowired
+    CacheManager cacheManager;
+
     private final String JOB_NAME = this.getClass().getSimpleName();
     private final String PROTOCOL = "https://";
     private final String ENDPOINT = "/api/info/version";
 
 
-    @Scheduled(fixedRate = 21600000)
+    @Scheduled(fixedRate = 10000)
     public List<InstallationVersionInfo> runTask(){
         logger.info("Starting {} job", JOB_NAME);
 
@@ -88,6 +94,7 @@ public class VersionDVInstallationCheck {
 
             installationService.saveAllVersionInfo(versionInfoList);
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
+            clearCache();
         } catch (Exception e) {
             scheduledJobService.saveTransactionLog(JOB_NAME, -1);
         }
@@ -138,6 +145,11 @@ public class VersionDVInstallationCheck {
         public void setBuild(String build) {
             this.build = build;
         }
+    }
+
+    private void clearCache(){
+        cacheManager.getCache("installationsStatus").clear();
+        logger.info("Clearing cache for " + JOB_NAME);
     }
 
 

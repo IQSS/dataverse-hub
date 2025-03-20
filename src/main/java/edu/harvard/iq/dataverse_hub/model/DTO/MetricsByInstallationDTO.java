@@ -1,12 +1,13 @@
 package edu.harvard.iq.dataverse_hub.model.DTO;
 
+import java.io.Serializable;
 import java.util.List;
 
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-public class MetricsByInstallationDTO {
+public class MetricsByInstallationDTO implements Serializable {
 
     private String dvHubId;
 

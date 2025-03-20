@@ -3,7 +3,10 @@ package edu.harvard.iq.dataverse_hub.controller.api;
 
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import edu.harvard.iq.dataverse_hub.controller.api.annotations.InstallationControllerDocs;
@@ -31,6 +34,7 @@ public class InstallationController {
 
     @GetMapping()
     @InstallationControllerDocs.GetInstallations
+    @CrossOrigin()
     public List<InstallationDTO> getInstallations(){
         List<Installation> installations = installationService.findAll();
         List<InstallationDTO> installationDTOs = new ArrayList<InstallationDTO>();
@@ -48,18 +52,21 @@ public class InstallationController {
 
     @GetMapping("status")
     @InstallationControllerDocs.GetInstallationsStatus
+    @CrossOrigin()
     public List<InstallationVersionInfo> geInstallationsStatus(){
         return installationService.getInstallationInfo();
     }
 
     @GetMapping("country")
     @InstallationControllerDocs.getInstallationsByCountry
+    @CrossOrigin()
     public List<InstallationsByCountry> getInstallationsByCountry(){
         return installationService.getInstallationsByCountry();
     }
 
     @GetMapping("metrics")
     @InstallationControllerDocs.getInstallationsMetrics
+    @CrossOrigin()
     public List<MetricsByInstallationDTO> getInstallationsMetrics(@ParameterObject InstallationFilterParams installationFilterParams){
 
         InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();    
@@ -95,6 +102,7 @@ public class InstallationController {
 
     @GetMapping("metrics/monthly")
     @InstallationControllerDocs.getMonthlyInstallationsMetrics
+    @CrossOrigin()
     public List<MetricsByInstallationDTO> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
         
         List<Installation> installations = installationService.installationMetricsByMonth(installationFilterParams);

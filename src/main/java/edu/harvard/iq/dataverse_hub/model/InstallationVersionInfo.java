@@ -1,5 +1,6 @@
 package edu.harvard.iq.dataverse_hub.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,7 +14,7 @@ import jakarta.persistence.SequenceGenerator;
 
 @Entity
 @Schema(description = "A representation of the version of a Dataverse installation")
-public class InstallationVersionInfo {
+public class InstallationVersionInfo implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "installation_version_info_seq")    

@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 @Entity
 @Schema(description = "Dataverse installation")
-public class Installation {
+public class Installation implements java.io.Serializable {
 
     @Id
     @Schema(description = "Unique identifier for the Dataverse installation", 
