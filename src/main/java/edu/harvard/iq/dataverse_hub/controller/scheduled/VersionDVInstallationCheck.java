@@ -8,7 +8,6 @@ import javax.cache.CacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -43,7 +42,7 @@ public class VersionDVInstallationCheck {
     private final String ENDPOINT = "/api/info/version";
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 3600000)
     public List<InstallationVersionInfo> runTask(){
         logger.info("Starting {} job", JOB_NAME);
 

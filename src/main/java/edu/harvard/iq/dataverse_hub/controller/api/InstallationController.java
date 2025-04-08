@@ -3,8 +3,6 @@ package edu.harvard.iq.dataverse_hub.controller.api;
 
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterPar
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
-import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.model.DTO.InstallationDTO;
 import edu.harvard.iq.dataverse_hub.model.DTO.MetricsByInstallationDTO;
@@ -69,7 +66,7 @@ public class InstallationController {
     @CrossOrigin()
     public List<MetricsByInstallationDTO> getInstallationsMetrics(@ParameterObject InstallationFilterParams installationFilterParams){
 
-        InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();    
+        InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();   
         installationFilterParamsMonthly.setDvHubId(installationFilterParams.getDvHubId());
         installationFilterParamsMonthly.setInstallationName(installationFilterParams.getInstallationName());
         installationFilterParamsMonthly.setCountry(installationFilterParams.getCountry());
@@ -87,9 +84,10 @@ public class InstallationController {
         installationFilterParamsMonthly.setMaxLocalDatasets(installationFilterParams.getMaxLocalDatasets());
         installationFilterParamsMonthly.setMinLocalDatasets(installationFilterParams.getMinLocalDatasets());
         
-        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM"));
         installationFilterParamsMonthly.setFromDate(currentDate);
         
+        System.out.println(installationFilterParamsMonthly.hashCode());
         List<Installation> installations = installationService.installationMetricsByMonth(installationFilterParamsMonthly);
 
         List<MetricsByInstallationDTO> metricsByInstallationDTOs = new ArrayList<MetricsByInstallationDTO>();
@@ -104,6 +102,8 @@ public class InstallationController {
     @InstallationControllerDocs.getMonthlyInstallationsMetrics
     @CrossOrigin()
     public List<MetricsByInstallationDTO> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
+
+        System.out.println(installationFilterParams.hashCode());
         
         List<Installation> installations = installationService.installationMetricsByMonth(installationFilterParams);
 

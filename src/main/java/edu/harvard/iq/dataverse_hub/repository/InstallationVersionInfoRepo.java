@@ -9,14 +9,15 @@ import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 public interface InstallationVersionInfoRepo extends JpaRepository<InstallationVersionInfo, Integer> {
 
     @Query("""
-            SELECT ivi FROM InstallationVersionInfo ivi
-            RIGHT JOIN FETCH InstallationVersionInfo ivi_r
-            ON ivi.installation.dvHubId = ivi_r.installation.dvHubId 
-            AND ivi.recordDate = (
-                SELECT MAX(ivi_sub.recordDate) 
-                FROM InstallationVersionInfo ivi_sub 
-                WHERE ivi_sub.installation.dvHubId = ivi.installation.dvHubId
-            )        
-            """)    
+            SELECT ivi 
+            FROM InstallationVersionInfo ivi
+            JOIN (
+                SELECT installation.dvHubId AS dvHubId, MAX(recordDate) AS maxRecordDate
+                FROM InstallationVersionInfo
+                GROUP BY installation.dvHubId
+            ) AS maxDates
+            ON ivi.installation.dvHubId = maxDates.dvHubId 
+            AND ivi.recordDate = maxDates.maxRecordDate
+            """) 
     public List<InstallationVersionInfo> getLatestStatusAll();
 }
