@@ -8,7 +8,6 @@ import javax.cache.CacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -36,14 +35,14 @@ public class VersionDVInstallationCheck {
     private RestUtilService restUtilService;
 
     @Autowired
-    CacheManager cacheManager;
+    private CacheManager cacheManager;
 
     private final String JOB_NAME = this.getClass().getSimpleName();
     private final String PROTOCOL = "https://";
     private final String ENDPOINT = "/api/info/version";
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 3600000)
     public List<InstallationVersionInfo> runTask(){
         logger.info("Starting {} job", JOB_NAME);
 
@@ -57,10 +56,6 @@ public class VersionDVInstallationCheck {
         }
     }
 
-    /**
-     * @param isDue
-     * @return
-     */
     public List<InstallationVersionInfo> startTask(Boolean isDue) throws JsonProcessingException {
 
         if(isDue == null){
@@ -70,7 +65,7 @@ public class VersionDVInstallationCheck {
         return isDue ? importInstallationsStatus(null) : null;
     }
 
-    
+ 
     public List<InstallationVersionInfo> importInstallationsStatus(List<Installation> dvInstallationsList) {
         
         List<InstallationVersionInfo> versionInfoList = null;
@@ -95,6 +90,7 @@ public class VersionDVInstallationCheck {
             installationService.saveAllVersionInfo(versionInfoList);
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
             clearCache();
+            installationService.getInstallationInfo();
         } catch (Exception e) {
             scheduledJobService.saveTransactionLog(JOB_NAME, -1);
         }

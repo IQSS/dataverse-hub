@@ -3,8 +3,6 @@ package edu.harvard.iq.dataverse_hub.controller.api;
 
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterPar
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
-import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.model.DTO.InstallationDTO;
 import edu.harvard.iq.dataverse_hub.model.DTO.MetricsByInstallationDTO;

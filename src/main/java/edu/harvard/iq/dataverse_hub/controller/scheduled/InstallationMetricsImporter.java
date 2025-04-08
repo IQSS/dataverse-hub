@@ -2,19 +2,21 @@ package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import javax.cache.CacheManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
@@ -46,6 +48,9 @@ public class InstallationMetricsImporter {
     @Autowired
     private RestUtilService restUtilService;
 
+    @Autowired
+    private CacheManager cacheManager;
+
 
     @Scheduled(fixedRate = 21600000)
     public List<InstallationMetrics> runTask() {
@@ -73,6 +78,7 @@ public class InstallationMetricsImporter {
         return isDue ? importInstallationsMetrics(null) : null;
     }
 
+    //@CacheEvict(value = "installationsMetricsMonthly", allEntries = true)
     public List<InstallationMetrics> importInstallationsMetrics(List<Installation> dvInstallationsList) {
         List<InstallationMetrics> metricsList = null;
 
@@ -100,7 +106,9 @@ public class InstallationMetricsImporter {
 
             installationService.saveAllMetrics(metricsList);
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
-
+            //Call to the api to cache the metrics by month
+            installationService.installationMetricsByMonth(new InstallationFilterParamsMonthly());
+            
         } catch (Exception e) {
             scheduledJobService.saveTransactionLog(JOB_NAME, -1);
             return null;
@@ -166,6 +174,11 @@ public class InstallationMetricsImporter {
         public void setCount(Long count) {
             this.count = count;
         }
+    }
+
+    private void clearCache(){
+        cacheManager.getCache("installationsMetricsMonthly").clear();
+        logger.info("Clearing cache for " + JOB_NAME);
     }
 
   
