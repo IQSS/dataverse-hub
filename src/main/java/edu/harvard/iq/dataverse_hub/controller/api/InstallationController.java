@@ -66,7 +66,7 @@ public class InstallationController {
     @CrossOrigin()
     public List<MetricsByInstallationDTO> getInstallationsMetrics(@ParameterObject InstallationFilterParams installationFilterParams){
 
-        InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();    
+        InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();   
         installationFilterParamsMonthly.setDvHubId(installationFilterParams.getDvHubId());
         installationFilterParamsMonthly.setInstallationName(installationFilterParams.getInstallationName());
         installationFilterParamsMonthly.setCountry(installationFilterParams.getCountry());
@@ -84,9 +84,10 @@ public class InstallationController {
         installationFilterParamsMonthly.setMaxLocalDatasets(installationFilterParams.getMaxLocalDatasets());
         installationFilterParamsMonthly.setMinLocalDatasets(installationFilterParams.getMinLocalDatasets());
         
-        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM"));
         installationFilterParamsMonthly.setFromDate(currentDate);
         
+        System.out.println(installationFilterParamsMonthly.hashCode());
         List<Installation> installations = installationService.installationMetricsByMonth(installationFilterParamsMonthly);
 
         List<MetricsByInstallationDTO> metricsByInstallationDTOs = new ArrayList<MetricsByInstallationDTO>();
@@ -101,6 +102,8 @@ public class InstallationController {
     @InstallationControllerDocs.getMonthlyInstallationsMetrics
     @CrossOrigin()
     public List<MetricsByInstallationDTO> getMonthlyInstallationsMetrics(@ParameterObject InstallationFilterParamsMonthly installationFilterParams){
+
+        System.out.println(installationFilterParams.hashCode());
         
         List<Installation> installations = installationService.installationMetricsByMonth(installationFilterParams);
 
