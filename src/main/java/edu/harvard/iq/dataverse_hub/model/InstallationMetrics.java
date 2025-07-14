@@ -31,7 +31,7 @@ public class InstallationMetrics implements Serializable {
     private Integer recordId;
 
     @ManyToOne
-    @JoinColumn(name = "dv_hub_id")    
+    @JoinColumn(name = "hostname")    
     @JsonBackReference
     private Installation installation;
 

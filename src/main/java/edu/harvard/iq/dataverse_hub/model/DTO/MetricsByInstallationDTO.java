@@ -9,7 +9,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class MetricsByInstallationDTO implements Serializable {
 
-    private String dvHubId;
+    @Schema(description = "Unique identifier and address for the Dataverse installation",
+            example = "dataverse.harvard.edu")
+    private String hostname;
 
     @Schema(description = "Name of the Dataverse installation",
             example = "Harvard Dataverse")
@@ -27,26 +29,23 @@ public class MetricsByInstallationDTO implements Serializable {
             example = "2008")
     private Integer launchYear;
 
+    @Schema(description = "Indicates whether the Dataverse installation is active",
+            example = "true")
+    private Boolean active;
+
     private List<InstallationMetrics> metrics;
 
     public MetricsByInstallationDTO(Installation installation) {
-        this.dvHubId = installation.getDvHubId();
+        this.hostname = installation.getHostname();
         this.name = installation.getName();
         this.country = installation.getCountry();
         this.continent = installation.getContinent();
         this.launchYear = installation.getLaunchYear();
         this.metrics = installation.getMetrics();
+        this.active = installation.getActive();
     }
 
 
-
-    public String getDvHubId() {
-        return this.dvHubId;
-    }
-
-    public void setDvHubId(String dvHubId) {
-        this.dvHubId = dvHubId;
-    }
 
     public String getName() {
         return this.name;
@@ -86,6 +85,22 @@ public class MetricsByInstallationDTO implements Serializable {
 
     public void setMetrics(List<InstallationMetrics> metrics) {
         this.metrics = metrics;
+    }
+
+    public String getHostname() {
+        return this.hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
    

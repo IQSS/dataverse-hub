@@ -16,66 +16,23 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class Installation implements java.io.Serializable {
 
     @Id
-    @Schema(description = "Unique identifier for the Dataverse installation", 
-            example = "DVH_HARVARD_DATAVERSE_2008")
-    private String dvHubId;
-
-    @Schema(description = "Name of the Dataverse installation",
-            example = "Harvard Dataverse")
-    private String name;
-    
-    @Schema(description = "Description of the Dataverse installation",
-            example = "Share, archive, and get credit for your data. Find and cite data across all research fields")
-    private String description;
-
-    @Schema(description = "Latitude of the Dataverse installation",
-            example = "42.375646")
-    private Double latitude;
-
-    @Schema(description = "Longitude of the Dataverse installation",
-            example = "-71.113212")
-    private Double longitude;
-
-    @Schema(description = "Host address of the Dataverse installation",
-            example = "dataverse.harvard.edu")
     private String hostname;
-
-    @Schema(description = "Country of the Dataverse installation",
-            example = "United States")
+    private String name;
+    private String description;
+    private Double latitude;
+    private Double longitude;
     private String country;
-
-    @Schema(description = "Continent of the Dataverse installation",
-            example = "North America")
     private String continent;
-
-    @Schema(description = "Year of launch of the Dataverse installation",
-            example = "2008")
     private Integer launchYear;
-
-    @Schema(description = "Whether the Dataverse installation is a member of the Global Dataverse Community Consortium",
-            example = "true")
     private Boolean gdccMember;
-
-    @Schema(description = "DOI authority of the Dataverse installation",
-            example = "\\u2415")
     private String doiAuthority;
-
-    @Schema(description = "Contact email of the admin of the Dataverse installation",
-            example = "support@dataverse.harvard.edu")
     private String contactEmail;
+    private boolean active;
     
     @OneToMany(mappedBy = "installation", fetch = FetchType.LAZY)
     @JsonManagedReference
     @JsonIgnore
     private List<InstallationMetrics> metrics;
-
-    public String getDvHubId() {
-        return this.dvHubId;
-    }
-
-    public void setDvHubId(String dvHubId) {
-        this.dvHubId = dvHubId;
-    }
 
     public String getName() {
         return this.name;
@@ -173,23 +130,12 @@ public class Installation implements java.io.Serializable {
         this.metrics = metrics;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " dvHubId='" + getDvHubId() + "'" +
-            ", name='" + getName() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", latitude='" + getLatitude() + "'" +
-            ", longitude='" + getLongitude() + "'" +
-            ", hostname='" + getHostname() + "'" +
-            ", country='" + getCountry() + "'" +
-            ", continent='" + getContinent() + "'" +
-            ", launchYear='" + getLaunchYear() + "'" +
-            ", gdccMember='" + getGdccMember() + "'" +
-            ", doiAuthority='" + getDoiAuthority() + "'" +
-            ", contactEmail='" + getContactEmail() + "'" +
-            "}";
+    public boolean getActive() {
+        return active;
     }
-    
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
 }

@@ -141,7 +141,7 @@ public class InstallationMetricsImporter {
             return metrics;
 
         } catch (Exception e) {
-            logger.error("Problem running job {} for {}", JOB_NAME, installation.getDvHubId(), e);
+            logger.error("Problem running job {} for {}", JOB_NAME, installation.getHostname(), e);
             return null;
         }
     

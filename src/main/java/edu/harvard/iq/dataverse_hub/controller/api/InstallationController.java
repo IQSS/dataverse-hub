@@ -67,7 +67,8 @@ public class InstallationController {
     public List<MetricsByInstallationDTO> getInstallationsMetrics(@ParameterObject InstallationFilterParams installationFilterParams){
 
         InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();   
-        installationFilterParamsMonthly.setDvHubId(installationFilterParams.getDvHubId());
+        installationFilterParamsMonthly.setIsActive(installationFilterParams.getIsActive());
+        installationFilterParamsMonthly.setHostname(installationFilterParams.getHostname());
         installationFilterParamsMonthly.setInstallationName(installationFilterParams.getInstallationName());
         installationFilterParamsMonthly.setCountry(installationFilterParams.getCountry());
         installationFilterParamsMonthly.setContinent(installationFilterParams.getContinent());

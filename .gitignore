@@ -33,3 +33,5 @@ build/
 .vscode/
 
 docker-dev-volumes
+
+*.log

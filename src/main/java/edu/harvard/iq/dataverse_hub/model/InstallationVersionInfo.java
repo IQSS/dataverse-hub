@@ -27,7 +27,7 @@ public class InstallationVersionInfo implements Serializable {
     private Integer recordId;
     
     @ManyToOne
-    @JoinColumn(name = "dv_hub_id")    
+    @JoinColumn(name = "hostname")    
     private Installation installation;
     
     @Schema(description = "Status of the Dataverse installation",

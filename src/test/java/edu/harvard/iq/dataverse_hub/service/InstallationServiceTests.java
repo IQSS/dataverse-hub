@@ -44,10 +44,10 @@ public class InstallationServiceTests {
 
             installationService.save(installationDTO);
 
-            installationDTO.setDvHubId("DVHUB-123");
+            installationDTO.setHostname("hostname");
             
             installationService.save(installationDTO);
-            assertNotNull(installationService.findById("DVHUB-123"));
+            assertNotNull(installationService.findById("hostname"));
 
         });
         

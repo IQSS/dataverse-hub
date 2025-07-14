@@ -4,9 +4,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 
 public class InstallationFilterParams {
 
-    @Parameter(description = "Dataverse installation id", example = "dvh-0001-2018")
-    private String dvHubId;
-
     @Parameter(description = "Name of the installation", example = "Harvard Dataverse")
     private String installationName;
 
@@ -52,15 +49,13 @@ public class InstallationFilterParams {
     @Parameter(description = "Maximum number of local datasets in the installation", example = "1000")
     private Integer maxLocalDatasets;
 
+    @Parameter(description = "Indicates if the installation is currently monitored", example = "true")
+    private Boolean isActive;
+
+    @Parameter(description = "Hostname of the installation", example = "dataverse.harvard.edu")
+    private String hostname;
+
     // Getters and Setters
-
-    public String getDvHubId() {
-        return dvHubId;
-    }
-
-    public void setDvHubId(String dvHubId) {
-        this.dvHubId = dvHubId;
-    }
 
     public String getInstallationName() {
         return installationName;
@@ -182,10 +177,27 @@ public class InstallationFilterParams {
         this.maxLocalDatasets = maxLocalDatasets;
     }
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
+    }
+
     @Override
     public String toString() {
         return "{" +
-            " dvHubId='" + getDvHubId() + "'" +
+            " hostname='" + getHostname() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             ", installationName='" + getInstallationName() + "'" +
             ", country='" + getCountry() + "'" +
             ", continent='" + getContinent() + "'" +

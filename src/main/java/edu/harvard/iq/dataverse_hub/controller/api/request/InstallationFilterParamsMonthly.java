@@ -6,8 +6,6 @@ import java.io.Serializable;
 
 public class InstallationFilterParamsMonthly implements Serializable {
 
-    @Parameter(description = "Dataverse installation id for monthly metrics search", example = "dvh-0001-2018")
-    private String dvHubId;
 
     @Parameter(description = "Name of the installation for monthly metrics search", example = "Harvard Dataverse")
     private String installationName;
@@ -60,15 +58,13 @@ public class InstallationFilterParamsMonthly implements Serializable {
     @Parameter(description = "Specified year and month to limit the search", example = "2020-12")
     private String toDate;
 
+    @Parameter(description = "Indicates if the installation is currently monitored", example = "true")
+    private Boolean isActive;
+
+    @Parameter(description = "Hostname of the installation", example = "dataverse.harvard.edu")
+    private String hostname;
+
     // Getters and Setters
-    public String getDvHubId() {
-        return dvHubId;
-    }
-
-    public void setDvHubId(String dvHubId) {
-        this.dvHubId = dvHubId;
-    }
-
     public String getInstallationName() {
         return installationName;
     }
@@ -205,10 +201,26 @@ public class InstallationFilterParamsMonthly implements Serializable {
         this.toDate = toDate;
     }
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
+    }
+
     @Override
     public String toString() {
         return "{" +
-            " dvHubId='" + getDvHubId() + "'" +
+            "hostname='" + getHostname() + "'" +
             ", installationName='" + getInstallationName() + "'" +
             ", country='" + getCountry() + "'" +
             ", continent='" + getContinent() + "'" +
@@ -226,6 +238,7 @@ public class InstallationFilterParamsMonthly implements Serializable {
             ", maxLocalDatasets='" + getMaxLocalDatasets() + "'" +
             ", fromDate='" + getFromDate() + "'" +
             ", toDate='" + getToDate() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             "}";
     }
 
@@ -235,8 +248,8 @@ public class InstallationFilterParamsMonthly implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         InstallationFilterParamsMonthly that = (InstallationFilterParamsMonthly) o;
-
-        if (dvHubId != null ? !dvHubId.equals(that.dvHubId) : that.dvHubId != null) return false;
+        if (hostname != null ? !hostname.equals(that.hostname) : that.hostname != null) return false;
+        if( isActive != null ? !isActive.equals(that.isActive) : that.isActive != null) return false;
         if (installationName != null ? !installationName.equals(that.installationName) : that.installationName != null)
             return false;
         if (country != null ? !country.equals(that.country) : that.country != null) return false;
@@ -258,12 +271,17 @@ public class InstallationFilterParamsMonthly implements Serializable {
         if (maxLocalDatasets != null ? !maxLocalDatasets.equals(that.maxLocalDatasets) : that.maxLocalDatasets != null)
             return false;
         if (fromDate != null ? !fromDate.equals(that.fromDate) : that.fromDate != null) return false;
-        return toDate != null ? toDate.equals(that.toDate) : that.toDate == null;
+            return toDate != null ? toDate.equals(that.toDate) : that.toDate == null;
+        
+
     }
 
+    /**
+     * Returns a hash code value for the object, this is used for caching.
+     */
     @Override
     public int hashCode() {
-        int result = dvHubId != null ? dvHubId.hashCode() : 0;
+        int result = hostname != null ? hostname.hashCode() : 0;
         result = 31 * result + (installationName != null ? installationName.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (continent != null ? continent.hashCode() : 0);
@@ -281,6 +299,7 @@ public class InstallationFilterParamsMonthly implements Serializable {
         result = 31 * result + (maxLocalDatasets != null ? maxLocalDatasets.hashCode() : 0);
         result = 31 * result + (fromDate != null ? fromDate.hashCode() : 0);
         result = 31 * result + (toDate != null ? toDate.hashCode() : 0);
+        result = 31 * result + (isActive != null ? isActive.hashCode() : 0);
         return result;
     }
 

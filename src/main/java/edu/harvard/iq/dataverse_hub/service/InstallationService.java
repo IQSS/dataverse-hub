@@ -58,6 +58,10 @@ public class InstallationService {
         return installationRepo.findAll();
     }
 
+    public List<Installation> getMissingInstallations(List<Installation> installations) {
+        return installationRepo.getMissingInstallations(installations);
+    }
+
     /**
      * Get the latest status of all installations
      * @return
@@ -165,5 +169,7 @@ public class InstallationService {
     public List<Installation> installationMetricsByMonth(InstallationFilterParamsMonthly installationFilterParams){
         return installationRepo.installationMetricsByMonth(installationFilterParams);
     }
+
+
 
 }

@@ -12,8 +12,8 @@ import edu.harvard.iq.dataverse_hub.model.Installation;
 
 public interface InstallationRepo extends JpaRepository<Installation, String> {
     
-    @Query("SELECT i FROM Installation i WHERE LOWER(i.dvHubId) = LOWER(?1)")
-    Installation findByDVHubId(String dvHubId);
+    @Query("SELECT i FROM Installation i WHERE LOWER(i.hostname) = LOWER(?1)")
+    Installation findByHostname(String hostname);
 
     @Query("""
             SELECT NEW edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry(
@@ -28,12 +28,12 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
     @Query("""
             SELECT i FROM Installation i 
             RIGHT JOIN FETCH InstallationVersionInfo ivi
-            ON i.dvHubId = ivi.installation.dvHubId
+            ON i.hostname = ivi.installation.hostname
             WHERE ivi.status = 'OK'
             AND ivi.recordDate = (
                 SELECT MAX(ivi_sub.recordDate) 
                 FROM InstallationVersionInfo ivi_sub 
-                WHERE ivi_sub.installation.dvHubId = ivi.installation.dvHubId
+                WHERE ivi_sub.installation.hostname = ivi.installation.hostname
             )   
             """)
     List<Installation> getHealthyInstallations();
@@ -44,16 +44,17 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
         WHERE im.recordDate = (
             SELECT MAX(im_sub.recordDate)
             FROM InstallationMetrics im_sub
-            WHERE im_sub.installation.dvHubId = i.dvHubId
+            WHERE im_sub.installation.hostname = i.hostname
             AND EXTRACT(YEAR FROM im_sub.recordDate) = EXTRACT(YEAR FROM im.recordDate)
             AND EXTRACT(MONTH FROM im_sub.recordDate) = EXTRACT(MONTH FROM im.recordDate)
         )
-        AND (:#{#params.dvHubId} IS NULL OR i.dvHubId = :#{#params.dvHubId})
+        AND (:#{#params.hostname} IS NULL OR i.hostname = :#{#params.hostname})
         AND (:#{#params.installationName} IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :#{#params.installationName}, '%')))
         AND (:#{#params.country} IS NULL OR i.country = :#{#params.country})
         AND (:#{#params.launchYear} IS NULL OR i.launchYear = :#{#params.launchYear})
         AND (:#{#params.continent} IS NULL OR i.continent = :#{#params.continent})
         AND (:#{#params.gdccMember} IS NULL OR i.gdccMember = :#{#params.gdccMember})
+        AND (:#{#params.active} IS NULL OR i.active = :#{#params.active})
         AND (:#{#params.maxFiles} IS NULL OR im.files <= :#{#params.maxFiles})
         AND (:#{#params.minFiles} IS NULL OR im.files >= :#{#params.minFiles})
         AND (:#{#params.maxDatasets} IS NULL OR im.datasets <= :#{#params.maxDatasets})
@@ -65,8 +66,24 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
         AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
         AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
         AND (:#{#params.fromDate} IS NULL OR im.recordDate >= TO_DATE(:#{#params.fromDate}, 'YYYY-MM'))
-        AND (:#{#params.toDate} IS NULL OR im.recordDate <= TO_DATE(:#{#params.toDate}, 'YYYY-MM'))
+        AND (:#{#params.toDate} IS NULL OR im.recordDate <= TO_DATE(:#{#params.toDate}, 'YYYY-MM'))        
         ORDER BY im.recordDate ASC
         """)
     List<Installation> installationMetricsByMonth(InstallationFilterParamsMonthly params);
+
+    @Query("""
+            SELECT i FROM Installation i
+            WHERE i.active = true
+            AND i.hostname NOT IN (
+                SELECT ivi.installation.hostname
+                FROM InstallationVersionInfo ivi
+                WHERE ivi.status = 'OK'
+                AND ivi.recordDate = (
+                    SELECT MAX(ivi_sub.recordDate)
+                    FROM InstallationVersionInfo ivi_sub
+                    WHERE ivi_sub.installation.hostname = ivi.installation.hostname
+                )
+            )
+            """)
+    List<Installation> getMissingInstallations(List<Installation> installation);
 }

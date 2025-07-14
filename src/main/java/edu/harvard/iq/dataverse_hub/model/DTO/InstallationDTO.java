@@ -6,11 +6,6 @@ import jakarta.persistence.Id;
 
 public class InstallationDTO {
 
-    @Id
-    @Schema(description = "Unique identifier for the Dataverse installation", 
-            example = "DVH_HARVARD_DATAVERSE_2008")
-    private String dvHubId;
-
     @Schema(description = "Name of the Dataverse installation",
             example = "Harvard Dataverse")
     private String name;
@@ -54,28 +49,24 @@ public class InstallationDTO {
     @Schema(description = "Contact email of the admin of the Dataverse installation",
             example = "support@dataverse.harvard.edu")
     private String contactEmail;
+
+    @Schema(description = "Indicates if the Dataverse installation is currently monitored on the hub",
+            example = "true")
+    private boolean active;
     
     public InstallationDTO(Installation installation) {
-        this.dvHubId = installation.getDvHubId();
+        this.hostname = installation.getHostname();
         this.name = installation.getName();
         this.description = installation.getDescription();
         this.latitude = installation.getLatitude();
         this.longitude = installation.getLongitude();
-        this.hostname = installation.getHostname();
         this.country = installation.getCountry();
         this.continent = installation.getContinent();
         this.launchYear = installation.getLaunchYear();
         this.gdccMember = installation.getGdccMember();
         this.doiAuthority = installation.getDoiAuthority();
         this.contactEmail = installation.getContactEmail();
-    }
-
-    public String getDvHubId() {
-        return this.dvHubId;
-    }
-
-    public void setDvHubId(String dvHubId) {
-        this.dvHubId = dvHubId;
+        this.active = installation.getActive();
     }
 
     public String getName() {
@@ -168,6 +159,14 @@ public class InstallationDTO {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public boolean getActive() {
+        return this.active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 }

@@ -23,7 +23,7 @@ public class InstallationDaoTests {
         installation.setDoiAuthority("doi");
 
         
-        assertNull(installation.getDvHubId());
+        assertNull(installation.getHostname());
         assertNotNull(installation.toString());
         
     }

@@ -67,8 +67,14 @@ public class InstallationGitImporter {
         List<Installation> installationsDtos = null;
         try {
             GitHubInstallationWrapper installationsMapper = restUtilService.retrieveRestAPIObject(url, GitHubInstallationWrapper.class);
+
             installationsDtos = InstallationGitImporter.transform(installationsMapper);
-            installationsDtos = installationService.saveAllInstallations(installationsDtos);
+            List<Installation> missingInstallations = installationService.getMissingInstallations(installationsDtos);
+            System.out.println(missingInstallations);
+            System.out.println(missingInstallations.size());
+            
+
+            installationsDtos = installationService.saveAllInstallations(installationsDtos);            
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
         } catch (Exception e) {
             scheduledJobService.saveTransactionLog(JOB_NAME, -1);
@@ -86,13 +92,13 @@ public class InstallationGitImporter {
         if (installationWrapper == null) {
             throw new IllegalArgumentException("InstallationWrapper cannot be null");
         }
-        Installation installation = new Installation();
-        installation.setDvHubId("DVN_" + installationWrapper.name.toUpperCase().replace(" ", "_") + "_" + installationWrapper.launchYear);
+        Installation installation = new Installation();        
+        installation.setHostname(installationWrapper.hostname); 
         installation.setName(installationWrapper.name);
         installation.setDescription(installationWrapper.description);
         installation.setLatitude(installationWrapper.latitude);
         installation.setLongitude(installationWrapper.longitude);
-        installation.setHostname(installationWrapper.hostname); 
+        installation.setActive(true);
         installation.setCountry(installationWrapper.country);
         installation.setContinent(installationWrapper.continent);
         installation.setLaunchYear(installationWrapper.launchYear);

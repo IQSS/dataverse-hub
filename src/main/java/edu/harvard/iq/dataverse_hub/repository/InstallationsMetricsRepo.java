@@ -20,18 +20,19 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
     @Query("""
             SELECT im FROM InstallationMetrics im
             RIGHT JOIN FETCH InstallationMetrics im_r
-            ON im.installation.dvHubId = im.installation.dvHubId 
+            ON im.installation.hostname = im.installation.hostname
             AND im.recordDate = (
                 SELECT MAX(im_s.recordDate) 
                 FROM InstallationMetrics im_s 
-                WHERE im_s.installation.dvHubId = im.installation.dvHubId
+                WHERE im_s.installation.hostname = im.installation.hostname
             )
-            WHERE (:#{#params.dvHubId} IS NULL OR im.installation.dvHubId = :#{#params.dvHubId})
+            WHERE (:#{#params.hostname} IS NULL OR im.installation.hostname = :#{#params.hostname})
             AND (:#{#params.installationName} IS NULL OR UPPER(im.installation.name) LIKE %:#{#params.installationName == null ? null : #params.installationName.toUpperCase()}%)
             AND (:#{#params.country} IS NULL OR im.installation.country = :#{#params.country})
             AND (:#{#params.launchYear} IS NULL OR im.installation.launchYear = :#{#params.launchYear})
             AND (:#{#params.continent} IS NULL OR im.installation.continent = :#{#params.continent})
             AND (:#{#params.gdccMember} IS NULL OR im.installation.gdccMember = :#{#params.gdccMember})
+            AND (:#{#params.active} IS NULL OR im.installation.active = :#{#params.active})
             AND (:#{#params.maxFiles} IS NULL OR im.files <= :#{#params.maxFiles})
             AND (:#{#params.minFiles} IS NULL OR im.files >= :#{#params.minFiles})
             AND (:#{#params.maxDatasets} IS NULL OR im.datasets <= :#{#params.maxDatasets})
@@ -42,7 +43,7 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
             AND (:#{#params.minHarvested} IS NULL OR im.harvestedDatasets >= :#{#params.minHarvested})
             AND (:#{#params.minLocalDatasets} IS NULL OR im.localDatasets >= :#{#params.minLocalDatasets})
             AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
-            ORDER BY im.installation.dvHubId, im.recordDate
+            ORDER BY im.installation.hostname, im.recordDate
             """)
     public List<InstallationMetrics> findLatest(@RequestParam InstallationFilterParams params);
    

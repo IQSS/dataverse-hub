@@ -12,11 +12,11 @@ public interface InstallationVersionInfoRepo extends JpaRepository<InstallationV
             SELECT ivi 
             FROM InstallationVersionInfo ivi
             JOIN (
-                SELECT installation.dvHubId AS dvHubId, MAX(recordDate) AS maxRecordDate
+                SELECT installation.hostname AS hostname, MAX(recordDate) AS maxRecordDate
                 FROM InstallationVersionInfo
-                GROUP BY installation.dvHubId
+                GROUP BY installation.hostname
             ) AS maxDates
-            ON ivi.installation.dvHubId = maxDates.dvHubId 
+            ON ivi.installation.hostname = maxDates.hostname
             AND ivi.recordDate = maxDates.maxRecordDate
             """) 
     public List<InstallationVersionInfo> getLatestStatusAll();
