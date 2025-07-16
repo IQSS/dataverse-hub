@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationMetricsFilterParams;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCheck;
@@ -147,7 +147,7 @@ public class InstallationService {
      * retrieve the most recent metrics from all installations
      * @return
      */
-    public List<InstallationMetrics> getInstallationMetrics(InstallationFilterParams installationFilterParams){
+    public List<InstallationMetrics> getInstallationMetrics(InstallationMetricsFilterParams installationFilterParams){
         return installationsMetricsRepo.findLatest(installationFilterParams);
     }
 

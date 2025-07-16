@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import edu.harvard.iq.dataverse_hub.controller.api.annotations.InstallationControllerDocs;
-import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationMetricsFilterParams;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
@@ -64,7 +64,7 @@ public class InstallationController {
     @GetMapping("metrics")
     @InstallationControllerDocs.getInstallationsMetrics
     @CrossOrigin()
-    public List<MetricsByInstallationDTO> getInstallationsMetrics(@ParameterObject InstallationFilterParams installationFilterParams){
+    public List<MetricsByInstallationDTO> getInstallationsMetrics(@ParameterObject InstallationMetricsFilterParams installationFilterParams){
 
         InstallationFilterParamsMonthly installationFilterParamsMonthly = new InstallationFilterParamsMonthly();   
         installationFilterParamsMonthly.setIsActive(installationFilterParams.getIsActive());

@@ -3,7 +3,7 @@ package edu.harvard.iq.dataverse_hub.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationMetricsFilterParams;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
@@ -45,6 +45,6 @@ public interface InstallationsMetricsRepo extends JpaRepository<InstallationMetr
             AND (:#{#params.maxLocalDatasets} IS NULL OR im.localDatasets <= :#{#params.maxLocalDatasets})
             ORDER BY im.installation.hostname, im.recordDate
             """)
-    public List<InstallationMetrics> findLatest(@RequestParam InstallationFilterParams params);
+    public List<InstallationMetrics> findLatest(@RequestParam InstallationMetricsFilterParams params);
    
 }

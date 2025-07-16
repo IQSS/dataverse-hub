@@ -1629,3 +1629,856 @@ This generated password is for development use only. Your security configuration
 2025-07-16T11:37:59.579-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting VersionDVInstallationCheck job
 2025-07-16T11:37:59.579-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Checking if job is due
 2025-07-16T11:37:59.582-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job VersionDVInstallationCheck successfully completed
+2025-07-16T12:37:59.550-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting VersionDVInstallationCheck job
+2025-07-16T12:37:59.551-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Checking if job is due
+2025-07-16T12:37:59.572-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job VersionDVInstallationCheck successfully completed
+2025-07-16T13:35:46.403-04:00  INFO 45816 --- [dataverse-hub] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-16T13:35:46.404-04:00  INFO 45816 --- [dataverse-hub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-16T13:35:46.405-04:00  INFO 45816 --- [dataverse-hub] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-07-16T13:37:59.550-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting VersionDVInstallationCheck job
+2025-07-16T13:37:59.550-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Checking if job is due
+2025-07-16T13:37:59.557-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job VersionDVInstallationCheck successfully completed
+2025-07-16T13:57:05.869-04:00  WARN 45816 --- [dataverse-hub] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/installation.]
+2025-07-16T14:37:57.254-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting VersionDVInstallationCheck job
+2025-07-16T14:37:57.254-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Checking if job is due
+2025-07-16T14:37:57.262-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job VersionDVInstallationCheck successfully completed
+2025-07-16T14:40:38.039-04:00  WARN 45816 --- [dataverse-hub] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/installation.]
+2025-07-16T14:41:02.752-04:00  WARN 45816 --- [dataverse-hub] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/installation.]
+2025-07-16T14:41:11.914-04:00  INFO 45816 --- [dataverse-hub] [http-nio-8080-exec-7] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 86 ms
+2025-07-16T14:51:50.169-04:00  INFO 45816 --- [dataverse-hub] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-16T14:51:50.171-04:00  INFO 45816 --- [dataverse-hub] [Thread-12] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-16T14:51:50.176-04:00  INFO 45816 --- [dataverse-hub] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-16T14:51:50.177-04:00  INFO 45816 --- [dataverse-hub] [Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:51:50.178-04:00  INFO 45816 --- [dataverse-hub] [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-07-16T14:51:50.179-04:00  INFO 45816 --- [dataverse-hub] [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-07-16T14:51:50.179-04:00  INFO 45816 --- [dataverse-hub] [Thread-12] org.ehcache.core.EhcacheManager          : Cache 'installationsMetricsMonthly' removed from EhcacheManager.
+2025-07-16T14:51:50.180-04:00  INFO 45816 --- [dataverse-hub] [Thread-12] org.ehcache.core.EhcacheManager          : Cache 'installationsStatus' removed from EhcacheManager.
+2025-07-16T14:51:50.271-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:51:50.271-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:51:50.415-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:51:50.428-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 8 JPA repository interfaces.
+2025-07-16T14:51:50.491-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:51:50.492-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:51:50.493-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:51:50.503-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:51:50.503-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 231 ms
+2025-07-16T14:51:50.580-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 10.0MB in chunks
+2025-07-16T14:51:50.582-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsMetricsMonthly' created in EhcacheManager.
+2025-07-16T14:51:50.584-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 10.0MB in chunks
+2025-07-16T14:51:50.585-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsStatus' created in EhcacheManager.
+2025-07-16T14:51:50.588-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./env/rep/IQSS/dataverse-hub/target/classes/ehcache.xml,Cache=installationsMetricsMonthly
+2025-07-16T14:51:50.588-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./env/rep/IQSS/dataverse-hub/target/classes/ehcache.xml,Cache=installationsStatus
+2025-07-16T14:51:50.607-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-07-16T14:51:50.633-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@544a4376
+2025-07-16T14:51:50.633-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-07-16T14:51:50.634-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:51:50.645-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:51:50.658-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.009s)
+2025-07-16T14:51:50.690-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:51:50.690-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:51:50.704-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:51:50.706-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:51:50.711-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:51:50.716-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:51:50.778-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:51:50.779-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:51:50.891-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-16T14:51:50.898-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: cc7b5924-c12a-4bd5-a333-150adff0f307
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-07-16T14:51:50.901-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-07-16T14:51:50.952-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-07-16T14:51:50.994-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-16T14:51:51.000-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-16T14:51:51.002-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting DevMetricsImporter job
+2025-07-16T14:51:51.002-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Started DataverseHubApplication in 0.747 seconds (process running for 12378.562)
+2025-07-16T14:51:51.003-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-16T14:51:51.024-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job DevMetricsImporter successfully completed
+2025-07-16T14:51:51.025-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting InstallationGitImporter job
+2025-07-16T14:51:51.028-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job InstallationGitImporter successfully completed
+2025-07-16T14:51:51.028-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting InstallationMetricsImporter job
+2025-07-16T14:51:51.031-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job InstallationMetricsImporter successfully completed
+2025-07-16T14:51:51.031-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] d.c.s.InstallationMetricsMonthlyImporter : Starting InstallationMetricsMonthlyImporter job
+2025-07-16T14:51:51.032-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] d.c.s.InstallationMetricsMonthlyImporter : Job InstallationMetricsMonthlyImporter successfully completed
+2025-07-16T14:51:51.032-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting VersionDVInstallationCheck job
+2025-07-16T14:51:51.032-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Checking if job is due
+2025-07-16T14:51:51.035-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job VersionDVInstallationCheck successfully completed
+2025-07-16T14:52:06.535-04:00  INFO 45816 --- [dataverse-hub] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-16T14:52:06.536-04:00  INFO 45816 --- [dataverse-hub] [Thread-16] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-16T14:52:06.542-04:00  INFO 45816 --- [dataverse-hub] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-16T14:52:06.543-04:00  INFO 45816 --- [dataverse-hub] [Thread-16] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:52:06.543-04:00  INFO 45816 --- [dataverse-hub] [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-07-16T14:52:06.544-04:00  INFO 45816 --- [dataverse-hub] [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-07-16T14:52:06.545-04:00  INFO 45816 --- [dataverse-hub] [Thread-16] org.ehcache.core.EhcacheManager          : Cache 'installationsMetricsMonthly' removed from EhcacheManager.
+2025-07-16T14:52:06.545-04:00  INFO 45816 --- [dataverse-hub] [Thread-16] org.ehcache.core.EhcacheManager          : Cache 'installationsStatus' removed from EhcacheManager.
+2025-07-16T14:52:06.624-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:52:06.624-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:52:06.720-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:52:06.731-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 8 JPA repository interfaces.
+2025-07-16T14:52:06.780-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:52:06.781-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:52:06.781-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:52:06.790-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:52:06.790-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 165 ms
+2025-07-16T14:52:06.822-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 10.0MB in chunks
+2025-07-16T14:52:06.824-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsMetricsMonthly' created in EhcacheManager.
+2025-07-16T14:52:06.825-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 10.0MB in chunks
+2025-07-16T14:52:06.826-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsStatus' created in EhcacheManager.
+2025-07-16T14:52:06.828-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./env/rep/IQSS/dataverse-hub/target/classes/ehcache.xml,Cache=installationsMetricsMonthly
+2025-07-16T14:52:06.829-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./env/rep/IQSS/dataverse-hub/target/classes/ehcache.xml,Cache=installationsStatus
+2025-07-16T14:52:06.844-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-07-16T14:52:06.871-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@33273290
+2025-07-16T14:52:06.871-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-07-16T14:52:06.872-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:52:06.881-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:52:06.890-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.007s)
+2025-07-16T14:52:06.923-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:52:06.924-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:52:06.936-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:52:06.937-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:52:06.942-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:52:06.946-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:52:07.015-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:52:07.015-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:52:07.065-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+2025-07-16T14:52:07.065-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:52:07.065-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-07-16T14:52:07.089-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-07-16T14:52:07.089-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsMetricsMonthly' removed from EhcacheManager.
+2025-07-16T14:52:07.090-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsStatus' removed from EhcacheManager.
+2025-07-16T14:52:07.090-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-16T14:52:07.093-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-16T14:52:07.108-04:00 ERROR 45816 --- [dataverse-hub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1320) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1215) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.2.jar:3.4.2]
+	at edu.harvard.iq.dataverse_hub.DataverseHubApplication.main(DataverseHubApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [edu.harvard.iq.dataverse_hub.controller.api.InstallationController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2b338d2a]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: InstallationMetricsFilterParams
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.2.jar:6.2.2]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: InstallationMetricsFilterParams
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-16T14:53:14.089-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:53:14.090-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:53:14.169-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:53:14.171-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-07-16T14:53:14.209-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:53:14.209-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:53:14.210-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:53:14.222-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:53:14.222-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 132 ms
+2025-07-16T14:53:14.237-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-07-16T14:53:14.262-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@71853d0f
+2025-07-16T14:53:14.262-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-07-16T14:53:14.263-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:53:14.271-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:53:14.280-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.006s)
+2025-07-16T14:53:14.311-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:53:14.312-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:53:14.321-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:53:14.322-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:53:14.326-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:53:14.330-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:53:14.337-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:53:14.337-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:53:14.353-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-16T14:53:14.360-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-07-16T14:53:14.386-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5326f6f9-329f-45e0-97fd-c85afd31467b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-07-16T14:53:14.387-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-07-16T14:53:14.422-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-16T14:53:14.426-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-16T14:53:14.428-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Started DataverseHubApplication in 0.35 seconds (process running for 12461.989)
+2025-07-16T14:53:14.430-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   GenericCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.GenericCacheConfiguration automatic cache type (CacheCondition)
+
+   NoOpCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.NoOpCacheConfiguration automatic cache type (CacheCondition)
+
+   SimpleCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.SimpleCacheConfiguration automatic cache type (CacheCondition)
+
+   SpringBootWebSecurityConfiguration.SecurityFilterChainConfiguration matched:
+      - AllNestedConditions 2 matched 0 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) did not find any beans; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
+
+
+Negative matches:
+-----------------
+
+   CacheAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.cache.interceptor.CacheAspectSupport; SearchStrategy: all) did not find any beans of type org.springframework.cache.interceptor.CacheAspectSupport (OnBeanCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.cache.CacheManager' (OnClassCondition)
+
+   CacheAutoConfiguration.CacheManagerEntityManagerFactoryDependsOnPostProcessor:
+      Did not match:
+         - Ancestor org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration did not match (ConditionEvaluationReport.AncestorsMatchedCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2025-07-16T14:53:25.865-04:00  INFO 45816 --- [dataverse-hub] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 18 class path changes (18 additions, 0 deletions, 0 modifications)
+2025-07-16T14:53:25.865-04:00  INFO 45816 --- [dataverse-hub] [Thread-20] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-16T14:53:25.871-04:00  INFO 45816 --- [dataverse-hub] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-16T14:53:25.872-04:00  INFO 45816 --- [dataverse-hub] [Thread-20] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:53:25.872-04:00  INFO 45816 --- [dataverse-hub] [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-07-16T14:53:25.873-04:00  INFO 45816 --- [dataverse-hub] [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-07-16T14:53:25.952-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:53:25.952-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:53:26.043-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:53:26.046-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-07-16T14:53:26.082-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:53:26.082-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:53:26.082-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:53:26.092-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:53:26.092-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 139 ms
+2025-07-16T14:53:26.109-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-07-16T14:53:26.135-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@15565810
+2025-07-16T14:53:26.136-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-07-16T14:53:26.137-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:53:26.145-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:53:26.155-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.007s)
+2025-07-16T14:53:26.189-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:53:26.189-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:53:26.201-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:53:26.202-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:53:26.206-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:53:26.212-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:53:26.220-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:53:26.220-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:53:26.223-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+2025-07-16T14:53:26.223-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:53:26.223-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-07-16T14:53:26.224-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-07-16T14:53:26.224-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-16T14:53:26.228-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-16T14:53:26.230-04:00 ERROR 45816 --- [dataverse-hub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1320) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1215) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.2.jar:3.4.2]
+	at edu.harvard.iq.dataverse_hub.DataverseHubApplication.main(DataverseHubApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [edu.harvard.iq.dataverse_hub.controller.api.InstallationController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@3ddf0327]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: InstallationFilterParamsMonthly
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.2.jar:6.2.2]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: InstallationFilterParamsMonthly
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-16T14:53:58.800-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:53:58.800-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:53:58.897-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:53:58.901-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-07-16T14:53:58.934-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:53:58.935-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:53:58.935-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:53:58.945-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:53:58.945-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 144 ms
+2025-07-16T14:53:58.963-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-07-16T14:53:58.988-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection org.postgresql.jdbc.PgConnection@78507ec4
+2025-07-16T14:53:58.988-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-07-16T14:53:58.989-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:53:58.998-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:53:59.006-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.006s)
+2025-07-16T14:53:59.042-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:53:59.043-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:53:59.055-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:53:59.056-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:53:59.060-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:53:59.064-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:53:59.071-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:53:59.071-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:53:59.074-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+2025-07-16T14:53:59.074-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:53:59.074-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2025-07-16T14:53:59.075-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2025-07-16T14:53:59.075-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-16T14:53:59.078-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-16T14:53:59.079-04:00 ERROR 45816 --- [dataverse-hub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1320) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1215) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.2.jar:3.4.2]
+	at edu.harvard.iq.dataverse_hub.DataverseHubApplication.main(DataverseHubApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [edu.harvard.iq.dataverse_hub.controller.api.InstallationController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@15e45440]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: InstallationFilterParamsMonthly
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.2.jar:6.2.2]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: InstallationFilterParamsMonthly
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-16T14:54:03.518-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:54:03.518-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:54:03.613-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:54:03.616-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-07-16T14:54:03.651-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:54:03.652-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:54:03.652-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:54:03.661-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:54:03.661-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 142 ms
+2025-07-16T14:54:03.676-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2025-07-16T14:54:03.701-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection org.postgresql.jdbc.PgConnection@3a82ad75
+2025-07-16T14:54:03.701-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2025-07-16T14:54:03.702-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:54:03.710-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:54:03.719-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.006s)
+2025-07-16T14:54:03.751-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:54:03.752-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:54:03.762-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:54:03.763-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:54:03.766-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:54:03.770-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-9)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:54:03.776-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:54:03.776-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:03.779-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+2025-07-16T14:54:03.779-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:03.779-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2025-07-16T14:54:03.780-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2025-07-16T14:54:03.780-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-16T14:54:03.782-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-16T14:54:03.784-04:00 ERROR 45816 --- [dataverse-hub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1320) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1215) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.2.jar:3.4.2]
+	at edu.harvard.iq.dataverse_hub.DataverseHubApplication.main(DataverseHubApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [edu.harvard.iq.dataverse_hub.controller.api.InstallationController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1c57ec]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: InstallationFilterParamsMonthly
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.2.jar:6.2.2]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: InstallationFilterParamsMonthly
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-16T14:54:10.233-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:54:10.233-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:54:10.326-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:54:10.328-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-07-16T14:54:10.360-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:54:10.361-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:54:10.361-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:54:10.369-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:54:10.370-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 136 ms
+2025-07-16T14:54:10.386-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2025-07-16T14:54:10.410-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection org.postgresql.jdbc.PgConnection@2548b7c7
+2025-07-16T14:54:10.410-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2025-07-16T14:54:10.411-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:54:10.419-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:54:10.428-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.006s)
+2025-07-16T14:54:10.467-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:54:10.468-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:54:10.482-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:54:10.483-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:54:10.487-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:54:10.492-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-10)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:54:10.499-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:54:10.499-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:10.503-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+2025-07-16T14:54:10.503-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:10.504-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2025-07-16T14:54:10.504-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2025-07-16T14:54:10.505-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-16T14:54:10.507-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-16T14:54:10.509-04:00 ERROR 45816 --- [dataverse-hub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1320) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1215) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.2.jar:3.4.2]
+	at edu.harvard.iq.dataverse_hub.DataverseHubApplication.main(DataverseHubApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [edu.harvard.iq.dataverse_hub.controller.api.InstallationController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6358caad]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: InstallationFilterParamsMonthly
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.2.jar:6.2.2]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: InstallationFilterParamsMonthly
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-16T14:54:15.952-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:54:15.952-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:54:16.044-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:54:16.047-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-07-16T14:54:16.088-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:54:16.089-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:54:16.089-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:54:16.100-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-5].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:54:16.100-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 147 ms
+2025-07-16T14:54:16.115-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2025-07-16T14:54:16.141-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection org.postgresql.jdbc.PgConnection@3b25a8b3
+2025-07-16T14:54:16.141-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2025-07-16T14:54:16.142-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:54:16.151-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:54:16.160-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.006s)
+2025-07-16T14:54:16.192-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:54:16.193-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:54:16.204-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:54:16.205-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:54:16.209-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:54:16.214-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-11)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:54:16.226-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:54:16.227-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:16.230-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+2025-07-16T14:54:16.231-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:16.231-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2025-07-16T14:54:16.232-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2025-07-16T14:54:16.232-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-16T14:54:16.235-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-16T14:54:16.237-04:00 ERROR 45816 --- [dataverse-hub] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'installationController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1320) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1215) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:336) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:307) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:334) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1093) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1030) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.2.jar:3.4.2]
+	at edu.harvard.iq.dataverse_hub.DataverseHubApplication.main(DataverseHubApplication.java:12) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [edu.harvard.iq.dataverse_hub.controller.api.InstallationController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@26db2bda]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.2.jar:6.2.2]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: InstallationFilterParamsMonthly
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.2.jar:6.2.2]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: InstallationFilterParamsMonthly
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.2.jar:3.4.2]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-16T14:54:27.718-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Starting DataverseHubApplication using Java 21.0.2 with PID 45816 (C:\env\rep\IQSS\dataverse-hub\target\classes started by megam in C:\env\rep\IQSS\dataverse-hub)
+2025-07-16T14:54:27.719-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-07-16T14:54:27.850-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-16T14:54:27.864-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 8 JPA repository interfaces.
+2025-07-16T14:54:27.915-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-16T14:54:27.916-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-16T14:54:27.916-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-07-16T14:54:27.926-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.a.c.c.C.[Tomcat-6].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-16T14:54:27.926-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 206 ms
+2025-07-16T14:54:27.992-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 10.0MB in chunks
+2025-07-16T14:54:27.994-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsMetricsMonthly' created in EhcacheManager.
+2025-07-16T14:54:27.997-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .e.s.o.t.o.p.UpfrontAllocatingPageSource : Allocating 10.0MB in chunks
+2025-07-16T14:54:27.999-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.core.EhcacheManager          : Cache 'installationsStatus' created in EhcacheManager.
+2025-07-16T14:54:28.001-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./env/rep/IQSS/dataverse-hub/target/classes/ehcache.xml,Cache=installationsMetricsMonthly
+2025-07-16T14:54:28.002-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.ehcache.jsr107.Eh107CacheManager     : Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./C./env/rep/IQSS/dataverse-hub/target/classes/ehcache.xml,Cache=installationsStatus
+2025-07-16T14:54:28.020-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2025-07-16T14:54:28.045-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection org.postgresql.jdbc.PgConnection@5c8826bd
+2025-07-16T14:54:28.045-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2025-07-16T14:54:28.046-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/dv_hub_pg (PostgreSQL 17.5)
+2025-07-16T14:54:28.054-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 17.5 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2025-07-16T14:54:28.063-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.006s)
+2025-07-16T14:54:28.096-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1.0.1
+2025-07-16T14:54:28.097-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-07-16T14:54:28.109-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-16T14:54:28.110-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-16T14:54:28.114-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-16T14:54:28.118-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-12)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-16T14:54:28.186-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-16T14:54:28.186-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-16T14:54:28.295-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-16T14:54:28.300-04:00  WARN 45816 --- [dataverse-hub] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8c508294-1331-4138-b148-6bc0dcfbb910
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-07-16T14:54:28.301-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-07-16T14:54:28.347-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-07-16T14:54:28.378-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-16T14:54:28.387-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-16T14:54:28.389-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting DevMetricsImporter job
+2025-07-16T14:54:28.389-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] e.h.i.d.DataverseHubApplication          : Started DataverseHubApplication in 0.682 seconds (process running for 12535.95)
+2025-07-16T14:54:28.390-04:00  INFO 45816 --- [dataverse-hub] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   CacheAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.cache.CacheManager' (OnClassCondition)
+      - @ConditionalOnBean (types: org.springframework.cache.interceptor.CacheAspectSupport; SearchStrategy: all) found bean 'cacheInterceptor'; @ConditionalOnMissingBean (names: cacheResolver types: org.springframework.cache.CacheManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   CacheAutoConfiguration#cacheManagerCustomizers matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   CacheAutoConfiguration.CacheManagerEntityManagerFactoryDependsOnPostProcessor matched:
+      - @ConditionalOnClass found required class 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' (OnClassCondition)
+      - @ConditionalOnBean (types: org.springframework.orm.jpa.AbstractEntityManagerFactoryBean; SearchStrategy: all) found bean '&entityManagerFactory' (OnBeanCondition)
+
+   JCacheCacheConfiguration#jCacheCacheManager matched:
+      - @ConditionalOnMissingBean (types: javax.cache.CacheManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   GenericCacheConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.cache.Cache; SearchStrategy: all) did not find any beans of type org.springframework.cache.Cache (OnBeanCondition)
+      Matched:
+         - Cache org.springframework.boot.autoconfigure.cache.GenericCacheConfiguration automatic cache type (CacheCondition)
+
+   NoOpCacheConfiguration:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.cache.CacheManager; SearchStrategy: all) found beans of type 'org.springframework.cache.CacheManager' cacheManager (OnBeanCondition)
+      Matched:
+         - Cache org.springframework.boot.autoconfigure.cache.NoOpCacheConfiguration automatic cache type (CacheCondition)
+
+   SimpleCacheConfiguration:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.cache.CacheManager; SearchStrategy: all) found beans of type 'org.springframework.cache.CacheManager' cacheManager (OnBeanCondition)
+      Matched:
+         - Cache org.springframework.boot.autoconfigure.cache.SimpleCacheConfiguration automatic cache type (CacheCondition)
+
+   SpringBootWebSecurityConfiguration.SecurityFilterChainConfiguration:
+      Did not match:
+         - AllNestedConditions 1 matched 1 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) found beans of type 'org.springframework.security.web.SecurityFilterChain' filterChain; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2025-07-16T14:54:28.410-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job DevMetricsImporter successfully completed
+2025-07-16T14:54:28.410-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting InstallationGitImporter job
+2025-07-16T14:54:28.413-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job InstallationGitImporter successfully completed
+2025-07-16T14:54:28.413-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting InstallationMetricsImporter job
+2025-07-16T14:54:28.416-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job InstallationMetricsImporter successfully completed
+2025-07-16T14:54:28.416-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] d.c.s.InstallationMetricsMonthlyImporter : Starting InstallationMetricsMonthlyImporter job
+2025-07-16T14:54:28.417-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] d.c.s.InstallationMetricsMonthlyImporter : Job InstallationMetricsMonthlyImporter successfully completed
+2025-07-16T14:54:28.417-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Starting VersionDVInstallationCheck job
+2025-07-16T14:54:28.417-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Checking if job is due
+2025-07-16T14:54:28.420-04:00  INFO 45816 --- [dataverse-hub] [scheduling-1] e.h.i.d.c.s.InstallationGitImporter      : Job VersionDVInstallationCheck successfully completed

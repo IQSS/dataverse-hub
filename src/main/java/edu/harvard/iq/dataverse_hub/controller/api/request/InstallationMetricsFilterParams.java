@@ -2,7 +2,7 @@ package edu.harvard.iq.dataverse_hub.controller.api.request;
 
 import io.swagger.v3.oas.annotations.Parameter;
 
-public class InstallationFilterParams {
+public class InstallationMetricsFilterParams {
 
     @Parameter(description = "Name of the installation", example = "Harvard Dataverse")
     private String installationName;
