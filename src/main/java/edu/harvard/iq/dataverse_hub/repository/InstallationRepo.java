@@ -74,16 +74,7 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
     @Query("""
             SELECT i FROM Installation i
             WHERE i.active = true
-            AND i.hostname NOT IN (
-                SELECT ivi.installation.hostname
-                FROM InstallationVersionInfo ivi
-                WHERE ivi.status = 'OK'
-                AND ivi.recordDate = (
-                    SELECT MAX(ivi_sub.recordDate)
-                    FROM InstallationVersionInfo ivi_sub
-                    WHERE ivi_sub.installation.hostname = ivi.installation.hostname
-                )
-            )
+            AND i NOT IN :installation
             """)
     List<Installation> getMissingInstallations(List<Installation> installation);
 }

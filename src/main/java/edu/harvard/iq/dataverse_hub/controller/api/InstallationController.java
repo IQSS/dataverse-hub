@@ -23,7 +23,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-@RequestMapping("/api/installation")
+@RequestMapping("/api/installations")
 public class InstallationController {
 
     @Autowired

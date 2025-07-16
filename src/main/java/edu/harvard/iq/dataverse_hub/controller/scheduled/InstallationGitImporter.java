@@ -70,10 +70,11 @@ public class InstallationGitImporter {
 
             installationsDtos = InstallationGitImporter.transform(installationsMapper);
             List<Installation> missingInstallations = installationService.getMissingInstallations(installationsDtos);
-            System.out.println(missingInstallations);
-            System.out.println(missingInstallations.size());
+            for (Installation missingInstallation : missingInstallations) {
+                missingInstallation.setActive(false);
+            }
             
-
+            missingInstallations = installationService.saveAllInstallations(missingInstallations);
             installationsDtos = installationService.saveAllInstallations(installationsDtos);            
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
         } catch (Exception e) {
