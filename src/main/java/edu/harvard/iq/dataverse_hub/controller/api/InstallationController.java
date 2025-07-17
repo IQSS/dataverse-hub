@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import edu.harvard.iq.dataverse_hub.controller.api.annotations.InstallationControllerDocs;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationMetricsFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
@@ -16,6 +17,7 @@ import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
 import edu.harvard.iq.dataverse_hub.model.DTO.InstallationDTO;
 import edu.harvard.iq.dataverse_hub.model.DTO.MetricsByInstallationDTO;
 import edu.harvard.iq.dataverse_hub.service.InstallationService;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,13 +34,8 @@ public class InstallationController {
     @GetMapping()
     @InstallationControllerDocs.GetInstallations
     @CrossOrigin()
-    public List<InstallationDTO> getInstallations(){
-        List<Installation> installations = installationService.findAll();
-        List<InstallationDTO> installationDTOs = new ArrayList<InstallationDTO>();
-        for(Installation installation : installations){
-            installationDTOs.add(new InstallationDTO(installation));
-        }
-        return installationDTOs;
+    public List<InstallationDTO> getInstallations(@ParameterObject InstallationFilterParams installationFilterParams) {
+        return installationService.findAllByFilter(installationFilterParams);
     }
     
     @PutMapping

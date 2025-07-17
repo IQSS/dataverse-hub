@@ -5,16 +5,19 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationMetricsFilterParams;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.controller.scheduled.VersionDVInstallationCheck;
 import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 import edu.harvard.iq.dataverse_hub.model.InstallationVersionInfo;
+import edu.harvard.iq.dataverse_hub.model.DTO.InstallationDTO;
 import edu.harvard.iq.dataverse_hub.repository.InstallationRepo;
 import edu.harvard.iq.dataverse_hub.repository.InstallationVersionInfoRepo;
 import edu.harvard.iq.dataverse_hub.repository.InstallationsMetricsRepo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +59,20 @@ public class InstallationService {
      */
     public List<Installation> findAll() {
         return installationRepo.findAll();
+    }
+
+    /**
+     * Find all installations by filter parameters
+     * @param filterParams
+     * @return
+     */
+    public List<InstallationDTO> findAllByFilter(InstallationFilterParams filterParams) {
+        List<Installation> installations = installationRepo.findAllByFilter(filterParams);
+        List<InstallationDTO> installationDTOs = new ArrayList<>();
+        for (Installation installation : installations) {
+            installationDTOs.add(new InstallationDTO(installation));
+        }
+        return installationDTOs;
     }
 
     public List<Installation> getMissingInstallations(List<Installation> installations) {

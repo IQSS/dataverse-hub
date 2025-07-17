@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import edu.harvard.iq.dataverse_hub.model.Installation;
@@ -14,6 +15,18 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
     
     @Query("SELECT i FROM Installation i WHERE LOWER(i.hostname) = LOWER(?1)")
     Installation findByHostname(String hostname);
+
+    @Query("""
+            SELECT i FROM Installation i
+            WHERE (:#{#filterParams.hostname} IS NULL OR LOWER(i.hostname) = LOWER(:#{#filterParams.hostname}))
+            AND (:#{#filterParams.installationName} IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :#{#filterParams.installationName}, '%')))
+            AND (:#{#filterParams.country} IS NULL OR LOWER(i.country) = LOWER(:#{#filterParams.country}))
+            AND (:#{#filterParams.continent} IS NULL OR LOWER(i.continent) = LOWER(:#{#filterParams.continent}))
+            AND (:#{#filterParams.launchYear} IS NULL OR i.launchYear = :#{#filterParams.launchYear})
+            AND (:#{#filterParams.gdccMember} IS NULL OR i.gdccMember = :#{#filterParams.gdccMember})
+            AND (:#{#filterParams.active} IS NULL OR i.active = :#{#filterParams.active})
+            """)
+    List<Installation> findAllByFilter(InstallationFilterParams filterParams);
 
     @Query("""
             SELECT NEW edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry(

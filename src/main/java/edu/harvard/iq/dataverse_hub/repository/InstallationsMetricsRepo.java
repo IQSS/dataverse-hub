@@ -4,8 +4,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationMetricsFilterParams;
-import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParamsMonthly;
-import edu.harvard.iq.dataverse_hub.model.Installation;
 import edu.harvard.iq.dataverse_hub.model.InstallationMetrics;
 
 import java.util.List;
