@@ -9,13 +9,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.harvard.iq.dataverse_hub.beans.APIPayloadSamples;
 import edu.harvard.iq.dataverse_hub.beans.ServerMessageResponse;
 import edu.harvard.iq.dataverse_hub.controller.api.response.InstallationsByCountry;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.*;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -28,7 +26,7 @@ public @interface InstallationControllerDocs {
     
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "dv-metrics", description = "Dataverse metrics operations")
+    @Tag(name = "installations")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation list success",
@@ -53,7 +51,7 @@ public @interface InstallationControllerDocs {
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
     @SecurityRequirement(name = "api_key")
-    @Tag(name = "dv-metrics")
+    @Tag(name = "installation")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation creation success",
@@ -79,7 +77,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "dv-metrics")
+    @Tag(name = "installation")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installations Status list success",
@@ -103,7 +101,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "dv-metrics")
+    @Tag(name = "installation-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Installation by country count success",
@@ -127,7 +125,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "dv-metrics")
+    @Tag(name = "installation-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Registered installations metrics success",
@@ -151,7 +149,7 @@ public @interface InstallationControllerDocs {
 
     @Target({ElementType.METHOD})    
     @Retention(RetentionPolicy.RUNTIME)
-    @Tag(name = "dv-metrics")
+    @Tag(name = "installation-metrics")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", 
                         description = "Registered installations metrics by month success",
