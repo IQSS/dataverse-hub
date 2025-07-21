@@ -56,7 +56,6 @@ public class InstallationMetricsFilterParams {
     private String hostname;
 
     // Getters and Setters
-
     public String getInstallationName() {
         return installationName;
     }

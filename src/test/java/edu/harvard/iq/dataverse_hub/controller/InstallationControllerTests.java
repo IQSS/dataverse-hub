@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.harvard.iq.dataverse_hub.controller.api.InstallationController;
+import edu.harvard.iq.dataverse_hub.controller.api.request.InstallationFilterParams;
 
 @SpringBootTest
 public class InstallationControllerTests {
@@ -18,7 +19,7 @@ public class InstallationControllerTests {
     public void testInstallationController() {
 
         assertDoesNotThrow(() -> {
-            installationController.getInstallations();
+            installationController.getInstallations(new InstallationFilterParams());
             installationController.geInstallationsStatus();
         });
     }

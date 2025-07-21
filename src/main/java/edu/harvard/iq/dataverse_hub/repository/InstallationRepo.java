@@ -18,13 +18,13 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
 
     @Query("""
             SELECT i FROM Installation i
-            WHERE (:#{#filterParams.hostname} IS NULL OR LOWER(i.hostname) = LOWER(:#{#filterParams.hostname}))
+            WHERE (:#{#filterParams.hostname} IS NULL OR LOWER(i.hostname) LIKE LOWER(CONCAT('%', :#{#filterParams.hostname}, '%')))
             AND (:#{#filterParams.installationName} IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :#{#filterParams.installationName}, '%')))
             AND (:#{#filterParams.country} IS NULL OR LOWER(i.country) = LOWER(:#{#filterParams.country}))
             AND (:#{#filterParams.continent} IS NULL OR LOWER(i.continent) = LOWER(:#{#filterParams.continent}))
             AND (:#{#filterParams.launchYear} IS NULL OR i.launchYear = :#{#filterParams.launchYear})
             AND (:#{#filterParams.gdccMember} IS NULL OR i.gdccMember = :#{#filterParams.gdccMember})
-            AND (:#{#filterParams.active} IS NULL OR i.active = :#{#filterParams.active})
+            AND (:#{#filterParams.isActive} IS NULL OR i.active = :#{#filterParams.isActive})
             """)
     List<Installation> findAllByFilter(InstallationFilterParams filterParams);
 
