@@ -3,4 +3,5 @@
 **Contents**
 
 ```{toctree}
+scheduledJobs
 databaseDump
