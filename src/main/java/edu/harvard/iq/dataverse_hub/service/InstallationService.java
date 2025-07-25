@@ -59,6 +59,15 @@ public class InstallationService {
     }
 
     /**
+     * Return the installations that are not in the database
+     * @param url
+     * @return
+     */
+    public List<Installation> getMissingInstallations(List<Installation> installations) {
+        return installationRepo.getMissingInstallations(installations);
+    }
+
+    /**
      * Get the latest status of all installations
      * @return
      */

@@ -17,7 +17,7 @@ public class Installation implements java.io.Serializable {
 
     @Id
     @Schema(description = "Unique identifier for the Dataverse installation", 
-            example = "DVH_HARVARD_DATAVERSE_2008")
+            example = "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73")
     private String dvHubId;
 
     @Schema(description = "Name of the Dataverse installation",
@@ -63,6 +63,10 @@ public class Installation implements java.io.Serializable {
     @Schema(description = "Contact email of the admin of the Dataverse installation",
             example = "support@dataverse.harvard.edu")
     private String contactEmail;
+
+    @Schema(description = "Whether the Dataverse installation is active",
+            example = "true")
+    private Boolean isActive = true;
     
     @OneToMany(mappedBy = "installation", fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -173,6 +177,14 @@ public class Installation implements java.io.Serializable {
         this.metrics = metrics;
     }
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -188,6 +200,7 @@ public class Installation implements java.io.Serializable {
             ", gdccMember='" + getGdccMember() + "'" +
             ", doiAuthority='" + getDoiAuthority() + "'" +
             ", contactEmail='" + getContactEmail() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             "}";
     }
     

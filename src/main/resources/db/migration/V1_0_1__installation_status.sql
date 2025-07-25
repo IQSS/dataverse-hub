@@ -1,4 +1,4 @@
-ALTER TABLE installation ADD COLUMN active boolean DEFAULT true;
+ALTER TABLE installation ADD COLUMN is_active boolean DEFAULT true;
 
 ALTER TABLE installation_version_info DROP CONSTRAINT fk_installation;
 ALTER TABLE installation_metrics DROP CONSTRAINT fk_installation;
