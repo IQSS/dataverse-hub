@@ -54,6 +54,10 @@ public class InstallationDTO {
     @Schema(description = "Contact email of the admin of the Dataverse installation",
             example = "support@dataverse.harvard.edu")
     private String contactEmail;
+
+    @Schema(description = "Indicates if the installation is being tracked on the hub",
+            example = "true")
+    private Boolean isActive;
     
     public InstallationDTO(Installation installation) {
         this.dvHubId = installation.getDvHubId();
@@ -68,6 +72,7 @@ public class InstallationDTO {
         this.gdccMember = installation.getGdccMember();
         this.doiAuthority = installation.getDoiAuthority();
         this.contactEmail = installation.getContactEmail();
+        this.isActive = installation.getIsActive();
     }
 
     public String getDvHubId() {
@@ -168,6 +173,14 @@ public class InstallationDTO {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
 }
