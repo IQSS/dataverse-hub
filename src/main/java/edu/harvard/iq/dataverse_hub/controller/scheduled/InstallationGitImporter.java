@@ -96,8 +96,7 @@ public class InstallationGitImporter {
             throw new IllegalArgumentException("InstallationWrapper cannot be null");
         }
         Installation installation = new Installation();
-        installation.setDvHubId("DVN_" + installationWrapper.name.toUpperCase().replace(" ", "_") + "_"
-                + installationWrapper.launchYear);
+        installation.setDvHubId(installationWrapper.dvHubId);
         installation.setName(installationWrapper.name);
         installation.setDescription(installationWrapper.description);
         installation.setLatitude(installationWrapper.latitude);
@@ -109,6 +108,7 @@ public class InstallationGitImporter {
         installation.setGdccMember(installationWrapper.gdccMember);
         installation.setDoiAuthority(installationWrapper.doiAuthority);
         installation.setContactEmail(installationWrapper.contactEmail);
+        installation.setIsActive(true); 
         return installation;
     }
 
@@ -192,6 +192,9 @@ public class InstallationGitImporter {
         @JsonProperty("contact_email")
         private String contactEmail;
 
+        @JsonProperty("dv_hub_id")
+        private String dvHubId;
+
         public void setName(String name) {
             this.name = name;
         }
@@ -254,6 +257,10 @@ public class InstallationGitImporter {
 
         public void setContactEmail(String contactEmail) {
             this.contactEmail = contactEmail;
+        }
+
+        public void setDvHubId(String dvHubId) {
+            this.dvHubId = dvHubId;
         }
     }
 

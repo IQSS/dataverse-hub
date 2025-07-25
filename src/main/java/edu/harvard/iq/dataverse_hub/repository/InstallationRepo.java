@@ -72,7 +72,7 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
 
     @Query("""
             SELECT i FROM Installation i
-            WHERE i.active = true
+            WHERE i.isActive = true
             AND i NOT IN :installation
             """)
     List<Installation> getMissingInstallations(List<Installation> installation);
