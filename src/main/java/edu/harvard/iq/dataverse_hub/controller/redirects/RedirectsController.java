@@ -18,16 +18,10 @@ public class RedirectsController {
     @RequestMapping("/api/installation/**")
     public void installationRedirect(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String requestURI = request.getRequestURI();
-        String queryString = request.getQueryString();
         
         // Replace /api/installation with /api/installations
         String newPath = requestURI.replaceFirst("/api/installation", "/api/installations");
-        
-        // Debug logging
-        System.out.println("Original URI: " + requestURI);
-        System.out.println("New Path: " + newPath);
-        System.out.println("Query String: " + queryString);
-        
+    
         // Forward to the new path only (RequestDispatcher handles query string automatically)
         RequestDispatcher dispatcher = request.getRequestDispatcher(newPath);
         dispatcher.forward(request, response);
