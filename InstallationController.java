@@ -22,4 +22,12 @@ public class InstallationController {
         // Your actual implementation
         return ResponseEntity.ok("Installation metrics");
     }
+
+    @RequestMapping(value = {"/api/installation/metrics/monthly", "/api/installations/metrics/monthly"})
+    public ResponseEntity<String> getInstallationMetricsMonthly() {
+        // Your actual implementation
+        return ResponseEntity.ok("Installation metrics");
+    }
+
+
 }
