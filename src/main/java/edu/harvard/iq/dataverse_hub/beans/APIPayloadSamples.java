@@ -4,7 +4,7 @@ public abstract class APIPayloadSamples {
 
     public static final String INSTALLATION = """
             {
-                "dvHubId": "DVN_HARVARD_DATAVERSE_2008",
+                "dvHubId": "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73",
                 "name": "Harvard Dataverse",
                 "description": "Share, archive, and get credit for your data. Find and cite data across all research fields.",
                 "latitude": 42.375646,
@@ -15,7 +15,8 @@ public abstract class APIPayloadSamples {
                 "launchYear": 2008,
                 "gdccMember": true,
                 "doiAuthority": "10.791",
-                "contactEmail": "support@dataverse.harvard.edu"
+                "contactEmail": "support@dataverse.harvard.edu",
+                "isActive": true
             }
             """;
 
@@ -25,7 +26,7 @@ public abstract class APIPayloadSamples {
             {
                 "recordId": 1007,
                 "installation": {
-                "dvHubId": "DVN_HARVARD_DATAVERSE_2008",
+                "dvHubId": "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73",
                 "name": "Harvard Dataverse",
                 "description": "Share, archive, and get credit for your data. Find and cite data across all research fields.",
                 "latitude": 42.375646,
@@ -99,7 +100,7 @@ public abstract class APIPayloadSamples {
         [
             {   
                 "installation": {
-                "dvHubId": "DVN_HARVARD_DATAVERSE_2008",
+                "dvHubId": "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73",
                 "name": "Harvard Dataverse",
                 "description": "Share, archive, and get credit for your data. Find and cite data across all research fields.",
                 "latitude": 42.375646,
@@ -126,7 +127,7 @@ public abstract class APIPayloadSamples {
     public static final String INSTALLATION_METRICS_MONTHLY = """
     [
         {
-            "dvHubId": "DVN_HARVARD_DATAVERSE_2008",
+            "dvHubId": "57B6E0DD-B371-4AFE-A0C0-FB22621DDD73",
             "name": "Harvard Dataverse",
             "description": "Share, archive, and get credit for your data. Find and cite data across all research fields.",
             "latitude": 42.375646,

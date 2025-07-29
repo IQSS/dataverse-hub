@@ -1,6 +1,5 @@
 package edu.harvard.iq.dataverse_hub.controller.scheduled;
 
-
 import edu.harvard.iq.dataverse_hub.service.RestUtilService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +25,7 @@ public class InstallationGitImporter {
 
     @Autowired
     private InstallationService installationService;
-    
+
     @Autowired
     private ScheduledJobService scheduledJobService;
 
@@ -52,22 +51,30 @@ public class InstallationGitImporter {
      */
     public List<Installation> startTask(Boolean isDue) throws JsonProcessingException {
 
-        if(isDue == null){
+        if (isDue == null) {
             isDue = scheduledJobService.isDue(JOB_NAME);
         }
         return isDue ? importInstallations(INSTALLATIONS_URL) : null;
     }
 
-
     /**
      * @param url the url of the json file to be used to import the installations.
-     * @return the list of installations extracted from the JSON file and saved on the database.
+     * @return the list of installations extracted from the JSON file and saved on
+     *         the database.
      */
     public List<Installation> importInstallations(String url) throws JsonProcessingException {
         List<Installation> installationsDtos = null;
         try {
-            GitHubInstallationWrapper installationsMapper = restUtilService.retrieveRestAPIObject(url, GitHubInstallationWrapper.class);
+            GitHubInstallationWrapper installationsMapper = restUtilService.retrieveRestAPIObject(url,
+                    GitHubInstallationWrapper.class);
+
             installationsDtos = InstallationGitImporter.transform(installationsMapper);
+            List<Installation> missingInstallations = installationService.getMissingInstallations(installationsDtos);
+            for (Installation missingInstallation : missingInstallations) {
+                missingInstallation.setIsActive(false);
+            }
+
+            missingInstallations = installationService.saveAllInstallations(missingInstallations);
             installationsDtos = installationService.saveAllInstallations(installationsDtos);
             scheduledJobService.saveTransactionLog(JOB_NAME, 1);
         } catch (Exception e) {
@@ -78,7 +85,9 @@ public class InstallationGitImporter {
     }
 
     /**
-     * Helper method to transform the installationWrapper from the source to the installation
+     * Helper method to transform the installationWrapper from the source to the
+     * installation
+     * 
      * @param installationWrapper the object that contain an installation.
      * @return the installation DAO with the properties of the wrapper.
      */
@@ -87,24 +96,27 @@ public class InstallationGitImporter {
             throw new IllegalArgumentException("InstallationWrapper cannot be null");
         }
         Installation installation = new Installation();
-        installation.setDvHubId("DVN_" + installationWrapper.name.toUpperCase().replace(" ", "_") + "_" + installationWrapper.launchYear);
+        installation.setDvHubId(installationWrapper.dvHubId);
         installation.setName(installationWrapper.name);
         installation.setDescription(installationWrapper.description);
         installation.setLatitude(installationWrapper.latitude);
         installation.setLongitude(installationWrapper.longitude);
-        installation.setHostname(installationWrapper.hostname); 
+        installation.setHostname(installationWrapper.hostname);
         installation.setCountry(installationWrapper.country);
         installation.setContinent(installationWrapper.continent);
         installation.setLaunchYear(installationWrapper.launchYear);
         installation.setGdccMember(installationWrapper.gdccMember);
         installation.setDoiAuthority(installationWrapper.doiAuthority);
         installation.setContactEmail(installationWrapper.contactEmail);
+        installation.setIsActive(true); 
         return installation;
     }
 
     /**
      * Return a list of installation DAOs extracted from the JSON file from GH
-     * @param gitHubInstallationWrapper the wrapper that contains the installations on GH.
+     * 
+     * @param gitHubInstallationWrapper the wrapper that contains the installations
+     *                                  on GH.
      * @return the list of equivalent DAOs for the installations.
      */
     private static List<Installation> transform(GitHubInstallationWrapper gitHubInstallationWrapper) {
@@ -123,7 +135,7 @@ public class InstallationGitImporter {
     public static class GitHubInstallationWrapper {
         @JsonProperty("installations")
         List<InstallationWrapper> installations;
-    
+
     }
 
     /**
@@ -179,6 +191,9 @@ public class InstallationGitImporter {
 
         @JsonProperty("contact_email")
         private String contactEmail;
+
+        @JsonProperty("dv_hub_id")
+        private String dvHubId;
 
         public void setName(String name) {
             this.name = name;
@@ -242,6 +257,10 @@ public class InstallationGitImporter {
 
         public void setContactEmail(String contactEmail) {
             this.contactEmail = contactEmail;
+        }
+
+        public void setDvHubId(String dvHubId) {
+            this.dvHubId = dvHubId;
         }
     }
 

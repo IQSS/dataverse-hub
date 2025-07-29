@@ -69,4 +69,11 @@ public interface InstallationRepo extends JpaRepository<Installation, String> {
         ORDER BY im.recordDate ASC
         """)
     List<Installation> installationMetricsByMonth(InstallationFilterParamsMonthly params);
+
+    @Query("""
+            SELECT i FROM Installation i
+            WHERE i.isActive = true
+            AND i NOT IN :installation
+            """)
+    List<Installation> getMissingInstallations(List<Installation> installation);
 }
