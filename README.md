@@ -1,5 +1,7 @@
 You can find the old design document on [DESIGN.md](./DESIGN.md)
 
+Sphynx guides published @ [readthedocs](https://dataverse-hub.readthedocs.io/)
+
 <br />
 <div align="center">
   <a href="#">
